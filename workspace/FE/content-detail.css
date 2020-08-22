@@ -4,7 +4,7 @@
     background: #f4f8fa!important;
 }
 
-.overview,.box-author,.course-circullum{
+.overview,.box-author,.course-circullum,.info-writer-course,.submit-review,.person-review,.benefit{
     background:white;
     display: block;
     padding:32px;
@@ -175,4 +175,155 @@
 .lesson .none-border{
     border:none;
 }
+
+
+.info-writer-course .info-writer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+} 
+
+.info-writer .image{
+    background-image: url(/author-course1.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 70%;
+    height: 230px;
+    border-radius:5px;
+    left:10px;
+    top:0;
+}
+
+.info-writer .info{
+    padding-left:25px;
+}
+
+.info-writer .name{
+    margin: 25px 0 0;
+    font-size:20px;
+    font-weight: 600;
+    color: rgb(74,86,130);
+    line-height: 24px;
+}
+
+.info-writer .name:hover{
+    color:#da0b4e;
+}
+
+.info .list-info,.list-contact{
+    list-style: none;
+    margin:0; 
+    padding:5px 0 15px;
+}
+
+.info .list-contact{
+    margin-top: 10px;
+}
+
+.list-contact li a{
+    width: 36px;
+    height: 36px;
+    display: flex;
+    background: #fff;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dbe2ef;
+    border-radius: 50%;
+    font-size: 12px;
+    color: #4a5682;
+    text-decoration: none;
+}
+
+.list-contact li a:hover{
+    color:#da0b4e;
+}
+
+.submit-review .title{
+    font-size:17px;
+    font-weight: 600;
+    color:rgb(45, 57, 84);
+    margin-bottom: 20px;
+    line-height: 32px;
+}
+
+.submit-review .submit-name,.submit-email,.submit-content-review{
+    width: 100%;
+    border: 0.5px solid #DDD;
+    border-radius:5px
+}
+
+.submit-review input:focus,textarea:focus{
+    outline: none;
+}
+
+.other-review .image-other-review{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+}
+
+.other-review .title-review{
+    padding:0;
+    list-style: none;
+    margin: 0 0 4px;
+}
+
+.title-review .name-submit-review{
+    font-size: 18px;
+    color:rgb(45, 57, 84);
+    font-weight: 600;
+    line-height: 32px;
+}
+
+.star .checked{
+    color: orange;
+}
+
+.submit-review{
+    border:none;
+}
+
+.other-review .card{
+    border:none;
+}
+
+.other-review{
+    border-bottom:1px solid #DDD;
+}
+
+.none-border{
+    border:none;
+}
+
+.benefit .title{
+    font-size:18px;
+    color:rgb(45, 57, 84);
+    font-weight: 600;
+    margin-bottom:1rem;
+}
+
+.benefit .convenient{
+    list-style: none;
+    margin:20px 0 0 ;
+    padding:0;
+    font-size: 14px;
+}
+
+.convenient li{
+    margin-bottom: 15px;
+}
+
+.convenient li strong{
+    float:right;
+}
+
+.convenient li i{
+    margin-right:5px;
+}
+
+
+
+
+
 
