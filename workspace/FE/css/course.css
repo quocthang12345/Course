@@ -1,4 +1,8 @@
 
+.background-feature{
+   background: rgb(244,248,250);
+   width: 100%;
+}
 
 .title-feature .small-title{
     font-size:15px;
