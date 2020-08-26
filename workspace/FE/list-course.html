@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course</title>
-    <link href="/css/menu.css" rel="stylesheet" type="text/css" />
-    <link href="/css/video-lesson.css" rel="stylesheet" type="text/css" />
+    <title>Document</title>
+    <link href="list-course.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
+    <!-- This is a start of the Menu Page -->
     <header class="fixed-top">
         <div class="row">
             <div class="col-lg-12">
@@ -36,33 +36,38 @@
             </div>	
         </div>
     </header>
-
-    <div class="lesson-wrapper">
+    <!-- End Menu Page -->
+    <div class="wrap-list-course">
         <div class="container-fluid">
-                <div class="content-lesson">
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-5 col-lg-5">
-                            <div class="description-lesson">
-                                <p class="name-course">Java Enterprise for Beginner</p>
-                                <h2 class="title-lesson">Lesson 01: Prepare skills to learn Java</h2>
-                                <p class="short-lesson">Instructions for preparing tools for the course</p>
+            <nav>
+                <ol class="breadcrumb direct-course">
+                    <li class="breadcrumb-1"><a href="#">Home</a></li>
+                    <li><i class="fas fa-chevron-right breadcrumb-2"></i></li>
+                    <li class="breadcrumb-3"><a href="#">Course</a></li>
+                </ol>
+            </nav>
+            <div class="banner-course p-0">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 d-flex flex-row align-item-center">
+                        <div class="description-banner col-12 col-sm-12 col-md-8 col-lg-8">
+                            <div class="text-banner"><h2>Learning with <span style="color:blue">experts</span>,</h2>
+                                <h3>Take a programming course to improve your skills!</h3></div>
+                            <div class="search">
+                                <input type="text" class="search-course mt-3" placeholder="Enter the course name!">
+                                <button type="submit" class="searchButton">
+                                    <i class="fa fa-search"></i>
+                                 </button>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-7 col-lg-7">
-                            <div class="video-lesson">
-                                <iframe src="https://www.youtube.com/embed/Hl-zzrqQoSE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
+                        <div class="image-course col-md-4 col-lg-4 p-0">
+                            <img src="/image/img-list-course.jpg" alt="img-course" title="img-course"/>
                         </div>
                     </div>
                 </div>
-        </div>
-        <div class="row mr-3 float-right">
-            <div class="col-12 col-sm-12 col-lg-12 col-md-12 ">
-                <div class="btn-next">
-                    <a href="#" class="btn btn-primary">Next Lesson</a>
-                </div>
             </div>
+
         </div>
     </div>
+    
 </body>
 </html>

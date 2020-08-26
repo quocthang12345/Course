@@ -19,37 +19,29 @@
 <body>
         <!-- This is a start of the Menu Page -->
         <header class="fixed-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-lg-12 col-md-12 col-sm-12">
-                    <div class="menu-header d-flex flex-row justify-content-start">
-                        <div class="col-6 col-md-8 col-lg-8 col-sm-6">
-                            <div class="menu-left">
-                                <ul class="menu pt-3 pb-2">
-                                    <li><a href="#">Home</a></li>
-                                    <li class="has-subMenu"><a href="#">Courses</a>
-                                        <ul class="sub-menu">
-                                            <li>Language Progamming</li>
-                                            <li>Data Structure</li>
-                                            <li>Data Scientist</li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Pages</a></li>
-                                    <li><a href="#">Contact</a></li>
-                                </ul>
-                            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                        <a class="navbar-brand" href="#">TNT<span class="fab fa-telegram-plane"></span></a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
+                            <span class="icon-bar"></span>
+                            </button>
+                        <div class="collapse navbar-collapse" id="menu">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Courses</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Mentor</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" data-toggle="tab">Contact</a></li>
+                            </ul>
+                                <form class="form-inline my-2 my-lg-0">
+                                    <div class="form-group ">
+                                          <a type="button" class="btn btn-outline-success form-control mr-lg-2 pr-4 pl-4" href="#">Sign in</a>
+                                          <a type="button" class="btn btn-primary form-control pr-4 pl-4" href="#"> Sign up</a>
+                                      </div>
+                                </form>
                         </div>
-                        <div class="col-6 col-md-3 col-lg-3 col-sm-6">
-                            <div class="menu-right float-right">
-                                <ul class="menu-btn pt-3">
-                                    <li><a href="#" class="btn-register mr-3">Sign in</a></li>
-                                    <li><a href="#" class="btn-login">Sign up</a></li>   
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                 </div>
+                    </nav>
+                </div>	
             </div>
         </header>
         <!-- End Menu Page -->

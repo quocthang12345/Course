@@ -1,0 +1,96 @@
+.container{
+    font-family: 'Muli',sans-serif;
+} 
+
+header{
+    background: #FFF;
+    border-bottom:1px solid #EEE;
+}
+
+.menu{
+    margin-left:25%;
+}
+
+.menu-header li a{
+    text-decoration: none;
+    font-size:17px;
+    font-weight: 500;
+    color:rgb(64,70,86);
+    line-height: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.menu .has-subMenu{
+    position: relative;
+    display: inline-block;
+}
+.menu .sub-menu{
+    position: absolute;
+    font-size:14px;
+    list-style: none;
+    display: none;
+    left:0;
+    top:100%;
+    padding: 5px;
+    background-color: #f1f1f1;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    text-align: center;
+}
+
+.sub-menu > li:hover{
+    color: rgb(64,70,86);
+    transform: scale(1.2);
+    transition: all 0.5s;
+}
+
+.has-subMenu:hover .sub-menu{
+    display: block;
+}
+
+.has-subMenu:hover a{
+    color:red;
+}
+
+.sub-menu li{
+    margin-bottom: 15px;
+    border-bottom: 1px solid #DDD;
+}
+.menu-header .menu,.menu-btn{
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+}
+.menu a{
+    text-decoration: none;
+    padding-right: 40px;
+    color: rgb(64,70,86);
+}
+.menu-btn a{
+    text-decoration: none;
+    padding-right: 20px;
+}
+.menu-btn .btn-register{
+    color : #da0b4e;
+    font-weight: 600;
+    border: 1px solid #CCC;
+    border-radius: 7%;
+    padding: 10px 17px 10px 17px;
+    transition: all 0.5s;
+}
+
+.btn-register:hover {
+    background-color:rgb(219,18,83);
+    color:white
+}
+
+.menu-btn .btn-login{
+    color :white;
+    background-color: black;
+    font-weight: 600;
+    border: 1px solid #CCC;
+    border-radius: 7%;
+    padding: 10px 17px 10px 17px;
+}
