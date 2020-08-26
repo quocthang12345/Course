@@ -35,7 +35,8 @@
     width: 100%;
     height: auto;
     background:#ccd2e9;
-    border-radius:5px;
+    border-radius:10px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
 }
 
 .banner-course .description-banner{
@@ -99,6 +100,70 @@
     height: 300px;
     background-size: cover;
     background-position: center;
+    border-radius:0 10px 10px 0;
 }
 
+.star-review .checked{
+    color: orange;
+}
+
+.wrap-list-course .block-course{
+    padding:40px 0px;
+    display:block;
+}
+
+.block-course .title-block{
+    font-size:28px;
+    color: rgb(45,57,84);
+    font-weight: 600;
+    margin-bottom:20px;
+}
+
+.img-lesson img{
+    width:100%;
+    height: 220px;
+    background-size: cover;
+    background-position:center;
+    border-radius: 5px 5px 0 0 ;
+}
+
+.list-course .course{
+    border-radius:5px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+}
+
+.course .short-description-lesson{
+    padding:25px 12px 15px;
+    color:#6e6e6e;
+    line-height: 1.5;
+}
+
+.short-description-lesson h4 a{
+    font-size:16px;
+    font-weight: 600;
+    line-height: 30px;
+    color: rgb(45,57,84);
+    text-decoration: none;
+}
+
+.short-description-lesson h4 a:hover{
+    color:#f3015e;
+}
+
+.short-description-lesson p{
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 42px;
+    max-height: 3em;
+    display:block;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.rating .rate{
+    list-style: none;
+    margin:0;
+    padding:0;
+}
 

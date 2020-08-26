@@ -9,6 +9,8 @@
     <decorator name="trang-chu" page="web.jsp">
         <pattern>/*</pattern>
     </decorator>
-    
-      
+    <decorator name="khoa-hoc" page="lesson.jsp">
+        <pattern>/khoa-hoc*</pattern>
+    </decorator>
+       
 </decorators>
