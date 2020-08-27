@@ -114,13 +114,12 @@
 }
 
 .info .info-right{
-    width:45%;
+    width:60%;
     height: auto;
     margin:0 2.5% 0;
 }
 
-.info-right .info-img{
-    background-image: url(/image/img-info.jpg);
+.info-img img{
     background-size: cover;
     background-position: center;
     outline: none;

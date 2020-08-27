@@ -5,18 +5,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title><dec:title default="Trang chủ" /></title>
+<title><dec:title default="Home" /></title>
 <link rel="stylesheet" href="<c:url value='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'/>" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" href="<c:url value='https://use.fontawesome.com/releases/v5.7.0/css/all.css'/>" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<link href="<c:url value='/template/web/css/menu.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/template/web/css/banner.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/template/web/css/feature.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/template/web/css/item.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/template/web/css/information.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/template/web/css/course.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/template/web/css/review.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/template/web/css/email.css'/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value='/template/web/css/footer.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/template/web/css/menus.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/template/web/css/banners.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/template/web/css/features.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/template/web/css/items.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/template/web/css/informations.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/template/web/css/courses.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/template/web/css/reviews.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/template/web/css/emails.css'/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value='/template/web/css/footers.css'/>" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<%@include file="/common/web/header/header.jsp" %>

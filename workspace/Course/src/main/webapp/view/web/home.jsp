@@ -6,12 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Home</title>
-</head>
- <s:url var="bg" value="/template/web/image/education.jpg"/>
+</head>        
 <body>
-	<div class="container-fluid">
+			<!-- This is a start of the Banner Page -->
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="img-banner col-12 col-lg-12 col-md-12 col-sm-12" style="background-image: url(${bg})">
+                    <s:url var="bg" value="/template/web/image/education.jpg" />
+                    <div class="img-banner col-12 col-lg-12 col-md-12 col-sm-12" style="background-image:url(${bg})">
                         <div class="content-banner col-12 col-lg-4 col-md-4 col-sm-12 pb-4">
                             <div class="content">
                                 <h1>
@@ -87,8 +88,9 @@
                         <div class="row">
                         <div class="item-feature-1 col-12 col-md-4 col-lg-4 col-sm-12">
                             <div class="card content-feature-1">
-                             <s:url var="img" value="/template/web/image/img-feature.jpg"/>
-                                <div class="card-header item-feature-img-1" style="background-image: url(${img})"></div>
+                                <div class="card-header item-feature-img-1 p-0">
+                                    <img src="<c:url value='/template/web/image/img-feature1.jpg'/>" alt="item-feature-1" />
+                                </div>
                                 <div class="card-body description-feature">
                                     <div class="wrap-feature">
                                         <div class="title"><h4>
@@ -112,8 +114,9 @@
                                 </div>
                                 <div class="card-footer author">
                                     <div class="name-author">
-                                    <s:url var="author" value="/template/web/image/img-author.jpg"/>
-                                        <div class="img" style="background-image:url(${author})"></div>
+                                        <div class="img-author">
+                                            <img src="<c:url value='/template/web/image/img-author.jpg'/>" alt="author"/>
+                                        </div>
                                         <p>Shaurya Preet</p>
                                     </div>
                                     <p class="Datetime">
@@ -125,8 +128,9 @@
                         </div>
                         <div class="item-feature-2 col-12 col-md-4 col-lg-4 col-sm-12">
                             <div class="card content-feature-2">
-                            <s:url var="img1" value="/template/web/image/img-feature1.jpg"/>
-                                <div class="card-header item-feature-img-2" style="background-image:url(${img1})"></div>
+                                <div class="card-header item-feature-img-2 p-0">
+                                    <img src="<c:url value='/template/web/image/img-feature2.jpg'/>" alt="item-feature-img-2" />
+                                </div>
                                 <div class="card-body description-feature-2">
                                     <div class="wrap-feature">
                                         <div class="title"><h4>
@@ -150,8 +154,9 @@
                                 </div>
                                 <div class="card-footer author">
                                     <div class="name-author">
-                                        <s:url var="author1" value="/template/web/image/img-author1.jpg"/>
-                                        <div class="img-1" style="background-image:url(${author1})"></div>
+                                        <div class="img-author">
+                                             <img src="<c:url value='/template/web/image/img-author1.jpg'/>" alt="author"/>
+                                        </div>
                                         <p>Savitha Tripathi</p>
                                     </div>
                                     <p class="Datetime">
@@ -163,8 +168,9 @@
                         </div>
                         <div class="item-feature-3 col-12 col-md-4 col-lg-4 col-sm-12">
                             <div class="card content-feature-3">
-                                 <s:url var="img2" value="/template/web/image/img-feature2.jpg"/>
-                                <div class="card-header item-feature-img-3" style="background-image:url(${img2})"></div>
+                                <div class="card-header item-feature-img-3 p-0">
+                                     <img src="<c:url value='/template/web/image/img-feature.jpg'/>" alt="item-feature-img-3" />
+                                </div>
                                 <div class="card-body description-feature-3">
                                     <div class="wrap-feature">
                                         <div class="title"><h4>
@@ -188,8 +194,9 @@
                                 </div>
                                 <div class="card-footer author">
                                     <div class="name-author">
-                                    	<s:url var="author2" value="/template/web/image/img-author2.jpg"/>
-                                        <div class="img-2" style="background-image:url(${author2})"></div>
+                                        <div class="img-author">
+                                            <img src="<c:url value='/template/web/image/img-author2.jpg'/>" alt="author"/>
+                                        </div>
                                         <p>Litha Maildick</p>
                                     </div>
                                     <p class="Datetime">
@@ -219,7 +226,7 @@
                         <div class="row d-flex flex-row justify-content-center align-items-center">
                         <div class="item i-1 col-12 col-sm-12 col-lg-3 col-md-3">
                             <ul>
-                                <li class="img-item item-img-1"><img src="/icon/monitor.png"></li>
+                                <li class="img-item item-img-1"><img src="<c:url value='/template/web/icon/monitor.png'/>" /></li>
                                 <li class="content">
                                     <p class="header-title title-item-1">Development</p>
                                     <p class="class"><i class="fas fa-school"></i> 23 Classes</p></li>
@@ -227,7 +234,7 @@
                         </div>
                         <div class="item i-2 col-12 col-sm-12 col-lg-3 col-md-3">
                             <ul>
-                                <li class="img-item item-img-2"><img src="/icon/briefcase.png"></li>
+                                <li class="img-item item-img-2"><img src="<c:url value='/template/web/icon/briefcase.png'/>" /></li>
                                 <li class="content">
                                     <p class="header-title title-item-2">Business</p>
                                     <p class="class"><i class="fas fa-school"></i> 58 Classes</p>
@@ -236,7 +243,7 @@
                         </div>
                         <div class="item i-3 col-12 col-sm-12 col-lg-3 col-md-3">
                             <ul>
-                                <li class="img-item item-img-3"><img src="/icon/growth.png"></li>
+                                <li class="img-item item-img-3"><img src="<c:url value='/template/web/icon/growth.png'/>" /></li>
                                 <li class="content">
                                     <p class="header-title title-item-3">Accounting</p>
                                     <p class="class"><i class="fas fa-school"></i> 74 Classes</p>
@@ -245,7 +252,7 @@
                         </div>
                         <div class="item i-4 col-12 col-sm-12 col-lg-3 col-md-3">
                             <ul>
-                                <li class="img-item item-img-4"><img src="/icon/python.png"></li>
+                                <li class="img-item item-img-4"><img src="<c:url value='/template/web/icon/python.png'/>" /></li>
                                 <li class="content">
                                     <p class="header-title title-item-4"> IT & Software</p>
                                     <p class="class"><i class="fas fa-school"></i> 65 Classes</p>
@@ -254,7 +261,7 @@
                         </div>
                         <div class="item i-5 col-12 col-sm-12 col-lg-3 col-md-3">
                             <ul>
-                                <li class="img-item item-img-5"><img src="/icon/design.png"></li>
+                                <li class="img-item item-img-5"><img src="<c:url value='/template/web/icon/design.png'/>" /></li>
                                 <li class="content">
                                     <p class="header-title title-item-5"> Art & Design</p>
                                     <p class="class"><i class="fas fa-school"></i> 43 Classes</p>
@@ -263,7 +270,7 @@
                         </div>
                         <div class="item i-6 col-12 col-sm-12 col-lg-3 col-md-3">
                             <ul>
-                                <li class="img-item item-img-6"><img src="/icon/speaker.png"></li>
+                                <li class="img-item item-img-6"><img src="<c:url value='/template/web/icon/speaker.png'/>" /></li>
                                 <li class="content">
                                     <p class="header-title title-item-6">Marketing</p>
                                     <p class="class"><i class="fas fa-school"></i> 82 Classes</p>  
@@ -272,7 +279,7 @@
                         </div>
                         <div class="item i-7 col-12 col-sm-12 col-lg-3 col-md-3">
                             <ul>
-                                <li class="img-item item-img-7"><img src="/icon/sketch.png"></li>
+                                <li class="img-item item-img-7"><img src="<c:url value='/template/web/icon/sketch.png'/>" /></li>
                                 <li class="content">
                                     <p class="header-title title-item-7">Photography</p>
                                     <p class="class"><i class="fas fa-school"></i> 25 Classes</p>  
@@ -281,7 +288,7 @@
                         </div>
                         <div class="item i-8 col-12 col-sm-12 col-lg-3 col-md-3">
                             <ul>
-                                <li class="img-item item-img-8"><img src="/icon/meditation.png"></li>
+                                <li class="img-item item-img-8"><img src="<c:url value='/template/web/icon/meditation.png'/>" /></li>
                                 <li class="content">
                                     <p class="header-title title-item-8">Health & Fitness</p>
                                     <p class="class"><i class="fas fa-school"></i> 43 Classes</p>    
@@ -290,7 +297,7 @@
                         </div>
                         <div class="item i-9 col-12 col-sm-12 col-lg-3 col-md-3">
                             <ul>
-                                <li class="img-item item-img-9"><img src="/icon/health.png"></li>
+                                <li class="img-item item-img-9"><img src="<c:url value='/template/web/icon/health.png'/>" /></li>
                                 <li class="content">
                                     <p class="header-title title-item-9">Lifestyle</p>
                                     <p class="class"><i class="fas fa-school"></i> 38 Classes</p>  
@@ -315,21 +322,21 @@
                             <div class="info-item">
                                 <h2 class="info-title">Know About <span style="color:rgb(218,11,78);">E-Learn</span> Learning Platform</h2>
                                 <div class="block-item ">
-                                    <div class="img-info-1"><img src="/icon/screen.png"/></div>
+                                    <div class="img-info-1"><img src="<c:url value='/template/web/icon/screen.png'/>"/></div>
                                     <div class="info-content">
                                         <h4>Nemo Enim Ipsam Voluptatem Quia.</h4>
                                         <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure</p>
                                     </div>
                                 </div>
                                 <div class="block-item">
-                                    <div class="img-info-2"><img src="/icon/heart.png"/></div>
+                                    <div class="img-info-2"><img src="<c:url value='/template/web/icon/heart.png'/>"/>   </div>
                                     <div class="info-content">
                                         <h4>Nemo Enim Ipsam Voluptatem Quia.</h4>
                                         <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure</p>
                                     </div>
                                 </div>
                                 <div class="block-item">
-                                    <div class="img-info-3"><img src="/icon/server.png"/></div>
+                                    <div class="img-info-3"><img src="<c:url value='/template/web/icon/server.png'/>"/>   </div>
                                     <div class="info-content">
                                         <h4>Nemo Enim Ipsam Voluptatem Quia.</h4>
                                         <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure</p>
@@ -342,6 +349,7 @@
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="info-right">
                             <div class="info-img">
+                                <img src="<c:url value='/template/web/image/img-info.jpg'/>" alt="info" />    
                             </div>
                         </div>
                         </div>
@@ -365,7 +373,9 @@
                         <div class="row">
                         <div class="item-feature-1 col-12 col-md-4 col-lg-4 col-sm-12">
                             <div class="card content-feature-1">
-                                <div class="card-header item-course item-course-img-1"><span class="cost">$199</span></div>
+                                <div class="card-header item-course item-course-img-1 p-0">
+                                    <img src="<c:url value='/template/web/image/img-course-1.jpg'/>" alt="course" />
+                                    <span class="cost">$199</span></div>
                                 <div class="card-body description-feature">
                                     <div class="wrap-feature">
                                         <div class="title"><h4>
@@ -380,7 +390,9 @@
                                 </div>
                                 <div class="card-footer author">
                                     <div class="name-author">
-                                        <div class="img"></div>
+                                        <div class="img-author">
+                                            <img src="<c:url value='/template/web/image/img-author.jpg'/>" alt="author"/>
+                                        </div>
                                         <p>Shaurya Preet</p>
                                     </div>
                                     <p class="Datetime">
@@ -392,7 +404,9 @@
                         </div>
                         <div class="item-feature-2 col-12 col-md-4 col-lg-4 col-sm-12">
                             <div class="card content-feature-2">
-                                <div class="card-header item-course item-course-img-2"><span class="cost">$99</span></div>
+                                <div class="card-header item-course item-course-img-2 p-0">
+                                    <img src="<c:url value='/template/web/image/img-course-2.jpg'/>" alt="course" />
+                                    <span class="cost">$99</span></div>
                                 <div class="card-body description-feature-2">
                                     <div class="wrap-feature">
                                         <div class="title"><h4>
@@ -407,7 +421,9 @@
                                 </div>
                                 <div class="card-footer author">
                                     <div class="name-author">
-                                        <div class="img-1"></div>
+                                        <div class="img-author">
+                                            <img src="<c:url value='/template/web/image/img-author1.jpg'/>" alt="author"/>
+                                        </div>
                                         <p>Savitha Tripathi</p>
                                     </div>
                                     <p class="Datetime">
@@ -419,7 +435,9 @@
                         </div>
                         <div class="item-feature-3 col-12 col-md-4 col-lg-4 col-sm-12">
                             <div class="card content-feature-3">
-                                <div class="card-header item-course item-course-img-3"><span class="cost">$79</span></div>
+                                <div class="card-header item-course item-course-img-3 p-0">
+                                    <img src="<c:url value='/template/web/image/img-course-3.jpg'/>" alt="course" />
+                                    <span class="cost">$79</span></div>
                                 <div class="card-body description-feature-3">
                                     <div class="wrap-feature">
                                         <div class="title"><h4>
@@ -434,7 +452,9 @@
                                 </div>
                                 <div class="card-footer author">
                                     <div class="name-author">
-                                        <div class="img-2"></div>
+                                        <div class="img-author">
+                                            <img src="<c:url value='/template/web/image/img-author2.jpg'/>" alt="author"/>
+                                        </div>
                                         <p>Litha Maildick</p>
                                     </div>
                                     <p class="Datetime">
@@ -460,7 +480,9 @@
                         <div class="big-title"><span style="color:red;">Reviews</span> By Our Success & Top Students</div> 
                     </div>
                     <div class="content-review">
-                        <div class="img-review"></div>
+                        <div class="img-review">
+                            <img src="<c:url value='/template/web/image/img-author.jpg'/>" alt="review" />
+                        </div>
                         <p class="name-review">Adam Alloriam</p>
                         <p class="position">Web Developer</p>
                         <p class="review">
@@ -473,4 +495,5 @@
             <!-- End Review Page -->
 
 </body>
+
 </html>

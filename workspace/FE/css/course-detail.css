@@ -4,8 +4,7 @@
     padding:32px;
 }
 
-.wrap-detail .img-detail{
-    background-image: url(/image/java.jpg);
+.img-detail img{
     width: 90%;
     height: 250px;
     background-size: cover;

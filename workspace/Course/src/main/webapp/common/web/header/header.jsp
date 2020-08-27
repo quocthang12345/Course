@@ -19,7 +19,7 @@
                         <div class="collapse navbar-collapse" id="menu">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#">Courses</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<c:url value='/khoa-hoc'/>">Courses</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#">Mentor</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#" data-toggle="tab">Contact</a></li>
                             </ul>

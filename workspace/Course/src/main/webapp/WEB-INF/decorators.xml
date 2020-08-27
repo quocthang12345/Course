@@ -2,15 +2,21 @@
 <decorators defaultdir="/decorators">
     
     <!-- apply Sitemesh default template -->
-    <decorator name="admin" page="admin.jsp">
-        <pattern>/admin*</pattern>
+    <decorator name="admin-home" page="admin.jsp">
+        <pattern>/admin-home*</pattern>
     </decorator>
     
     <decorator name="trang-chu" page="web.jsp">
         <pattern>/*</pattern>
     </decorator>
-    <decorator name="khoa-hoc" page="lesson.jsp">
+    <decorator name="khoa-hoc" page="list-course.jsp">
         <pattern>/khoa-hoc*</pattern>
+    </decorator>
+    <decorator name="mon-hoc" page="lesson.jsp">
+        <pattern>/mon-hoc*</pattern>
+    </decorator>
+    <decorator name="video-mon-hoc" page="video-lesson.jsp">
+        <pattern>/video-mon-hoc*</pattern>
     </decorator>
        
 </decorators>
