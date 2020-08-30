@@ -8,7 +8,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "content-lesson")
+@Table(name = "content_lesson")
 public class ContentEntity extends BaseEntity {
 
 	@Column(name = "video")

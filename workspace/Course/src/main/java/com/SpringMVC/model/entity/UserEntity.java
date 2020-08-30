@@ -43,8 +43,7 @@ public class UserEntity extends BaseEntity {
     private List<RoleEntity> roles;
     
     @OneToOne(fetch = FetchType.LAZY)
-	@PrimaryKeyJoinColumn(name = "history_id", foreignKey = @ForeignKey(name = "fk_user_history"))
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(name = "history_id", foreignKey = @ForeignKey(name = "fk_user_history"))
 	private	HistoryEntity history;
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "userReview")

@@ -29,8 +29,7 @@ public class LessonEntity extends BaseEntity {
 	
 	
 	@OneToOne(fetch = FetchType.LAZY)
-	@PrimaryKeyJoinColumn(name = "contentlesson_id", foreignKey = @ForeignKey(name = "fk_lesson_content"))
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JoinColumn(name = "content_id", foreignKey = @ForeignKey(name = "fk_lesson_content"))
 	private	ContentEntity content;
 
 
