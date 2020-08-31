@@ -25,8 +25,8 @@
                             </ul>
                                 <form class="form-inline my-2 my-lg-0">
                                     <div class="form-group ">
-                                          <a type="button" class="btn btn-outline-success form-control mr-lg-2 pr-4 pl-4" href="#">Sign in</a>
-                                          <a type="button" class="btn btn-primary form-control pr-4 pl-4" href="#"> Sign up</a>
+                                          <a href="<c:url value='/dang-nhap'/>" type="button" class="btn btn-outline-success form-control mr-lg-2 pr-4 pl-4" >Sign in</a>
+                                          <a href="<c:url value='/dang-ky'/>"  type="button" class="btn btn-primary form-control pr-4 pl-4" href="#"> Sign up</a>
                                       </div>
                                 </form>
                         </div>

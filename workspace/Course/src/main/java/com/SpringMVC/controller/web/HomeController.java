@@ -33,6 +33,18 @@ public class HomeController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/dang-nhap" , method = RequestMethod.GET)
+	public ModelAndView loginPage() {
+		ModelAndView mav = new ModelAndView("web/login/login");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/dang-ky" , method = RequestMethod.GET)
+	public ModelAndView registerPage() {
+		ModelAndView mav = new ModelAndView("web/register/register");
+		return mav;
+	}
+	
 	
 	
 }

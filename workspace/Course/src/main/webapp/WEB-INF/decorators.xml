@@ -18,5 +18,11 @@
     <decorator name="video-mon-hoc" page="video-lesson.jsp">
         <pattern>/video-mon-hoc*</pattern>
     </decorator>
+    <decorator name="dang-nhap" page="login.jsp">
+        <pattern>/dang-nhap*</pattern>
+    </decorator>
+    <decorator name="dang-ky" page="register.jsp">
+        <pattern>/dang-ky*</pattern>
+    </decorator>
        
 </decorators>
