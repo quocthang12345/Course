@@ -16,7 +16,7 @@
                      username-parameter="j_username"
                      password-parameter="j_password"
                      login-processing-url="/j_spring_security_check"
-                     authentication-success-handler-ref="customSuccessHandler"
+                     authentication-success-handler-ref="CustomSuccessHandler"
                      authentication-failure-url="/dang-nhap?incorrectAccount"/>
         <session-management invalid-session-url="/dang-nhap?sessionTimeout"/>
         <logout delete-cookies="JSESSIONID"/>
@@ -24,7 +24,7 @@
     
     
     <authentication-manager>
-        <authentication-provider user-service-ref="customUserDetailsService">
+        <authentication-provider user-service-ref="CustomUserDetailsService">
         		<password-encoder ref="bcryptEncoder"/>
         </authentication-provider>
     </authentication-manager> 
@@ -32,7 +32,7 @@
      <beans:bean id="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
 		<beans:constructor-arg name="strength" value="11" />
   	</beans:bean>
-    <beans:bean id="customUserDetailsService" class="com.SpringMVC.service.impl.CustomUserDetailsService" />
-    <beans:bean id="customSuccessHandler" class="com.SpringMVC.security.CustomSuccessHandler" />
+    <beans:bean id="CustomUserDetailsService" class="com.SpringMVC.service.impl.CustomUserDetailsService" />
+    <beans:bean id="CustomSuccessHandler" class="com.SpringMVC.security.CustomSuccessHandler" />
     
 </beans:beans>

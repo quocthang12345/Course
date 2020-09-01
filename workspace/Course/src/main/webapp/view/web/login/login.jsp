@@ -20,6 +20,16 @@
               <div class="col-lg-6 d-none d-lg-block bg-login-image" style="background-image: url(${bg})"></div>
               <div class="col-lg-6">
                 <div class="p-5">
+                <c:if test="${param.incorrectAccount != null}">
+					<div class="alert alert-danger">	
+							Username or password incorrect
+					</div>
+				</c:if>
+				<c:if test="${param.accessDenied != null}">
+					<div class="alert alert-danger">	
+							you Not authorize
+					</div>
+				</c:if>
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
