@@ -7,14 +7,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -32,8 +29,19 @@ public class UserEntity extends BaseEntity {
 	@Column(name = "fullname")
 	private String fullname;
 	
+	@Column(name = "status")
+	private int status;
+	
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "users")
+    public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "users")
     private List<CourseEntity> courses;
     
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
