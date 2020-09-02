@@ -1,0 +1,43 @@
+package com.SpringMVC.api.web;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.SpringMVC.model.dto.UserDTO;
+import com.SpringMVC.service.IUserService;
+
+@RestController(value = "UserAPIOfWeb")
+public class UserAPI {
+	
+	@Autowired
+	private IUserService userService;
+	
+	@GetMapping(value = "/api/user")
+	public static UserDTO ReadUser(){
+		return null;
+		
+	}
+	
+	@PostMapping(value = "/api/user")
+	public static UserDTO InsertUser(@RequestBody UserDTO userDto){
+		return null;
+		
+	}
+	
+	@PutMapping(value = "/api/user")
+	public static UserDTO UpdateUser(@RequestBody UserDTO userDto){
+		return null;
+		
+	}
+	
+	@DeleteMapping(value = "/api/user")
+	public static void DeleteUser(@RequestBody long[] ids){
+		
+	}
+	
+}

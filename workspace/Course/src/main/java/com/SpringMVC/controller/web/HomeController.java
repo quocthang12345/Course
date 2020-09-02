@@ -9,7 +9,12 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.SpringMVC.model.dto.UserDTO;
+
+import javassist.expr.NewArray;
 
 
 @Controller
@@ -46,8 +51,21 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/dang-ky" , method = RequestMethod.GET)
-	public ModelAndView registerPage() {
+	public ModelAndView registerPage(@RequestParam(value= "message" , required = false ) String messages) {
+		UserDTO user = new UserDTO();
+		String message = "";
+		String alert = "";
 		ModelAndView mav = new ModelAndView("web/register/register");
+		if(messages != null && messages.equals("register_success")) {
+			 message = "Congratulations on your successful registration!";
+			 alert = "success";
+		}else if(messages != null && messages.equals("register_error")) {
+			 message = "Plese check username or password again!";
+			 alert = "danger";
+		}
+		mav.addObject("message", message);
+		mav.addObject("alert", alert);
+		mav.addObject("user", user);
 		return mav;
 	}
 	
