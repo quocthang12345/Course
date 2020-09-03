@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@include file="/common/taglib.jsp"%>
-<c:url value="UserAPI" value="/api/user" />
-<c:url value="RegisterURL" value="/dang-ky" />
+<c:url var="UserAPI" value="/api/user" />
+<c:url var="RegisterURL" value="/dang-ky" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,13 +28,13 @@
 			  </c:if>
               <form:form cssClass="user" id="formSubmit" modelAttribute="user" method="POST" >
                 <div class="form-group">
-                    <form:input type="text" cssClass="form-control form-control-user" path="fullname"  placeholder="Full Name" />
+                    <form:input type="text" cssClass="form-control form-control-user" path="fullName"  placeholder="Full Name" />
                 </div>
                 <div class="form-group">
-                  <form:input type="email" cssClass="form-control form-control-user" path="username" placeholder="UserName" />
+                  <form:input type="email" cssClass="form-control form-control-user" path="userName" placeholder="UserName" />
                 </div>
                 <div class="form-group row">
-                    <form:input type="password" cssClass="form-control form-control-user" path="password"  placeholder="Password" />
+                    <form:input type="password" cssClass="form-control form-control-user" path="passWord"  placeholder="Password" />
                 </div>
                 <form:button type="submit" path="btn-submit" id="btn-submit" cssClass="btn btn-primary btn-user btn-block">
                   Register Account
@@ -73,7 +73,7 @@
 			dataType:'json',
 			error:function(result){
 				window.location.href="${RegisterURL}&message=register_success";
-			}
+			},
 			success:function(result){
 				window.location.href="${RegisterURL}&message=register_error";
 			}			

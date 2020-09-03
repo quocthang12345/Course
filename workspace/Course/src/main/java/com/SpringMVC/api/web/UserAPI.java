@@ -18,25 +18,24 @@ public class UserAPI {
 	private IUserService userService;
 	
 	@GetMapping(value = "/api/user")
-	public static UserDTO ReadUser(){
+	public UserDTO ReadUser(){
 		return null;
 		
 	}
 	
 	@PostMapping(value = "/api/user")
-	public static UserDTO InsertUser(@RequestBody UserDTO userDto){
-		return null;
-		
+	public UserDTO InsertUser(@RequestBody UserDTO userDto){
+		return userService.registerUser(userDto);
 	}
 	
 	@PutMapping(value = "/api/user")
-	public static UserDTO UpdateUser(@RequestBody UserDTO userDto){
+	public UserDTO UpdateUser(@RequestBody UserDTO userDto){
 		return null;
 		
 	}
 	
 	@DeleteMapping(value = "/api/user")
-	public static void DeleteUser(@RequestBody long[] ids){
+	public void DeleteUser(@RequestBody long[] ids){
 		
 	}
 	
