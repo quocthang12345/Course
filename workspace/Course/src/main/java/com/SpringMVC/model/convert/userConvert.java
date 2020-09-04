@@ -2,7 +2,6 @@ package com.SpringMVC.model.convert;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.expression.ParseException;
 import org.springframework.stereotype.Component;
 
 import com.SpringMVC.model.dto.UserDTO;

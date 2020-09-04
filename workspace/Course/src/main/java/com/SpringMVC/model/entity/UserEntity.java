@@ -24,10 +24,10 @@ public class UserEntity extends BaseEntity {
 	private String avatar;
 	
 	@Column(name = "password")
-	private String password;
+	private String passWord;
 	
 	@Column(name = "fullname")
-	private String fullname;
+	private String fullName;
 	
 	@Column(name = "status")
 	private int status;
@@ -74,19 +74,19 @@ public class UserEntity extends BaseEntity {
 	}
 
 	public String getPassword() {
-		return password;
+		return passWord;
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.passWord = password;
 	}
 
 	public String getFullname() {
-		return fullname;
+		return fullName;
 	}
 
 	public void setFullname(String fullname) {
-		this.fullname = fullname;
+		this.fullName = fullname;
 	}
 
 	public List<CourseEntity> getCourses() {

@@ -26,19 +26,17 @@
 				  <p>${message}</p>
 			  </div>
 			  </c:if>
-              <form:form cssClass="user" id="formSubmit" modelAttribute="user" method="POST" >
+              <form:form cssClass="user" id="formSubmit" modelAttribute="user">
                 <div class="form-group">
-                    <form:input type="text" cssClass="form-control form-control-user" path="fullName"  placeholder="Full Name" />
+                    <form:input cssClass="form-control form-control-user" path="fullName"  placeholder="Full Name" />
                 </div>
                 <div class="form-group">
-                  <form:input type="email" cssClass="form-control form-control-user" path="userName" placeholder="UserName" />
+                  <form:input cssClass="form-control form-control-user" path="userName" placeholder="UserName" />
                 </div>
-                <div class="form-group row">
-                    <form:input type="password" cssClass="form-control form-control-user" path="passWord"  placeholder="Password" />
+                <div class="form-group">
+                    <form:password cssClass="form-control form-control-user" path="passWord"  placeholder="Password" />
                 </div>
-                <form:button type="submit" path="btn-submit" id="btn-submit" cssClass="btn btn-primary btn-user btn-block">
-                  Register Account
-                </form:button>
+                <input type="submit" name="btn-submit" id="btn-submit" class="btn btn-primary btn-user btn-block" value="Register Account" />
               </form:form>
               <hr>
               <div class="text-center">
