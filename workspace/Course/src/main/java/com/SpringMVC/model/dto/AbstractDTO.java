@@ -9,8 +9,8 @@ public abstract class AbstractDTO<T> {
 	private Long id;
 	private Date createDate;
 	private Date modifyDate;
-	private Date createBy;
-	private Date modifyBy;
+	private String createBy;
+	private String modifyBy;
 	private long[] ids;
 	private List<T> listResult = new ArrayList<>();
 	private Integer page;
@@ -38,16 +38,16 @@ public abstract class AbstractDTO<T> {
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
 	}
-	public Date getCreateBy() {
+	public String getCreateBy() {
 		return createBy;
 	}
-	public void setCreateBy(Date createBy) {
+	public void setCreateBy(String createBy) {
 		this.createBy = createBy;
 	}
-	public Date getModifyBy() {
+	public String getModifyBy() {
 		return modifyBy;
 	}
-	public void setModifyBy(Date modifyBy) {
+	public void setModifyBy(String modifyBy) {
 		this.modifyBy = modifyBy;
 	}
 	public long[] getIds() {

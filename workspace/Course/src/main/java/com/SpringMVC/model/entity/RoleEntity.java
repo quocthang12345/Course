@@ -2,6 +2,7 @@ package com.SpringMVC.model.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,7 +18,12 @@ public class RoleEntity extends BaseEntity{
 	@Column(name = "code")
 	private String roleCode;
 	
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "roles")
+	@ManyToMany(fetch = FetchType.LAZY,
+			cascade = {
+	                CascadeType.PERSIST,
+	                CascadeType.MERGE
+	            },
+			mappedBy = "roles")
     private List<UserEntity> users;
 
 	public String getRoleName() {

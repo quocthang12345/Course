@@ -2,10 +2,17 @@ package com.SpringMVC.model.dto;
 
 public class UserDTO extends AbstractDTO<UserDTO> {
 	private String userName;
-	private String passWord;
 	private String avatar;
+	private String passWord;
 	private String fullName;
+	private int status;
 	private Long roleId;
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	private Long HistoryId;
 	public String getUserName() {
 		return userName;

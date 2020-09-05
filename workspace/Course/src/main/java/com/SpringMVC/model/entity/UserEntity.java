@@ -46,8 +46,8 @@ public class UserEntity extends BaseEntity {
     
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles", 
-        joinColumns = { @JoinColumn(name = "user_id", nullable = false, updatable = false) }, 
-        inverseJoinColumns = { @JoinColumn(name = "role_id", nullable = false, updatable = false) })
+        joinColumns = { @JoinColumn(name = "user_id")}, 
+        inverseJoinColumns = { @JoinColumn(name = "role_id")})
     private List<RoleEntity> roles;
     
     @OneToOne(fetch = FetchType.LAZY)

@@ -11,6 +11,7 @@ import com.SpringMVC.model.entity.UserEntity;
 public class userConvert {
 	@Autowired
 	private ModelMapper modelMapper;
+	
 	public UserDTO toDTO(UserEntity userEntity) {
 		UserDTO user = modelMapper.map(userEntity,UserDTO.class);
 		return user;
@@ -18,7 +19,6 @@ public class userConvert {
 	
 	public UserEntity toEntity(UserDTO userDTO) {
 		UserEntity user = modelMapper.map(userDTO, UserEntity.class);
-	 
 	    if (userDTO.getId() != null) {
 //	    	UserEntity oldUser = postService.getPostById(postDto.getId());
 //	        post.setRedditID(oldPost.getRedditID());
