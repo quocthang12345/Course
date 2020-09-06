@@ -1,5 +1,6 @@
 package com.SpringMVC.model.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -24,7 +25,7 @@ public class RoleEntity extends BaseEntity{
 	                CascadeType.MERGE
 	            },
 			mappedBy = "roles")
-    private List<UserEntity> users;
+    private List<UserEntity> users = new ArrayList<>();
 
 	public String getRoleName() {
 		return roleName;

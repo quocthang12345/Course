@@ -4,5 +4,5 @@ INSERT INTO user(fullname,password,status,username,history_id) VALUES('Trần Qu
 INSERT INTO user(fullname,password,status,username,history_id) VALUES('Trần Thị Phương Thảo' , '$2a$10$9xmg.gnJd83.ZoWPGvV6g.NVHR6mradbkUheCo.uRFFi68hT2Dkem',
 '1','user','2');
 
-INSERT INTO user_roles(user_id,role_id) VALUES('3','1');
-INSERT INTO user_roles(user_id,role_id) VALUES('4','2');
+INSERT INTO user_roles(user_id,role_id) VALUES('1','1');
+INSERT INTO user_roles(user_id,role_id) VALUES('2','2');

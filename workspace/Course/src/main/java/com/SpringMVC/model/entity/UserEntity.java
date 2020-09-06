@@ -1,5 +1,6 @@
 package com.SpringMVC.model.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -48,7 +49,7 @@ public class UserEntity extends BaseEntity {
     @JoinTable(name = "user_roles", 
         joinColumns = { @JoinColumn(name = "user_id")}, 
         inverseJoinColumns = { @JoinColumn(name = "role_id")})
-    private List<RoleEntity> roles;
+    private List<RoleEntity> roles = new ArrayList<>();
     
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "history_id", foreignKey = @ForeignKey(name = "fk_user_history"))
