@@ -21,9 +21,9 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
               </div>
-              <c:if test="not empty ${message}">
-	              <div class="alert alert-${alert}">
-					  <p>${message}</p>
+			  <c:if test="${not empty messageResponse}">
+			  	<div class="alert alert-${alert}">
+					  <p>${messageResponse}</p>
 				  </div>
 			  </c:if>
               <form:form cssClass="user" id="formSubmit" modelAttribute="user">
@@ -70,10 +70,10 @@
 			data:JSON.stringify(data),
 			dataType:'json',
 			error:function(result){
-				window.location.href="${RegisterURL}?message=register_error";
+				window.location.href="${RegisterURL}?message=register_error&alert=danger";
 			},
 			success:function(result){
-				window.location.href="${RegisterURL}?message=register_success";
+				window.location.href="${RegisterURL}?message=register_success&alert=success";
 			}			
 		});
 	}

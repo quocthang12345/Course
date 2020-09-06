@@ -6,6 +6,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.SpringMVC.model.convert.userConvert;
@@ -29,6 +31,8 @@ public class UserService implements IUserService {
 	private HistoryRepository historyRepo;
 	@Autowired
 	private RoleRepository roleRepo;
+	@Autowired
+	private PasswordEncoder encoder;
 
 	@Override
 	@Transactional
@@ -42,6 +46,7 @@ public class UserService implements IUserService {
 		HistoryEntity history = historyRepo.save(new HistoryEntity());
 		role.getUsers().add(user);
 		user.setHistory(history);
+		user.setPassword(encoder.encode(user.getPassword()));
 		user.setStatus(1);
 		user.getRoles().add(role);
 		return userConverter.toDTO(userRepo.save(user));

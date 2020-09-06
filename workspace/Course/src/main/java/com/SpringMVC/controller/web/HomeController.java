@@ -3,6 +3,7 @@ package com.SpringMVC.controller.web;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -13,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.SpringMVC.model.dto.UserDTO;
-
-import javassist.expr.NewArray;
+import com.SpringMVC.util.MessageUtils;
 
 
 @Controller
@@ -51,20 +51,10 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/dang-ky" , method = RequestMethod.GET)
-	public ModelAndView registerPage(@RequestParam(value= "message" , required = false ) String messages) {
+	public ModelAndView registerPage(@RequestParam(value= "message" , required = false ) String messages, HttpServletRequest request) {
 		UserDTO user = new UserDTO();
-		String message = "";
-		String alert = "";
 		ModelAndView mav = new ModelAndView("web/register/register");
-		if(messages != null && messages.equals("register_success")) {
-			 message = "Congratulations on your successful registration!";
-			 alert = "success";
-		}else if(messages != null && messages.equals("register_error")) {
-			 message = "Plese check username or password again!";
-			 alert = "danger";
-		}
-		mav.addObject("message", message);
-		mav.addObject("alert", alert);
+		MessageUtils.ShowMessage(request);
 		mav.addObject("user", user);
 		return mav;
 	}
