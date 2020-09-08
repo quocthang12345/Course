@@ -173,14 +173,13 @@
 			                  </thead>
 	       
 			                   <tbody>
+			                   <c:forEach var="i" items="${listcourse}">
 				                  <tr role="row" class="odd">
 				                  <td><input type="checkbox"/></td>
-				                      <td class="sorting_1">Java for Beginners 2020</td>
-				                      <td>No</td>
-				                      <td>Excepteur sint occaecat cupidatat non proident</td>
-				                      <td>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
-                        est laborum. accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.
-                        veritatis et quasi architecto beatae vitae dicta sunt explicabo.</td>
+				                      <td class="sorting_1">${i.courseName}</td>
+				                      <td>${i.thumbnail}</td>
+				                      <td>${i.courseDescription}</td>
+				                      <td>${i.courseContent}</td>
 				                      <td>
 								      	<a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip" title="Update Course" 
 								      	href='<c:url value='/admin-home/edit-course' />'>
@@ -192,6 +191,7 @@
 								      		<i class="fas fa-folder-plus"></i></a>
 							      	</td>
 				                  </tr>
+				               </c:forEach>
 			                   </tbody>
 	                		</table>
 	               		</div>

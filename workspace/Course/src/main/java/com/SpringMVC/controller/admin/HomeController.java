@@ -1,16 +1,23 @@
 package com.SpringMVC.controller.admin;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.SpringMVC.service.ICourseService;
+
 @Controller(value = "ControllerOfAdmin")
 public class HomeController {
 
+	@Autowired
+	private ICourseService courseService;
+	
 	@RequestMapping(value = "/admin-home" , method = RequestMethod.GET)
 	public ModelAndView homePage() {
 		ModelAndView mav = new ModelAndView("admin/home");
+		mav.addObject("listcourse", courseService.findList());
 		return mav;
 	}
 	
