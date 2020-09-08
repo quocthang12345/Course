@@ -25,4 +25,10 @@ public class HomeController {
 		ModelAndView mav = new ModelAndView("admin/edit/edit-lesson");
 		return mav;
 	}
+	
+	@RequestMapping(value = "/admin-home/add-lesson" , method = RequestMethod.GET)
+	public ModelAndView addLessonPage() {
+		ModelAndView mav = new ModelAndView("admin/add-lesson/add-lesson");
+		return mav;
+	}
 }

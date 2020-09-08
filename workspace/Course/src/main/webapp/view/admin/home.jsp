@@ -162,12 +162,13 @@
 	                	  <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
 			                  <thead>
 			                    <tr role="row">
-			                      <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 98px;"></th>
-				                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 98px;">NameCourse</th>
-				                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 153px;">Thumbnail</th>
-				                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 69px;">ShortDecription</th>
-				                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 31px;">Content</th>
-				                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 69px;"></th>
+			                      <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" style="width: 98px;"></th>
+				                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" style="width: 98px;">NameCourse</th>
+				                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 153px;">Thumbnail</th>
+				                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 69px;">ShortDecription</th>
+				                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 31px;">Content</th>
+				                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 69px;"></th>
+				                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 69px;"></th>
 				                </tr>
 			                  </thead>
 	       
@@ -181,10 +182,14 @@
                         est laborum. accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.
                         veritatis et quasi architecto beatae vitae dicta sunt explicabo.</td>
 				                      <td>
-								      	<a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip" title="Update Items" 
+								      	<a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip" title="Update Course" 
 								      	href='<c:url value='/admin-home/edit-course' />'>
 								      		<i class="fas fa-edit" aria-hidden="true"></i></a>
-							   
+							      	</td>
+							      	<td>
+								      	<a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip" title="Add Lesson" 
+								      	href='<c:url value='/admin-home/add-lesson' />'>
+								      		<i class="fas fa-folder-plus"></i></a>
 							      	</td>
 				                  </tr>
 			                   </tbody>

@@ -11,6 +11,9 @@
     <decorator name="edit-lesson" page="edit-lesson.jsp">
         <pattern>/admin-home/edit-lesson*</pattern>
     </decorator>
+    <decorator name="add-lesson" page="add-lesson.jsp">
+        <pattern>/admin-home/add-lesson*</pattern>
+    </decorator>
     
     <decorator name="trang-chu" page="web.jsp">
         <pattern>/*</pattern>

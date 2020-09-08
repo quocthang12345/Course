@@ -7,7 +7,8 @@
 <meta charset="UTF-8">
 <title>Edit-Lesson</title>
 </head>
-<body class="background-edit">
+<body>
+<div class="background-edit">
 	<div class="container">
         <div class="row position-direct">
             <div class="box-edit col-12 col-sm-12 col-lg-6 col-md-6">
@@ -45,6 +46,6 @@
                 </div>
         </div>
     </div>
-
+</div>
 </body>
 </html>
