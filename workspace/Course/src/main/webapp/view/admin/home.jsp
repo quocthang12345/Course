@@ -137,7 +137,7 @@
 
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Danh sách bài viết</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Danh sách khóa học </h6>
             </div>
             <div class="card-body">
 							
@@ -147,7 +147,7 @@
 	                		</div>
 	                		<div class="col-9 ">
 	                			<div class="btn-group float-right">
-									<a class="btn btn-primary " data-toggle="tooltip" title='Thêm khóa học' href='#'>
+									<a class="btn btn-primary " data-toggle="tooltip" title='Thêm khóa học' href="<c:url value='/admin-home/edit-course' />">
 										<span>	<i class="fa fa-plus-circle "></i> </span>
 									</a>
 									<button id="btnDelete" type="button" class="btn btn-warning" data-toggle="tooltip" title='Xóa khóa học'>
@@ -182,7 +182,7 @@
                         veritatis et quasi architecto beatae vitae dicta sunt explicabo.</td>
 				                      <td>
 								      	<a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip" title="Update Items" 
-								      	href='#'>
+								      	href='<c:url value='/admin-home/edit-course' />'>
 								      		<i class="fas fa-edit" aria-hidden="true"></i></a>
 							   
 							      	</td>

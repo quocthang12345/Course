@@ -13,4 +13,16 @@ public class HomeController {
 		ModelAndView mav = new ModelAndView("admin/home");
 		return mav;
 	}
+	
+	@RequestMapping(value = "/admin-home/edit-course" , method = RequestMethod.GET)
+	public ModelAndView editCoursePage() {
+		ModelAndView mav = new ModelAndView("admin/edit/edit-course");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/admin-home/edit-lesson" , method = RequestMethod.GET)
+	public ModelAndView editLessonPage() {
+		ModelAndView mav = new ModelAndView("admin/edit/edit-lesson");
+		return mav;
+	}
 }

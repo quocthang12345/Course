@@ -4,12 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +17,9 @@ public class LessonEntity extends BaseEntity {
 	@Column(name = "decription")
 	private String descriptionLesson;
 	
+	@Column(name = "video")
+	private String Video;
+	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "course_id" ,nullable = false, 
@@ -28,11 +27,6 @@ public class LessonEntity extends BaseEntity {
 	private CourseEntity course;
 	
 	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "content_id", foreignKey = @ForeignKey(name = "fk_lesson_content"))
-	private	ContentEntity content;
-
-
 	public String getLessonName() {
 		return lessonName;
 	}
@@ -58,20 +52,21 @@ public class LessonEntity extends BaseEntity {
 	}
 
 
+	public String getVideo() {
+		return Video;
+	}
+
+
+	public void setVideo(String video) {
+		Video = video;
+	}
+
+
 	public void setCourse(CourseEntity course) {
 		this.course = course;
 	}
 
 
-	public ContentEntity getContent() {
-		return content;
-	}
-
-
-	public void setContent(ContentEntity content) {
-		this.content = content;
-	}
-	
 	
 	
 	

@@ -5,6 +5,12 @@
     <decorator name="admin-home" page="admin.jsp">
         <pattern>/admin-home*</pattern>
     </decorator>
+    <decorator name="edit-course" page="edit-course.jsp">
+        <pattern>/admin-home/edit-course*</pattern>
+    </decorator>
+    <decorator name="edit-lesson" page="edit-lesson.jsp">
+        <pattern>/admin-home/edit-lesson*</pattern>
+    </decorator>
     
     <decorator name="trang-chu" page="web.jsp">
         <pattern>/*</pattern>
@@ -24,5 +30,6 @@
     <decorator name="dang-ky" page="register.jsp">
         <pattern>/dang-ky*</pattern>
     </decorator>
+  
        
 </decorators>
