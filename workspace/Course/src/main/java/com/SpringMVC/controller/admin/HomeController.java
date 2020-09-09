@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.SpringMVC.model.dto.CourseDTO;
 import com.SpringMVC.service.ICourseService;
 
 @Controller(value = "ControllerOfAdmin")
@@ -22,8 +24,13 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/admin-home/edit-course" , method = RequestMethod.GET)
-	public ModelAndView editCoursePage() {
+	public ModelAndView editCoursePage(@RequestParam(value = "id", required = false) Long id) {
 		ModelAndView mav = new ModelAndView("admin/edit/edit-course");
+		CourseDTO course = new CourseDTO();
+		if(id != null) {
+			course = courseService.findOne(id);
+		}
+		mav.addObject("course", course);
 		return mav;
 	}
 	

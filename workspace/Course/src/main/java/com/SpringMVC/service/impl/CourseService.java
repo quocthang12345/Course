@@ -3,6 +3,8 @@ package com.SpringMVC.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,17 @@ public class CourseService implements ICourseService {
 			result.add(courseConvert.toDTO(course));
 		}
 		return result;
+	}
+
+	@Override
+	public CourseDTO findOne(Long id) {
+		return courseConvert.toDTO(courseRepo.findOne(id));
+	}
+
+	@Override
+	@Transactional
+	public CourseDTO Insert(CourseDTO course) {
+		return courseConvert.toDTO(courseRepo.save(courseConvert.toEntity(course)));
 	}
 
 }

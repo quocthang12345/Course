@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.SpringMVC.model.dto.UserDTO;
 import com.SpringMVC.service.IUserService;
 
-@RestController(value = "UserApiOfWeb")
+@RestController(value = "UserApiOfUser")
 public class UserAPI {
 	
 	@Autowired

@@ -50,7 +50,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-2 static-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -140,7 +140,7 @@
               <h6 class="m-0 font-weight-bold text-primary">Danh sách khóa học </h6>
             </div>
             <div class="card-body">
-							
+					<form action="<c:url value='/admin-home'/>" method="get" id="formSubmit">
 	               		<div class="row">
 	                		<div class="col-3">
 	                			<input type="search" class="form-control" style="margin:5px;" placeholder="Tìm kiếm khóa học">
@@ -182,12 +182,12 @@
 				                      <td>${i.courseContent}</td>
 				                      <td>
 								      	<a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip" title="Update Course" 
-								      	href='<c:url value='/admin-home/edit-course' />'>
+								      	href='<c:url value='/admin-home/edit-course?id=${i.id}' />'>
 								      		<i class="fas fa-edit" aria-hidden="true"></i></a>
 							      	</td>
 							      	<td>
 								      	<a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip" title="Add Lesson" 
-								      	href='<c:url value='/admin-home/add-lesson' />'>
+								      	href='<c:url value='/admin-home/add-lesson?id=${i.id}' />'>
 								      		<i class="fas fa-folder-plus"></i></a>
 							      	</td>
 				                  </tr>
@@ -196,20 +196,7 @@
 	                		</table>
 	               		</div>
 	                </div>
-	                <div class="row">
-	                	<div class="col-sm-12 col-md-5">
-	                		<div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">
-	                			Showing 1 of 3 entries
-	                		</div>
-	                	</div>
-		                <div class="col-sm-12 col-md-7">
-			                <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">	
-				                <ul class="pagination">
-
-					            </ul>
-					        </div>
-			            </div>
-		          	</div>
+		          	</form>
 				</div>
 			</div>
   	
@@ -224,6 +211,8 @@
   <!-- End of Page Wrapper -->
 
 
+<script type="text/javascript">
 
+</script>
 </body>
 </html>
