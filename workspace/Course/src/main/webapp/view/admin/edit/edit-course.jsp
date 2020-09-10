@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@include file="/common/taglib.jsp"%>
- <c:url var="courseURL" value="/admin-home"/> 
+ <c:url var="courseURL" value="/admin-home/edit-course"/> 
  <c:url var="courseAPI" value="/api/course"/> 
 <!DOCTYPE html>
 <html>
@@ -19,6 +19,13 @@
                             <div class="box-form">
                                 <div class="row">
                                 <div class="text-center col-12 col-sm-12"><h3>Edit Page</h3></div>
+                                <div class="text-center col-12 col-sm-12">
+	                                <c:if test="${not empty messageResponse}">
+									  	<div class="alert alert-${alert}">
+											  <p>${messageResponse}</p>
+										  </div>
+									 </c:if>
+								 </div>
                                 <form:form class="form-edit" id="formSubmit" modelAttribute="course" action="<c:url value='/admin-home/edit-course' />">
                                         <div class="form-group col-12 col-sm-12">
                                             <label>Name of the course</label>
@@ -36,16 +43,21 @@
                                             <label>Content of the course</label>
                                             <form:textarea path="courseContent" class="form-control" value="${course.courseContent}" rows="5" ></form:textarea>
                                         </div>
-                                        <c:if test="${not empty course.id}">
-	                                        <div class="form-group col-12 col-sm-12">
-	                                            <button type="button" class="btn btn-primary btn-lg" id="btnEdit">Update</button>
+                                        <div class="row">
+	                                        <c:if test="${not empty course.id}">
+		                                        <div class="form-group col-12 col-sm-6 col-md-6">
+		                                            <button type="button" class="btn btn-primary btn-lg" id="btnEdit">Update</button>
+		                                        </div>
+	                                        </c:if>
+	                                        <c:if test="${empty course.id}">
+		                                        <div class="form-group col-12 col-sm-6 col-md-6">
+		                                            <a type="button" class="btn btn-primary btn-lg" id="btnEdit">Insert</a>
+		                                        </div>
+	                                        </c:if>
+	                                        <div class="form-group col-12 col-sm-6 col-md-6">
+	                                        	<a type="button" class="btn btn-success btn-lg float-right" href="<c:url value='/admin-home'/>" >Home</a>
 	                                        </div>
-                                        </c:if>
-                                        <c:if test="${empty course.id}">
-	                                        <div class="form-group col-12 col-sm-12">
-	                                            <a type="button" class="btn btn-primary btn-lg" id="btnEdit">Insert</a>
-	                                        </div>
-                                        </c:if>
+                                        </div>
                                         <form:hidden path="id" value="${course.id}"/>
                                 </form:form>
                             </div>
@@ -79,10 +91,10 @@ $('#btnEdit').click(function(e){
            data: JSON.stringify(data),
            dataType: "json",
            success: function (result){
-        	   window.location.href = "${courseURL}";
+        	   window.location.href = "${courseURL}?message=insert_success&alert=success";
            },
            error: function (error){
-        	   window.location.href = "${courseURL}";
+        	   window.location.href = "${courseURL}?message=insert_error&alert=danger";
            },
         });
     }
@@ -94,10 +106,10 @@ $('#btnEdit').click(function(e){
            data: JSON.stringify(data),
            dataType: "json",
            success: function (result){
-        	   window.location.href = "${courseURL}";
+        	   window.location.href = "${courseURL}?message=update_success&alert=success";
            },
            error: function (error){
-        	   window.location.href = "${courseURL}";
+        	   window.location.href = "${courseURL}?message=update_error&alert=danger";
            },
         });
     }

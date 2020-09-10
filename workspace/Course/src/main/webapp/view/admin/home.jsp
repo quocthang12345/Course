@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
+<c:url var="courseURL" value="/admin-home"/> 
+<c:url var="courseAPI" value="/api/course"/> 
 <%@page import="com.SpringMVC.util.SecurityUtils" %>
 <!DOCTYPE html>
 <html>
@@ -150,9 +152,9 @@
 									<a class="btn btn-primary " data-toggle="tooltip" title='Thêm khóa học' href="<c:url value='/admin-home/edit-course' />">
 										<span>	<i class="fa fa-plus-circle "></i> </span>
 									</a>
-									<button id="btnDelete" type="button" class="btn btn-warning" data-toggle="tooltip" title='Xóa khóa học'>
+									<a id="btnDelete" type="button" class="btn btn-warning" data-toggle="tooltip" title='Xóa khóa học'>
 										<span> <i class="fas fa-trash-alt"></i> </span>
-									</button>
+									</a>
 								</div>
 							</div>
 	                	</div>
@@ -162,7 +164,7 @@
 	                	  <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
 			                  <thead>
 			                    <tr role="row">
-			                      <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" style="width: 98px;"></th>
+			                      <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" style="width: 98px;"><input type="checkbox" id="checkAll"/></th>
 				                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" style="width: 98px;">NameCourse</th>
 				                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 153px;">Thumbnail</th>
 				                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 69px;">ShortDecription</th>
@@ -175,7 +177,7 @@
 			                   <tbody>
 			                   <c:forEach var="i" items="${listcourse}">
 				                  <tr role="row" class="odd">
-				                  <td><input type="checkbox"/></td>
+				                  <td><input type="checkbox" value="${i.id}"/></td>
 				                      <td class="sorting_1">${i.courseName}</td>
 				                      <td>${i.thumbnail}</td>
 				                      <td>${i.courseDescription}</td>
@@ -212,7 +214,45 @@
 
 
 <script type="text/javascript">
+$("#checkAll").click(function () {
+	var ids = $('input:checkbox').not(this).prop('checked', this.checked).map(function(e){
+		return $(this).val();
+	}).get();;
+	$('#btnDelete').click(function(e){
+		ConfirmDetele(ids);
+	})
+});
+$('#btnDelete').click(function(e){
+    var ids = $('tbody input[type=checkbox]:checked').map(function(e){
+		return $(this).val();
+	}).get();
+	ConfirmDelete(ids);
+});
 
+function ConfirmDelete(ids){
+	var x = confirm("Are you sure you want to delete?");
+	 if (x){
+	deleteItem(ids);
+	}
+	 else {
+	window.location.href = "${courseURL}";
+	}
+}
+
+function deleteItem(data){
+	$.ajax({
+	   url : "${courseAPI}",
+	   type : "DELETE",
+	   contentType: "application/json",
+	   data: JSON.stringify(data),
+	   success: function (result){
+	        window.location.href = "${courseURL}";
+	   },
+	   error: function (error){
+		window.location.href = "${courseURL}";
+	   },
+	});
+}
 </script>
 </body>
 </html>

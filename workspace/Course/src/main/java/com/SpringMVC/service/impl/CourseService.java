@@ -38,8 +38,25 @@ public class CourseService implements ICourseService {
 
 	@Override
 	@Transactional
-	public CourseDTO Insert(CourseDTO course) {
+	public CourseDTO Update(CourseDTO course) {
+		if(course.getId() != null) {
+			CourseEntity newCourse = courseConvert.toEntity(course);
+			return courseConvert.toDTO(courseRepo.save(newCourse));
+		}
 		return courseConvert.toDTO(courseRepo.save(courseConvert.toEntity(course)));
+	}
+
+	@Override
+	public CourseEntity findOneById(Long id) {
+		return courseRepo.findOne(id);
+	}
+
+	@Override
+	@Transactional
+	public void Delete(Long[] ids) {
+		for(Long id : ids) {
+			courseRepo.delete(id);
+		}	
 	}
 
 }

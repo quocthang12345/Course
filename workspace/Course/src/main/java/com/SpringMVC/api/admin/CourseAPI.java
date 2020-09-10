@@ -23,17 +23,17 @@ public class CourseAPI {
 	
 	@PostMapping(value = "/api/course")
 	public CourseDTO InsertCourse(@RequestBody CourseDTO courseDto){
-		return courseService.Insert(courseDto);
+		return courseService.Update(courseDto);
 	}
 	
 	@PutMapping(value = "/api/course")
 	public CourseDTO UpdateCourse(@RequestBody CourseDTO courseDto){
-		return null;
+		return courseService.Update(courseDto);
 		
 	}
 	
 	@DeleteMapping(value = "/api/course")
-	public void DeleteCourse(@RequestBody long[] ids){
-		
+	public void DeleteCourse(@RequestBody Long[] ids){
+		courseService.Delete(ids);
 	}
 }

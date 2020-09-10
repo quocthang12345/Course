@@ -1,5 +1,7 @@
 package com.SpringMVC.controller.admin;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.SpringMVC.model.dto.CourseDTO;
 import com.SpringMVC.service.ICourseService;
+import com.SpringMVC.util.MessageUtils;
 
 @Controller(value = "ControllerOfAdmin")
 public class HomeController {
@@ -24,12 +27,13 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/admin-home/edit-course" , method = RequestMethod.GET)
-	public ModelAndView editCoursePage(@RequestParam(value = "id", required = false) Long id) {
+	public ModelAndView editCoursePage(@RequestParam(value = "id", required = false) Long id, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("admin/edit/edit-course");
 		CourseDTO course = new CourseDTO();
 		if(id != null) {
 			course = courseService.findOne(id);
 		}
+		MessageUtils.ShowMessage(request);
 		mav.addObject("course", course);
 		return mav;
 	}
