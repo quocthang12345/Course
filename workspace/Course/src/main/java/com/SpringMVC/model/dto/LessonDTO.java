@@ -5,7 +5,7 @@ public class LessonDTO extends AbstractDTO<LessonDTO> {
 	private String lessonName;
 	private String lessonDescription;
 	private Long courseId;
-	private Long contentId;
+	private String Video;
 	public String getLessonName() {
 		return lessonName;
 	}
@@ -24,11 +24,11 @@ public class LessonDTO extends AbstractDTO<LessonDTO> {
 	public void setCourseId(Long courseId) {
 		this.courseId = courseId;
 	}
-	public Long getContentId() {
-		return contentId;
+	public String getVideo() {
+		return Video;
 	}
-	public void setContentId(Long contentId) {
-		this.contentId = contentId;
+	public void setVideo(String video) {
+		this.Video = video;
 	}
 	
 	

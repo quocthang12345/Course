@@ -1,5 +1,7 @@
 package com.SpringMVC.controller.admin;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.SpringMVC.model.dto.CourseDTO;
+import com.SpringMVC.model.dto.LessonDTO;
 import com.SpringMVC.service.ICourseService;
+import com.SpringMVC.service.ILessonService;
 import com.SpringMVC.util.MessageUtils;
 
 @Controller(value = "ControllerOfAdmin")
@@ -18,6 +22,8 @@ public class HomeController {
 
 	@Autowired
 	private ICourseService courseService;
+	@Autowired
+	private ILessonService lessonService;
 	
 	@RequestMapping(value = "/admin-home" , method = RequestMethod.GET)
 	public ModelAndView homePage() {
@@ -39,14 +45,18 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/admin-home/edit-lesson" , method = RequestMethod.GET)
-	public ModelAndView editLessonPage() {
-		ModelAndView mav = new ModelAndView("admin/edit/edit-lesson");
+	public ModelAndView editLessonPage(@RequestParam(value = "id" ,required = false) Long id) {
+		ModelAndView mav = new ModelAndView("admin/add-lesson/edit-lesson");
+		mav.addObject("lesson", lessonService.findOne(id));
 		return mav;
 	}
 	
 	@RequestMapping(value = "/admin-home/add-lesson" , method = RequestMethod.GET)
-	public ModelAndView addLessonPage() {
+	public ModelAndView addLessonPage(@RequestParam(value = "id",required = false) Long id) {
 		ModelAndView mav = new ModelAndView("admin/add-lesson/add-lesson");
+		CourseDTO courseInLesson = courseService.findOne(id);
+		mav.addObject("listLesson", lessonService.findAll());
+		mav.addObject("courseLesson", courseInLesson);
 		return mav;
 	}
 }

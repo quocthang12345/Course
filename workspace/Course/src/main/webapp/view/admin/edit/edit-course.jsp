@@ -18,7 +18,7 @@
                         <div class="card-body box-wrap">
                             <div class="box-form">
                                 <div class="row">
-                                <div class="text-center col-12 col-sm-12"><h3>Edit Page</h3></div>
+                                <div class="text-center col-12 col-sm-12"><h3>Edit Course</h3></div>
                                 <div class="text-center col-12 col-sm-12">
 	                                <c:if test="${not empty messageResponse}">
 									  	<div class="alert alert-${alert}">
