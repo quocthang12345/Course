@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.SpringMVC.model.convert.lessonConvert;
 import com.SpringMVC.model.dto.LessonDTO;
+import com.SpringMVC.model.entity.CourseEntity;
 import com.SpringMVC.model.entity.LessonEntity;
+import com.SpringMVC.repository.CourseRepository;
 import com.SpringMVC.repository.LessonRepository;
 import com.SpringMVC.service.ILessonService;
 
@@ -21,6 +23,8 @@ public class LessonService implements ILessonService {
 	private lessonConvert convertLesson;
 	@Autowired
 	private LessonRepository lessonRepo;
+	@Autowired
+	private CourseRepository courseRepo;
 	
 	@Override
 	public List<LessonDTO> findAll() {
@@ -33,12 +37,27 @@ public class LessonService implements ILessonService {
 
 	@Override
 	@Transactional
-	public LessonDTO Insert(LessonDTO lesson) {
-		return convertLesson.toDTO(lessonRepo.save(convertLesson.toEntity(lesson)));
+	public LessonDTO Insert(LessonDTO lesson,Long courseID) {
+		CourseEntity course = courseRepo.findOne(courseID);
+		LessonEntity lessonEntity = convertLesson.toEntity(lesson);
+		lessonEntity.setCourse(course);
+		return convertLesson.toDTO(lessonRepo.save(lessonEntity));
 	}
+	
 
 	@Override
 	public LessonDTO findOne(Long id) {
 		return convertLesson.toDTO(lessonRepo.findOne(id));
+	}
+
+	@Override
+	public LessonEntity findById(Long id) {
+		return lessonRepo.findOne(id);
+	}
+
+	@Override
+	public LessonDTO Update(LessonDTO lesson) {
+		LessonEntity newLesson = convertLesson.toEntity(lesson);
+		return convertLesson.toDTO(lessonRepo.save(newLesson));
 	}
 }

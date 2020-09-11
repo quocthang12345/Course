@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="col-9">
                                     <div class="btn-group float-right">
-                                        <a class="btn btn-primary " data-toggle="tooltip" title='Insert Lesson' href="<c:url value='/admin-home/edit-lesson'/>">
+                                        <a class="btn btn-primary " data-toggle="tooltip" title='Insert Lesson' href="<c:url value='/admin-home/edit-lesson?courseid=${courseLesson.id}'/>">
                                             <span>	<i class="fa fa-plus-circle "></i> </span>
                                         </a>
                                         <button id="btnDeleteLesson" type="button" class="btn btn-warning" data-toggle="tooltip" title='Delete Lesson'>

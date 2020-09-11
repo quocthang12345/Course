@@ -1,7 +1,5 @@
 package com.SpringMVC.controller.admin;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,9 +43,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/admin-home/edit-lesson" , method = RequestMethod.GET)
-	public ModelAndView editLessonPage(@RequestParam(value = "id" ,required = false) Long id) {
+	public ModelAndView editLessonPage(@RequestParam(value = "id" ,required = false) Long id, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("admin/add-lesson/edit-lesson");
-		mav.addObject("lesson", lessonService.findOne(id));
+		LessonDTO lesson = new LessonDTO();
+		if(id != null) {
+			lesson = lessonService.findOne(id);
+		}
+		MessageUtils.ShowMessage(request);
+		mav.addObject("lesson",lesson);
 		return mav;
 	}
 	

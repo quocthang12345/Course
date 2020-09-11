@@ -10,7 +10,7 @@
 <title>Edit-Lesson</title>
 </head>
 <body>
-<div class="background-edit">
+<div class="background-edit" style="padding:168px 0px;">
 	<div class="container">
         <div class="row position-direct">
             <div class="box-edit col-12 col-sm-12 col-lg-6 col-md-6">
@@ -18,27 +18,34 @@
                         <div class="card-body box-wrap">
                             <div class="box-form">
                                 <div class="row">
-                                <div class="text-center col-12 col-sm-12"><h3>Edit Lesson</h3></div>
-                                <form:form id="formSubmit" modelAttribute="lesson" cssClass="form-edit" action="<c:url value='/admin-home/edit-lesson'/>">
+                                <div class="text-center col-12 col-sm-12 col-md-12 "><h3>Edit Lesson</h3></div>
+                                <div class="text-center col-12 col-sm-12">
+	                                <c:if test="${not empty messageResponse}">
+									  	<div class="alert alert-${alert}">
+											  <p>${messageResponse}</p>
+										  </div>
+									 </c:if>
+								 </div>
+                                <form:form id="formSubmit" modelAttribute="lesson" cssClass="form-edit">
                                         <div class="form-group col-12 col-sm-12">
                                             <label>Name of the lesson</label>
                                             <form:input path="lessonName" value="${lesson.lessonName}" cssClass="form-control" placeholder="Enter name course....." />
                                         </div>
-                                        <div class="form-group  col-12 col-sm-12">
+                                        <div class="form-group  col-12 col-sm-12 col-md-12 ">
                                             <label>Video of the lesson</label>
                                             <input type="file" id="Video" name="Video" class="form-control-file file" value="Choose Files"/>
                                         </div>
-                                        <div class="form-group col-12 col-sm-12">
+                                        <div class="form-group col-12 col-sm-12 col-md-12 ">
                                             <label>Description of the lesson</label>
                                             <form:input path="lessonDescription" value="${lesson.lessonDescription}" cssClass="form-control" placeholder="Enter description course....." />
                                         </div>
-                                        <c:if test=${empty lesson.id}>
-	                                        <div class="form-group col-12 col-sm-12">
+                                        <c:if test="${empty lesson.id}">
+	                                        <div class="form-group col-12 col-sm-12 col-md-12 ">
 	                                            <a type="button" class="btn btn-primary btn-lg" id="btnEdit">Insert</a>
 	                                        </div>
                                         </c:if>
-                                        <c:if test=${not empty lesson.id}>
-	                                        <div class="form-group col-12 col-sm-12">
+                                        <c:if test="${not empty lesson.id}">
+	                                        <div class="form-group col-12 col-sm-12 col-md-12 ">
 	                                            <a type="button" class="btn btn-primary btn-lg" id="btnEdit">Update</a>
 	                                        </div>
                                         </c:if>
@@ -52,7 +59,8 @@
         </div>
     </div>
 </div>
-</body>
+
+
 <script>
 $('#btnEdit').click(function(e){
     e.preventDefault();
@@ -75,10 +83,10 @@ $('#btnEdit').click(function(e){
            data: JSON.stringify(data),
            dataType: "json",
            success: function (result){
-        	   window.location.href = "${LessonURL}";
+        	   window.location.href = "${LessonURL}?message=insert_success&alert=success";
            },
            error: function (error){
-        	   window.location.href = "${LessonURL}";
+        	   window.location.href = "${LessonURL}?message=insert_error&alert=danger";
            },
         });
     }
@@ -90,13 +98,14 @@ $('#btnEdit').click(function(e){
            data: JSON.stringify(data),
            dataType: "json",
            success: function (result){
-        	   window.location.href = "${LessonURL}";
+        	   window.location.href = "${LessonURL}?message=update_success&alert=success";
            },
            error: function (error){
-        	   window.location.href = "${LessonURL}";
+        	   window.location.href = "${LessonURL}?message=update_error&alert=danger";
            },
         });
     }
 });
 </script>
+</body>
 </html>
