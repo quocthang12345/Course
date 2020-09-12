@@ -7,8 +7,10 @@ import com.SpringMVC.model.entity.LessonEntity;
 
 public interface ILessonService {
 	List<LessonDTO> findAll();
-	LessonDTO Insert(LessonDTO lesson, Long courseID);
+	LessonDTO Insert(LessonDTO lesson);
 	LessonDTO findOne(Long id);
 	LessonEntity findById(Long id);
 	LessonDTO Update(LessonDTO lesson);
+	void Delete(Long[] ids);
+	List<LessonDTO> findByCourseID(Long courseID);
 }

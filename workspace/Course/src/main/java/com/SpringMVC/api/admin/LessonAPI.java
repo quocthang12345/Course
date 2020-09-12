@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.SpringMVC.model.dto.LessonDTO;
@@ -23,16 +22,16 @@ public class LessonAPI {
 		return null;	
 	}
 	@PostMapping(value = "/api/lesson")
-	public LessonDTO InsertLesson(@RequestBody LessonDTO lesson,@RequestParam(value = "courseid",required = false) Long id) {
-		return lessonService.Insert(lesson,id);	
+	public LessonDTO InsertLesson(@RequestBody LessonDTO lesson) {
+		return lessonService.Insert(lesson);	
 	}
 	@PutMapping(value = "/api/lesson")
 	public LessonDTO UpdateLesson(@RequestBody LessonDTO lesson) {
-		return null;	
+		return lessonService.Update(lesson);	
 	}
 	@DeleteMapping(value = "/api/lesson")
 	public void DeleteLesson(@RequestBody Long[] ids) {
-			
+		lessonService.Delete(ids);
 	}
 
 }

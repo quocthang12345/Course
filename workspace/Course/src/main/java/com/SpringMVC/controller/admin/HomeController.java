@@ -43,12 +43,13 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/admin-home/edit-lesson" , method = RequestMethod.GET)
-	public ModelAndView editLessonPage(@RequestParam(value = "id" ,required = false) Long id, HttpServletRequest request) {
+	public ModelAndView editLessonPage(@RequestParam(value = "id" ,required = false) Long id, HttpServletRequest request,@RequestParam(value = "courseid" ,required = false)Long courseID ) {
 		ModelAndView mav = new ModelAndView("admin/add-lesson/edit-lesson");
 		LessonDTO lesson = new LessonDTO();
 		if(id != null) {
 			lesson = lessonService.findOne(id);
 		}
+		lesson.setCourseId(courseID);
 		MessageUtils.ShowMessage(request);
 		mav.addObject("lesson",lesson);
 		return mav;
@@ -58,7 +59,7 @@ public class HomeController {
 	public ModelAndView addLessonPage(@RequestParam(value = "id",required = false) Long id) {
 		ModelAndView mav = new ModelAndView("admin/add-lesson/add-lesson");
 		CourseDTO courseInLesson = courseService.findOne(id);
-		mav.addObject("listLesson", lessonService.findAll());
+		mav.addObject("listLesson", lessonService.findByCourseID(id));
 		mav.addObject("courseLesson", courseInLesson);
 		return mav;
 	}

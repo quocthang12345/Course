@@ -37,8 +37,8 @@ public class LessonService implements ILessonService {
 
 	@Override
 	@Transactional
-	public LessonDTO Insert(LessonDTO lesson,Long courseID) {
-		CourseEntity course = courseRepo.findOne(courseID);
+	public LessonDTO Insert(LessonDTO lesson) {
+		CourseEntity course = courseRepo.findOne(lesson.getCourseId());
 		LessonEntity lessonEntity = convertLesson.toEntity(lesson);
 		lessonEntity.setCourse(course);
 		return convertLesson.toDTO(lessonRepo.save(lessonEntity));
@@ -56,8 +56,26 @@ public class LessonService implements ILessonService {
 	}
 
 	@Override
+	@Transactional
 	public LessonDTO Update(LessonDTO lesson) {
 		LessonEntity newLesson = convertLesson.toEntity(lesson);
 		return convertLesson.toDTO(lessonRepo.save(newLesson));
+	}
+
+	@Override
+	@Transactional
+	public void Delete(Long[] ids) {
+		for(Long id : ids) {
+			lessonRepo.delete(id);
+		}
+	}
+
+	@Override
+	public List<LessonDTO> findByCourseID(Long courseID) {
+		List<LessonDTO> rs = new ArrayList<>();
+		for(LessonEntity lesson : lessonRepo.findByCourseId(courseID)) {
+			rs.add(convertLesson.toDTO(lesson));
+		}
+		return rs;
 	}
 }

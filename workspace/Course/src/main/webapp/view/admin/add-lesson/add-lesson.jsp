@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@include file="/common/taglib.jsp"%>
+<c:url var="AddLessonURL" value="/admin-home/add-lesson?id=${courseLesson.id}"/>
+<c:url var="AddLessonAPI" value="/api/lesson" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +47,7 @@
                                         <a class="btn btn-primary " data-toggle="tooltip" title='Insert Lesson' href="<c:url value='/admin-home/edit-lesson?courseid=${courseLesson.id}'/>">
                                             <span>	<i class="fa fa-plus-circle "></i> </span>
                                         </a>
-                                        <button id="btnDeleteLesson" type="button" class="btn btn-warning" data-toggle="tooltip" title='Delete Lesson'>
+                                        <button id="btnDelete" type="button" class="btn btn-warning" data-toggle="tooltip" title='Delete Lesson'>
                                             <span> <i class="fas fa-trash-alt"></i> </span>
                                         </button>
                                     </div>
@@ -57,37 +59,54 @@
                   				<c:forEach var="lesson" items="${listLesson}">
 	                                <div class="row">
 	                                    <li>
-	                                        <div class="col-3 col-sm-4">${lesson.lessonName}</div>
-	                                        <div class="col-6 col-sm-6">${lesson.lessonDescription}</div>
-	                                        <div class="col-3 col-sm-2"><a href="<c:url value='/admin-home/edit-lesson?id=${lesson.id}'/>" class="btn btn-primary">
+	                                    	<div class="col-2 col-sm-1"><input type="checkbox" value="${lesson.id}"/></div>
+	                                        <div class="col-3 col-sm-3">${lesson.lessonName}</div>
+	                                        <div class="col-5 col-sm-5">${lesson.lessonDescription}</div>
+	                                        <div class="col-2 col-sm-3"><a href="<c:url value='/admin-home/edit-lesson?id=${lesson.id}&courseid=${courseLesson.id}'/>" class="btn btn-primary">
                                             	<i class="fas fa-edit" aria-hidden="true"></i>
                                         	</a></div>
 	                                    </li>
 	                                </div>
                                 </c:forEach>
-                                <!-- <div class="row">
-                                    <li>
-                                        <div class="col-5 col-sm-4">Lecture 2: Overview</div>
-                                        <div class="col-7 col-sm-8">Description Lecture 2</div>
-                                    </li>
-                                </div>
-                                <div class="row">
-                                    <li>
-                                        <div class="col-5 col-sm-4">Lecture 3: Orient Object Programming</div>
-                                        <div class="col-7 col-sm-8">Description Lecture 3</div>
-                                    </li>
-                                </div>
-                                <div class="row">
-                                    <li>
-                                        <div class="col-5 col-sm-4">Lecture 4: Class/Object</div>
-                                        <div class="col-7 col-sm-8">Description Lecture 4</div>
-                                    </li>   
-                                </div> -->
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
     </div>
+    
+ <script>
+ $('#btnDelete').click(function(e){
+	    var ids = $('input[type=checkbox]:checked').map(function(e){
+			return $(this).val();
+		}).get();
+		ConfirmDelete(ids);
+	});
+
+	function ConfirmDelete(ids){
+		var x = confirm("Are you sure you want to delete?");
+		 if (x){
+		deleteItem(ids);
+		}
+		 else {
+		window.location.href = "${AddLessonURL}";
+		}
+	}
+
+	function deleteItem(data){
+		$.ajax({
+		   url : "${AddLessonAPI}",
+		   type : "DELETE",
+		   contentType: "application/json",
+		   data: JSON.stringify(data),
+		   success: function (result){
+		        window.location.href = "${AddLessonURL}";
+		   },
+		   error: function (error){
+			window.location.href = "${AddLessonURL}";
+		   },
+		});
+	}
+ </script>
 </body>
 </html>

@@ -39,17 +39,23 @@
                                             <label>Description of the lesson</label>
                                             <form:input path="lessonDescription" value="${lesson.lessonDescription}" cssClass="form-control" placeholder="Enter description course....." />
                                         </div>
-                                        <c:if test="${empty lesson.id}">
-	                                        <div class="form-group col-12 col-sm-12 col-md-12 ">
-	                                            <a type="button" class="btn btn-primary btn-lg" id="btnEdit">Insert</a>
-	                                        </div>
-                                        </c:if>
-                                        <c:if test="${not empty lesson.id}">
-	                                        <div class="form-group col-12 col-sm-12 col-md-12 ">
-	                                            <a type="button" class="btn btn-primary btn-lg" id="btnEdit">Update</a>
-	                                        </div>
-                                        </c:if>
+                                        <div class="row">
+	                                        <c:if test="${empty lesson.id}">
+		                                        <div class="form-group col-12 col-sm-6 col-md-6">
+		                                            <a type="button" class="btn btn-primary btn-lg" id="btnEdit">Insert</a>
+		                                        </div>
+	                                        </c:if>
+	                                        <c:if test="${not empty lesson.id}">
+		                                        <div class="form-group col-12 col-sm-6 col-md-6">
+		                                            <a type="button" class="btn btn-primary btn-lg" id="btnEdit">Update</a>
+		                                        </div>
+	                                        </c:if>
+	                                        <div class="form-group col-12 col-sm-6 col-md-6">
+		                                        	<a class="btn btn-success btn-lg float-right" href="<c:url value='/admin-home/add-lesson?id=${lesson.courseId}' />">Home</a>
+		                                    	</div>
+	                                    	</div>
                                         <form:hidden path="id" value="${lesson.id}" />
+                                        <form:hidden path="courseId" value="${lesson.courseId}" />
                                 </form:form>
                             </div>
                         </div>
