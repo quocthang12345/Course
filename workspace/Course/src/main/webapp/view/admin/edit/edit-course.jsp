@@ -51,7 +51,7 @@
 	                                        </c:if>
 	                                        <c:if test="${empty course.id}">
 		                                        <div class="form-group col-12 col-sm-6 col-md-6">
-		                                            <a type="button" class="btn btn-primary btn-lg" id="btnEdit">Insert</a>
+		                                            <button type="button" class="btn btn-primary btn-lg" id="btnEdit">Insert</button>
 		                                        </div>
 	                                        </c:if>
 	                                        <div class="form-group col-12 col-sm-6 col-md-6">

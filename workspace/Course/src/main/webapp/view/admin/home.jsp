@@ -144,10 +144,13 @@
             <div class="card-body">
 					<form action="<c:url value='/admin-home'/>" method="get" id="formSubmit">
 	               		<div class="row">
-	                		<div class="col-3">
-	                			<input type="search" class="form-control" style="margin:5px;" placeholder="Tìm kiếm khóa học">
+	                		<div class="col-4">
+		                		<div class="row mb-2">
+			                		<input id="findList" type="search" class="form-control col-8" style="margin:0 10px 0;" placeholder="Find Course">
+			                		<button type="button" class="btn btn-primary form-control col-3" id="btnFind" >Search</button>
+		                		</div>
 	                		</div>
-	                		<div class="col-9 ">
+	                		<div class="col-8">
 	                			<div class="btn-group float-right">
 									<a class="btn btn-primary " data-toggle="tooltip" title='Thêm khóa học' href="<c:url value='/admin-home/edit-course' />">
 										<span>	<i class="fa fa-plus-circle "></i> </span>
@@ -253,6 +256,8 @@ function deleteItem(data){
 	   },
 	});
 }
+
+
 </script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%@include file="/common/taglib.jsp"%>
-<c:url value="/admin-home/edit-lesson" var="LessonURL"/>
+<c:url value="/admin-home/edit-lesson?courseid=${lesson.courseId}" var="LessonURL"/>
 <c:url value="/api/lesson" var="LessonAPI" />
 <!DOCTYPE html>
 <html>
@@ -51,9 +51,9 @@
 		                                        </div>
 	                                        </c:if>
 	                                        <div class="form-group col-12 col-sm-6 col-md-6">
-		                                        	<a class="btn btn-success btn-lg float-right" href="<c:url value='/admin-home/add-lesson?id=${lesson.courseId}' />">Home</a>
-		                                    	</div>
-	                                    	</div>
+		                                        <a class="btn btn-success btn-lg float-right" href="<c:url value='/admin-home/add-lesson?id=${lesson.courseId}' />">Home</a>
+		                                    </div>
+	                                    </div>
                                         <form:hidden path="id" value="${lesson.id}" />
                                         <form:hidden path="courseId" value="${lesson.courseId}" />
                                 </form:form>
@@ -77,7 +77,8 @@ $('#btnEdit').click(function(e){
     });
     var id = $('#id').val();
     if(id == ""){
-        addItem(data);
+       var rs = addItem(data);
+       console.log(rs);
     }else{
         updateItem(data);
     }
@@ -89,10 +90,10 @@ $('#btnEdit').click(function(e){
            data: JSON.stringify(data),
            dataType: "json",
            success: function (result){
-        	   window.location.href = "${LessonURL}?message=insert_success&alert=success";
+        	   window.location.href = "${LessonURL}&message=insert_success&alert=success";
            },
            error: function (error){
-        	   window.location.href = "${LessonURL}?message=insert_error&alert=danger";
+        	   window.location.href = "${LessonURL}&message=insert_error&alert=danger";
            },
         });
     }
@@ -104,10 +105,10 @@ $('#btnEdit').click(function(e){
            data: JSON.stringify(data),
            dataType: "json",
            success: function (result){
-        	   window.location.href = "${LessonURL}?message=update_success&alert=success";
+        	   window.location.href = "${LessonURL}&message=update_success&alert=success";
            },
            error: function (error){
-        	   window.location.href = "${LessonURL}?message=update_error&alert=danger";
+        	   window.location.href = "${LessonURL}&message=update_error&alert=danger";
            },
         });
     }

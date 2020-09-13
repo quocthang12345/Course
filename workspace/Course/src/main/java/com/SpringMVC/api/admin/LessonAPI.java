@@ -1,5 +1,7 @@
 package com.SpringMVC.api.admin;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +20,8 @@ public class LessonAPI {
 	private ILessonService lessonService;
 	
 	@GetMapping(value = "/api/lesson")
-	public LessonDTO GetLesson() {
-		return null;	
+	public List<LessonDTO> GetLesson(@RequestBody LessonDTO lesson) {
+		return lessonService.findByLessonName(lesson.getLessonName());	
 	}
 	@PostMapping(value = "/api/lesson")
 	public LessonDTO InsertLesson(@RequestBody LessonDTO lesson) {

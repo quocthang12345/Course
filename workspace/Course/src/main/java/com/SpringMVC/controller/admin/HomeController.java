@@ -3,6 +3,7 @@ package com.SpringMVC.controller.admin;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -56,10 +57,11 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/admin-home/add-lesson" , method = RequestMethod.GET)
-	public ModelAndView addLessonPage(@RequestParam(value = "id",required = false) Long id) {
+	public ModelAndView addLessonPage(@RequestParam(value = "id",required = false) Long id,@RequestParam(value = "find",required = false) String find,
+			@RequestParam(value = "keyword",required = false) String keyword) {
 		ModelAndView mav = new ModelAndView("admin/add-lesson/add-lesson");
 		CourseDTO courseInLesson = courseService.findOne(id);
-		mav.addObject("listLesson", lessonService.findByCourseID(id));
+		mav.addObject("listLesson", lessonService.findByCourseID(id,keyword));
 		mav.addObject("courseLesson", courseInLesson);
 		return mav;
 	}

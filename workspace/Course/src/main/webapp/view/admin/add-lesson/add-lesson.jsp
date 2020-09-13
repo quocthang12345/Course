@@ -15,9 +15,9 @@
                 <div class="badge-lesson">
                     <nav>
                         <ol class="d-flex flex-row align-items-center" style="list-style:none;">
-                            <li class="breadcrumb-1 mr-2"><a href="#">Admin-Home</a></li>
+                            <li class="breadcrumb-1 mr-2"><a href="<c:url value='/admin-home' />">Admin-Home</a></li>
                             <li><i class="fas fa-chevron-right breadcrumb-2 mr-2"></i></li>
-                            <li class="breadcrumb-3"><a href="#">Course</a></li>
+                            <li class="breadcrumb-3"><a href="<c:url value='/admin-home/add-lesson?id=${courseLesson.id}' />">Course</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -38,11 +38,21 @@
                     </div>
                     <div class="card pb-5">
                         <div class="card-header title">
+	                        <div class="row">
+	                        	<div class="col-12">
+	                                <p>Lesson</p>
+	                            </div>
+	                        </div>
                             <div class="row">
-                                <div class="col-3">
-                                    <p>Lesson</p>
-                                </div>
-                                <div class="col-9">
+                                <div class="col-5">
+	                                <form action="@{<c:url value='/admin-home/add-lesson '/>}">
+				                		<div class="row mb-2">
+					                		<input id="keyword" name="keyword" type="search" class="form-control col-8" style="margin:0 10px 0;" placeholder="Find Lesson">
+					                		<input type="submit" class="btn btn-primary form-control col-2" id="btnFind" value="Search"/>
+				                		</div>
+				                	</form>
+	                			</div>
+                                <div class="col-7">
                                     <div class="btn-group float-right">
                                         <a class="btn btn-primary " data-toggle="tooltip" title='Insert Lesson' href="<c:url value='/admin-home/edit-lesson?courseid=${courseLesson.id}'/>">
                                             <span>	<i class="fa fa-plus-circle "></i> </span>
@@ -107,6 +117,28 @@
 		   },
 		});
 	}
+	$('#btnFind').click(function(e){
+		e.preventDefault();
+        var data = {};
+        var lessonName = $('#lessonNameFind').val();
+		data["lessonName"] = lessonName;
+		Find(data);
+        function Find(data){
+        	 $.ajax({
+                 url : "${AddLessonAPI}",
+                 type : "GET",
+                 contentType: "application/json",
+                 data: JSON.stringify(data),
+                 dataType: "json",
+                 success: function (result){
+              	   window.location.href = "${AddLessonURL}&find="+$('#lessonNameFind').val()+"";
+                 },
+                 error: function (error){
+                	 window.location.href = "${AddLessonURL}";
+                 },
+              });
+        }
+ }); 
  </script>
 </body>
 </html>

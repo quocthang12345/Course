@@ -12,5 +12,6 @@ public interface ILessonService {
 	LessonEntity findById(Long id);
 	LessonDTO Update(LessonDTO lesson);
 	void Delete(Long[] ids);
-	List<LessonDTO> findByCourseID(Long courseID);
+	List<LessonDTO> findByCourseID(Long courseID,String keyword);
+	List<LessonDTO> findByLessonName(String LessonName);
 }

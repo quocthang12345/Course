@@ -71,11 +71,27 @@ public class LessonService implements ILessonService {
 	}
 
 	@Override
-	public List<LessonDTO> findByCourseID(Long courseID) {
+	public List<LessonDTO> findByCourseID(Long courseID,String keyword) {
 		List<LessonDTO> rs = new ArrayList<>();
+		if(keyword != null) {
+			for(LessonEntity lessonFind : lessonRepo.search(keyword)) {
+				rs.add(convertLesson.toDTO(lessonFind));
+			}
+			return rs;
+		}
 		for(LessonEntity lesson : lessonRepo.findByCourseId(courseID)) {
 			rs.add(convertLesson.toDTO(lesson));
 		}
 		return rs;
+	}
+
+	@Override
+	public List<LessonDTO> findByLessonName(String LessonName) {
+		/*
+		 * List<LessonDTO> result = new ArrayList<LessonDTO>(); for(LessonEntity lesson
+		 * : lessonRepo.findByLessonName(LessonName)) {
+		 * result.add(convertLesson.toDTO(lesson)); } return result;
+		 */
+		return null;
 	}
 }
