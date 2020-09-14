@@ -142,25 +142,23 @@
               <h6 class="m-0 font-weight-bold text-primary">Danh sách khóa học </h6>
             </div>
             <div class="card-body">
-					<form action="<c:url value='/admin-home'/>" method="get" id="formSubmit">
-	               		<div class="row">
-	                		<div class="col-4">
-		                		<div class="row mb-2">
-			                		<input id="findList" type="search" class="form-control col-8" style="margin:0 10px 0;" placeholder="Find Course">
-			                		<button type="button" class="btn btn-primary form-control col-3" id="btnFind" >Search</button>
-		                		</div>
-	                		</div>
-	                		<div class="col-8">
-	                			<div class="btn-group float-right">
-									<a class="btn btn-primary " data-toggle="tooltip" title='Thêm khóa học' href="<c:url value='/admin-home/edit-course' />">
-										<span>	<i class="fa fa-plus-circle "></i> </span>
-									</a>
-									<a id="btnDelete" type="button" class="btn btn-warning" data-toggle="tooltip" title='Xóa khóa học'>
-										<span> <i class="fas fa-trash-alt"></i> </span>
-									</a>
-								</div>
-							</div>
-	                	</div>
+              	<div class="row mb-2">
+               		<div class="col-4">
+	               		<form action="<c:url value='/admin-home'/>">
+		                	<input id="key" name="key" type="search" value="${key}" class="form-control col-8" onchange="this.form.submit()" onsearch="this.form.submit()" style="margin:0 10px 0;" placeholder="Find Course">
+		                </form>
+               		</div>
+               		<div class="col-8">
+               			<div class="btn-group float-right">
+							<a class="btn btn-primary " data-toggle="tooltip" title='Thêm khóa học' href="<c:url value='/admin-home/edit-course' />">
+								<span>	<i class="fa fa-plus-circle "></i> </span>
+							</a>
+							<a id="btnDelete" type="button" class="btn btn-warning" data-toggle="tooltip" title='Xóa khóa học'>
+								<span> <i class="fas fa-trash-alt"></i> </span>
+							</a>
+						</div>
+					</div>
+               	</div>
 	                	
 	              <div class="row">
 	                <div class="col-sm-12">
@@ -201,7 +199,6 @@
 	                		</table>
 	               		</div>
 	                </div>
-		          	</form>
 				</div>
 			</div>
   	
@@ -256,8 +253,6 @@ function deleteItem(data){
 	   },
 	});
 }
-
-
 </script>
 </body>
 </html>

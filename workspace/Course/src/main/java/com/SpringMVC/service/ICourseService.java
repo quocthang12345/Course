@@ -6,7 +6,7 @@ import com.SpringMVC.model.dto.CourseDTO;
 import com.SpringMVC.model.entity.CourseEntity;
 
 public interface ICourseService {
-	List<CourseDTO> findList();
+	List<CourseDTO> findList(String key);
 	CourseDTO findOne(Long id);
 	CourseDTO Update(CourseDTO course);
 	CourseEntity findOneById(Long id);

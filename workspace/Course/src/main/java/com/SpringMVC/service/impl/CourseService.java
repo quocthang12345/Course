@@ -23,8 +23,14 @@ public class CourseService implements ICourseService {
 	private courseConvert courseConvert;
 	
 	@Override
-	public List<CourseDTO> findList() {
+	public List<CourseDTO> findList(String key) {
 		List<CourseDTO> result = new ArrayList<CourseDTO>();
+		if(key != null) {
+			for(CourseEntity course : courseRepo.search(key)) {
+				result.add(courseConvert.toDTO(course));
+			}
+			return result;
+		}
 		for(CourseEntity course : courseRepo.findAll()) {
 			result.add(courseConvert.toDTO(course));
 		}

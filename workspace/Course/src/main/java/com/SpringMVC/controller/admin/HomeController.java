@@ -25,9 +25,10 @@ public class HomeController {
 	private ILessonService lessonService;
 	
 	@RequestMapping(value = "/admin-home" , method = RequestMethod.GET)
-	public ModelAndView homePage() {
+	public ModelAndView homePage(@Param("key") String key) {
 		ModelAndView mav = new ModelAndView("admin/home");
-		mav.addObject("listcourse", courseService.findList());
+		mav.addObject("listcourse", courseService.findList(key));
+		mav.addObject("key", key);
 		return mav;
 	}
 	
@@ -57,11 +58,18 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/admin-home/add-lesson" , method = RequestMethod.GET)
-	public ModelAndView addLessonPage(@RequestParam(value = "id",required = false) Long id,@RequestParam(value = "find",required = false) String find,
-			@RequestParam(value = "keyword",required = false) String keyword) {
+	public ModelAndView addLessonPage(@RequestParam(value = "id",required = false) Long id,
+			@Param("keyword") String keyword,@Param("Id") Long Id) {
 		ModelAndView mav = new ModelAndView("admin/add-lesson/add-lesson");
-		CourseDTO courseInLesson = courseService.findOne(id);
-		mav.addObject("listLesson", lessonService.findByCourseID(id,keyword));
+		CourseDTO courseInLesson = new CourseDTO();
+		if(Id != null) {
+			courseInLesson = courseService.findOne(Id);
+			mav.addObject("listLesson", lessonService.findByCourseID(Id,keyword));
+		}else {
+			courseInLesson = courseService.findOne(id);
+			mav.addObject("listLesson", lessonService.findByCourseID(id,keyword));
+		}
+		mav.addObject("keyword",keyword);
 		mav.addObject("courseLesson", courseInLesson);
 		return mav;
 	}

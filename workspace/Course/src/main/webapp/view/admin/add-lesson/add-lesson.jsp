@@ -45,10 +45,10 @@
 	                        </div>
                             <div class="row">
                                 <div class="col-5">
-	                                <form action="@{<c:url value='/admin-home/add-lesson '/>}">
+	                                <form id="formFind" action="<c:url value='/admin-home/add-lesson'/>">
 				                		<div class="row mb-2">
-					                		<input id="keyword" name="keyword" type="search" class="form-control col-8" style="margin:0 10px 0;" placeholder="Find Lesson">
-					                		<input type="submit" class="btn btn-primary form-control col-2" id="btnFind" value="Search"/>
+					                		<input name="keyword" value="${keyword}" id="keyword" type="search" class="form-control col-8" style="margin:0 10px 0;" onchange="this.form.submit()" onsearch="this.form.submit()" placeholder="Find Lesson">
+					                		<input type="hidden" name="Id" value="${courseLesson.id}" />;
 				                		</div>
 				                	</form>
 	                			</div>
@@ -117,28 +117,7 @@
 		   },
 		});
 	}
-	$('#btnFind').click(function(e){
-		e.preventDefault();
-        var data = {};
-        var lessonName = $('#lessonNameFind').val();
-		data["lessonName"] = lessonName;
-		Find(data);
-        function Find(data){
-        	 $.ajax({
-                 url : "${AddLessonAPI}",
-                 type : "GET",
-                 contentType: "application/json",
-                 data: JSON.stringify(data),
-                 dataType: "json",
-                 success: function (result){
-              	   window.location.href = "${AddLessonURL}&find="+$('#lessonNameFind').val()+"";
-                 },
-                 error: function (error){
-                	 window.location.href = "${AddLessonURL}";
-                 },
-              });
-        }
- }); 
+
  </script>
-</body>
+ </body>
 </html>
