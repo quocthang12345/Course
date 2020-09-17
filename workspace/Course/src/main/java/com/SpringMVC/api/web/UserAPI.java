@@ -30,8 +30,7 @@ public class UserAPI {
 	
 	@PutMapping(value = "/api/user")
 	public UserDTO UpdateUser(@RequestBody UserDTO userDto){
-		return null;
-		
+		return userService.updateUser(userDto);	
 	}
 	
 	@DeleteMapping(value = "/api/user")

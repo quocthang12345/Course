@@ -14,15 +14,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.SpringMVC.model.dto.UserDTO;
+import com.SpringMVC.service.IUserService;
 import com.SpringMVC.util.MessageUtils;
+import com.SpringMVC.util.SecurityUtils;
 
 
 @Controller
 public class HomeController {
+	
+	@Autowired
+	private IUserService userService;
+	
 
 	@RequestMapping(value = "/trang-chu" , method = RequestMethod.GET)
 	public ModelAndView homePage() {
 		ModelAndView mav = new ModelAndView("web/home");
+		UserDTO user = userService.findByUsername(SecurityUtils.getPrincipal().getUsername());
+		mav.addObject("user",user);
 		return mav;
 	}
 	
@@ -71,6 +79,14 @@ public class HomeController {
 	@RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
 	public ModelAndView accessDenied() {
 		return new ModelAndView("redirect:/dang-nhap?accessDenied");
+	}
+	
+	@RequestMapping(value = "/profile" , method = RequestMethod.GET)
+	public ModelAndView profilePage(@RequestParam(value="id", required = false)Long id) {
+		ModelAndView mav = new ModelAndView("profile/profile");
+		UserDTO user = userService.findById(id);
+		mav.addObject("profile", user);
+		return mav;
 	}
 	
 	

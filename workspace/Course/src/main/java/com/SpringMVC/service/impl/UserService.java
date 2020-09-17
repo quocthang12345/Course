@@ -48,4 +48,21 @@ public class UserService implements IUserService {
 		return userConverter.toDTO(userRepo.save(user));
 	}
 
+	@Override
+	public UserDTO updateUser(UserDTO userDTO) {
+		UserEntity user = userConverter.toEntity(userDTO);
+		return userConverter.toDTO(userRepo.save(user));
+	}
+
+	@Override
+	public UserDTO findByUsername(String username) {
+		return userConverter.toDTO(userRepo.findOneByUserNameAndStatus(username, 1));
+	}
+
+	@Override
+	public UserDTO findById(Long id) {
+		// TODO Auto-generated method stub
+		return userConverter.toDTO(userRepo.findOne(id));
+	}
+
 }

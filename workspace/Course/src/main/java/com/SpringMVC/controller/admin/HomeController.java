@@ -12,9 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.SpringMVC.model.dto.CourseDTO;
 import com.SpringMVC.model.dto.LessonDTO;
+import com.SpringMVC.model.dto.UserDTO;
 import com.SpringMVC.service.ICourseService;
 import com.SpringMVC.service.ILessonService;
+import com.SpringMVC.service.IUserService;
 import com.SpringMVC.util.MessageUtils;
+import com.SpringMVC.util.SecurityUtils;
 
 @Controller(value = "ControllerOfAdmin")
 public class HomeController {
@@ -23,10 +26,14 @@ public class HomeController {
 	private ICourseService courseService;
 	@Autowired
 	private ILessonService lessonService;
+	@Autowired
+	private IUserService userService;
 	
 	@RequestMapping(value = "/admin-home" , method = RequestMethod.GET)
 	public ModelAndView homePage(@Param("key") String key) {
 		ModelAndView mav = new ModelAndView("admin/home");
+		UserDTO user = userService.findByUsername(SecurityUtils.getPrincipal().getUsername());
+		mav.addObject("user",user);
 		mav.addObject("listcourse", courseService.findList(key));
 		mav.addObject("key", key);
 		return mav;

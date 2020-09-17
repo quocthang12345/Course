@@ -26,7 +26,7 @@
 										  </div>
 									 </c:if>
 								 </div>
-                                <form:form class="form-edit" id="formSubmit" modelAttribute="course" action="<c:url value='/admin-home/edit-course' />">
+                                <form:form class="form-edit" id="formSubmit" modelAttribute="course">
                                         <div class="form-group col-12 col-sm-12">
                                             <label>Name of the course</label>
                                             <form:input path="courseName" cssClass="form-control" value="${course.courseName}" placeholder="Enter name course....." />

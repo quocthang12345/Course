@@ -46,9 +46,7 @@
                         <label class="custom-control-label" for="customCheck">Remember Me</label>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-user btn-block">
-                      Login
-                    </button>
+                    <input type="submit" class="btn btn-primary btn-user btn-block" value="Login">
                   </form>
                   <hr>
                   <div class="text-center">
@@ -62,10 +60,7 @@
             </div>
           </div>
         </div>
-
       </div>
-
     </div>
-
 </body>
 </html>
