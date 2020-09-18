@@ -30,18 +30,18 @@
                     </div>
 
                     <div class="col-12 col-sm-12 col-md-9">
-                    	<div class="text-center col-12 col-sm-12">
-                             <c:if test="${not empty messageResponse}">
-							  	<div class="alert alert-${alert}">
-									  <p>${messageResponse}</p>
-								  </div>
-							 </c:if>
-						</div>
+						<form:form modelAttribute="profile" id="formSubmit">
                         <div class="tab-content">
                             <div class="content-profile p-4 tab-pane fade show active" id="profile">
                                 <div class="title-profile">Infomation</div>
+                                <div class="text-center col-12 col-sm-12">
+		                             <c:if test="${not empty messageResponse}">
+									  	<div class="alert alert-${alert}">
+											  <p>${messageResponse}</p>
+										  </div>
+									 </c:if>
+								</div>
                                     <div class="description-profile mt-4">
-                                        <form:form modelAttribute="profile" id="formSubmit">
                                         <div class="row">
                                             <div class="col-12 col-sm-12 col-md-3 mb-4">
                                                 <div class="img-profile">
@@ -90,7 +90,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        </form:form>
                                     </div>
                             </div>
 
@@ -100,17 +99,10 @@
                                         <div class="row">
                                             <div class="col-12 col-sm-12 col-md-9 p-0">
                                                 <div class="info-profile">
-                                                    <form>
                                                     <div class="row">
                                                         <div class="col-12 col-sm-12 col-md-12 form-group d-flex flex-row align-items-center">
-                                                            <label class="col-3 col-sm-3 col-md-3 m-0">Current Password</label>
-                                                            <input type="password" class="col-9 col-sm-9 col-md-9 form-control" placeholder="Enter Current Password" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-12 col-sm-12 col-md-12 form-group d-flex flex-row align-items-center">
-                                                            <label class="col-3 col-sm-3 col-md-3 m-0">New UserName</label>
-                                                            <input type="password" name="passWord" class="col-9 col-sm-9 col-md-9 form-control" placeholder="Enter Password" />
+                                                            <label class="col-3 col-sm-3 col-md-3 m-0">New Password</label>
+                                                            <form:password path="passWord" cssClass="col-9 col-sm-9 col-md-9 form-control" placeholder="Enter Password" />
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -122,31 +114,31 @@
                                                     <div class="row">
                                                         <div class="col-12 col-sm-12 col-md-12 form-group d-flex flex-row justify-content-center align-items-center">
                                                             <input type="reset" class="col-4 col-sm-4 col-md-2 m-0 btn btn-primary" value="Reset">
-                                                            <button class="col-4 col-sm-4 col-md-2 ml-2 form-control btn btn-success">Update</button>
+                                                            <button id="btn-Change" class="col-4 col-sm-4 col-md-2 ml-2 form-control btn btn-success">Update</button>
                                                         </div>
                                                     </div>
-                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                             </div>
                         </div>
+ 					</form:form>
                     </div>
                 </div>
             </div>
     </div>
 
 <script>
-$('#btn-Update').click(function(e){
+$('#btn-Change').click(function(e){
     e.preventDefault();
     var data = {};
     var formData = $('#formSubmit').serializeArray();
     $.each(formData,function(i,v){
         data[""+v.name+""] = v.value;
     });
-       updateItem(data);
-    function updateItem(data){
+       updateUser(data);
+    function updateUser(data){
         $.ajax({
            url : "${ProfileAPI}",
            type : "PUT",
@@ -154,10 +146,36 @@ $('#btn-Update').click(function(e){
            data: JSON.stringify(data),
            dataType: "json",
            success: function (result){
-        	   window.location.href = "${ProfileURL}?message=update_success&alert=success";
+        	   window.location.href = "${ProfileURL}?id=${profile.id}&message=update_success&alert=success";
            },
            error: function (error){
-        	   window.location.href = "${courseURL}?message=update_error&alert=danger";
+        	   window.location.href = "${courseURL}?id=${profile.id}&message=update_error&alert=danger";
+           },
+        });
+    }
+});
+
+
+$('#btn-Update').click(function(e){
+    e.preventDefault();
+    var data = {};
+    var formData = $('#formSubmit').serializeArray();
+    $.each(formData,function(i,v){
+        data[""+v.name+""] = v.value;
+    });
+       updateUser(data);
+    function updateUser(data){
+        $.ajax({
+           url : "${ProfileAPI}",
+           type : "PUT",
+           contentType: "application/json",
+           data: JSON.stringify(data),
+           dataType: "json",
+           success: function (result){
+        	   window.location.href = "${ProfileURL}?id=${profile.id}&message=update_success&alert=success";
+           },
+           error: function (error){
+        	   window.location.href = "${courseURL}?id=${profile.id}&message=update_error&alert=danger";
            },
         });
     }

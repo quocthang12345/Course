@@ -65,4 +65,10 @@ public class UserService implements IUserService {
 		return userConverter.toDTO(userRepo.findOne(id));
 	}
 
+	@Override
+	public UserEntity findOne(Long id) {
+		// TODO Auto-generated method stub
+		return userRepo.findOne(id);
+	}
+
 }
