@@ -30,6 +30,13 @@
                     </div>
 
                     <div class="col-12 col-sm-12 col-md-9">
+                    	<div class="text-center col-12 col-sm-12">
+                             <c:if test="${not empty messageResponse}">
+							  	<div class="alert alert-${alert}">
+									  <p>${messageResponse}</p>
+								  </div>
+							 </c:if>
+						</div>
                         <div class="tab-content">
                             <div class="content-profile p-4 tab-pane fade show active" id="profile">
                                 <div class="title-profile">Infomation</div>
@@ -70,7 +77,7 @@
                                                     <div class="row">
                                                         <div class="col-12 col-sm-12 col-md-12 form-group d-flex flex-row align-items-center">
                                                             <label class="col-3 col-sm-3 col-md-3 m-0">Infomation User</label>
-                                                            <textarea cols="5" rows="5" class="col-8 col-sm-8 col-md-8 form-control" name="username"></textarea>
+                                                            <textarea cols="5" rows="5" class="col-8 col-sm-8 col-md-8 form-control"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="row">

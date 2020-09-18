@@ -82,9 +82,10 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/profile" , method = RequestMethod.GET)
-	public ModelAndView profilePage(@RequestParam(value="id", required = false)Long id) {
+	public ModelAndView profilePage(@RequestParam(value="id", required = false)Long id, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("profile/profile");
 		UserDTO user = userService.findById(id);
+		MessageUtils.ShowMessage(request);
 		mav.addObject("profile", user);
 		return mav;
 	}
