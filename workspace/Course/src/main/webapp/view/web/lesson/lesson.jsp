@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-md-5 col-lg-4 wrap-detail">  
                     <div class="img-detail">
-                        <img src="<c:url value='/template/web/image/java.jpg' />" alt="lesson" />
+                        <img src="<c:url value='https://via.placeholder.com/290' />" alt="lesson" />
                     </div>
                 </div>
                 <div class="description-detail col-md-7 col-lg-8">
@@ -22,7 +22,7 @@
                         <li class="fact-2">Design</li>
                     </ul>
                     <div class="header-detail">
-                        <h2 class="title-detail">Java for Beginners 2020</h2>
+                        <h2 class="title-detail">${course.courseName}</h2>
                         <ul class="info-detail d-flex flex-row">
                             <li><i class="far fa-clipboard"></i> 10 - 20 weeks</li>
                             <li class="mr-5 ml-5"><i class="fab fa-google-play"></i> 102 Lectures</li>
@@ -30,9 +30,7 @@
                         </ul>
                     </div>
                     <p class="content-detail">
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id 
-                        est laborum. accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.
-                        veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                        ${course.courseDescription }
                     </p>
                     <div class="review-detail d-flex flex-row">
                         <div class="star-review">
@@ -57,20 +55,12 @@
                     <div class="overview">
                         <div class="content-overview">
                             <h4 class="title">Course Overview</h4>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus
-                            qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
-                            et quas molestias excepturi sint occaecati cupiditate non provident, similique 
-                            sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. 
-                            Et harum quidem rerum facilis est et expedita distinctio.
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                            totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt 
-                            explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur 
-                            magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                            <p>${course.courseContent }</p>
                         </div>
                         <div class="content-overview">
                             <h4 class="title">Requirements</h4>
                             <ul class="list-require">
-                                <li>At vero eos et accusamus et iusto odio dignissimos ducimus</li>
+                                <li>Students voluntarily learn knowledge related to the course</li>
                                 <li>At vero eos et accusamus et iusto odio dignissimos ducimus</li>
                                 <li>At vero eos et accusamus et iusto odio dignissimos ducimus</li>
                                 <li>At vero eos et accusamus et iusto odio dignissimos ducimus</li>

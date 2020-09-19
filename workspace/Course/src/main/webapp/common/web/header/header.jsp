@@ -13,13 +13,13 @@
             <div class="row">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-                        <a class="navbar-brand" href="#">TNT<span class="fab fa-telegram-plane"></span></a>
+                        <a class="navbar-brand" href="<c:url value='/trang-chu'/>">TNT<span class="fab fa-telegram-plane"></span></a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
                             <span class="icon-bar"></span>
                             </button>
                         <div class="collapse navbar-collapse" id="menu">
                             <ul class="navbar-nav mr-auto">
-                                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<c:url value='/trang-chu'/>">Home</a></li>
                                 <li class="nav-item"><a class="nav-link" href="<c:url value='/khoa-hoc'/>">Courses</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#">Mentor</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#" data-toggle="tab">Contact</a></li>

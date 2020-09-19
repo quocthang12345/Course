@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.SpringMVC.model.dto.UserDTO;
+import com.SpringMVC.service.ICourseService;
+import com.SpringMVC.service.ILessonService;
 import com.SpringMVC.service.IUserService;
 import com.SpringMVC.util.MessageUtils;
 import com.SpringMVC.util.SecurityUtils;
@@ -24,6 +26,10 @@ public class HomeController {
 	
 	@Autowired
 	private IUserService userService;
+	@Autowired
+	private ICourseService courseService;
+	@Autowired
+	private ILessonService lessonService;
 	
 
 	@RequestMapping(value = "/trang-chu" , method = RequestMethod.GET)
@@ -37,12 +43,16 @@ public class HomeController {
 	@RequestMapping(value = "/khoa-hoc" , method = RequestMethod.GET)
 	public ModelAndView coursePage() {
 		ModelAndView mav = new ModelAndView("web/list-course/list-course");
+		mav.addObject("listCourseJava",courseService.findList("Java "));
+		mav.addObject("listCourseJavaScript",courseService.findList("JavaScript"));
 		return mav;
 	}
 	
 	@RequestMapping(value = "/mon-hoc" , method = RequestMethod.GET)
-	public ModelAndView lessonPage() {
+	public ModelAndView lessonPage(@RequestParam(value="id",required = false)Long id) {
 		ModelAndView mav = new ModelAndView("web/lesson/lesson");
+		mav.addObject("course",courseService.findOne(id));
+		mav.addObject("listLesson",lessonService.findByCourseID(id, ""));
 		return mav;
 	}
 	
