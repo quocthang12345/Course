@@ -108,7 +108,7 @@
                                                     <div class="row">
                                                         <div class="col-12 col-sm-12 col-md-12 form-group d-flex flex-row align-items-center">
                                                             <label class="col-3 col-sm-3 col-md-3 m-0">Correct Password</label>
-                                                            <input type="password" class="col-9 col-sm-9 col-md-9 form-control" placeholder="Enter Password Again" />
+                                                            <input type="password" id="correctPassword" class="col-9 col-sm-9 col-md-9 form-control" placeholder="Enter Password Again" />
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -130,7 +130,57 @@
     </div>
 
 <script>
-$('#btn-Change').click(function(e){
+var password = document.getElementById("passWord");
+var rePassword = document.getElementById("correctPassword");
+
+$('#correctPassword').keyup(function(){
+	if(password.value !== rePassword.value){
+		rePassword.style.border  = "2px solid red";
+	}else{
+		rePassword.style.border  = "2px solid green";
+	}
+})
+
+$('#btn-Change').on("click",function(e){
+	e.preventDefault();
+	UpdateUser();
+});
+
+$('#btn-Update').on("click",function(e){
+	e.preventDefault();
+	UpdateUser();
+})
+
+function UpdateUser(){
+    var data = {};
+    var formData = $('#formSubmit').serializeArray();
+    $.each(formData,function(i,v){
+        data[""+v.name+""] = v.value;
+    });
+    if(password.value !== rePassword.value ){
+    	alert("Password invalid!");
+    }else{
+        updateUser(data);
+    }
+    function updateUser(data){
+        $.ajax({
+           url : "${ProfileAPI}",
+           type : "PUT",
+           contentType: "application/json",
+           data: JSON.stringify(data),
+           dataType: "json",
+           success: function (result){
+        	   window.location.href = "${ProfileURL}?id=${profile.id}&message=update_success&alert=success";
+           },
+           error: function (error){
+        	   window.location.href = "${courseURL}?id=${profile.id}&message=update_error&alert=danger";
+           },
+        });
+    }
+}
+
+
+/* $('#btn-Update').click(function(e){
     e.preventDefault();
     var data = {};
     var formData = $('#formSubmit').serializeArray();
@@ -153,33 +203,7 @@ $('#btn-Change').click(function(e){
            },
         });
     }
-});
-
-
-$('#btn-Update').click(function(e){
-    e.preventDefault();
-    var data = {};
-    var formData = $('#formSubmit').serializeArray();
-    $.each(formData,function(i,v){
-        data[""+v.name+""] = v.value;
-    });
-       updateUser(data);
-    function updateUser(data){
-        $.ajax({
-           url : "${ProfileAPI}",
-           type : "PUT",
-           contentType: "application/json",
-           data: JSON.stringify(data),
-           dataType: "json",
-           success: function (result){
-        	   window.location.href = "${ProfileURL}?id=${profile.id}&message=update_success&alert=success";
-           },
-           error: function (error){
-        	   window.location.href = "${courseURL}?id=${profile.id}&message=update_error&alert=danger";
-           },
-        });
-    }
-});
+}); */
 </script>
 </body>
 </html>
