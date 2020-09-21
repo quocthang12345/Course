@@ -20,8 +20,8 @@ public class LessonAPI {
 	private ILessonService lessonService;
 	
 	@GetMapping(value = "/api/lesson")
-	public List<LessonDTO> GetLesson(@RequestBody LessonDTO lesson) {
-		return lessonService.findByLessonName(lesson.getLessonName());	
+	public List<LessonDTO> GetLesson() {
+		return null;	
 	}
 	@PostMapping(value = "/api/lesson")
 	public LessonDTO InsertLesson(@RequestBody LessonDTO lesson) {

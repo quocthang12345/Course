@@ -61,9 +61,9 @@
                             <h4 class="title">Requirements</h4>
                             <ul class="list-require">
                                 <li>Students voluntarily learn knowledge related to the course</li>
-                                <li>At vero eos et accusamus et iusto odio dignissimos ducimus</li>
-                                <li>At vero eos et accusamus et iusto odio dignissimos ducimus</li>
-                                <li>At vero eos et accusamus et iusto odio dignissimos ducimus</li>
+                                <li>Install the necessary tools for the course</li>
+                                <li>Having a background in web programming</li>
+                                <li>Preparing yourself to search skills on google</li>
                             </ul>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                                     <div class="card-header">
                                         <h2 class="mb-0">
                                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#chapter-1" >
-                                            Part 01: How to Learn Web Designing Step by Step
+                                            Content & Video of Course
                                             </button>
                                         </h2>
                                     </div>
@@ -83,125 +83,16 @@
                                     <div id="chapter-1" class="collapse">
                                         <div class="card-body">
                                             <ul class="lesson" >
-                                                <li>
-                                                    <div class="lecture"><i class="fas fa-forward mr-2"></i>Lecture: 01</div>
-                                                    <a href="<c:url value='/video-mon-hoc' />" class="title">Web Designing Beginer</a>
-                                                </li>
-                                                <li>
-                                                    <div class="lecture"><i class="fas fa-forward mr-2"></i>Lecture: 02</div>
-                                                    <a href="#" class="title">Startup Designing with HTML5 & CSS3</a>
-                                                </li>
-                                                <li>
-                                                    <div class="lecture"><i class="fas fa-forward mr-2"></i>Lecture: 03</div>
-                                                    <a href="#" class="title">How To Call Google Map iFrame</a>
-                                                </li>
-                                                <li class="none-border">
-                                                    <div class="lecture"><i class="fas fa-forward mr-2"></i>Lecture: 04</div>
-                                                    <a href="#" class="title">Create Drop Down Navigation Using CSS3</a>
-                                                </li>
+                                           		<c:forEach var="i" items="${listLesson }">
+	                                                <li>
+	                                                    <div class="lecture"><i class="fas fa-forward mr-2"></i><a href="<c:url value='/video-mon-hoc?id=${i.id}' />" class="title">${i.lessonName}</a></div>
+	                                                </li>
+                                                </c:forEach>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h2 class="mb-0">
-                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#chapter-2" >
-                                                Part 02: Learn Web Designing in Basic Level
-                                            </button>
-                                        </h2>
-                                    </div>
                                 
-                                    <div id="chapter-2" class="collapse">
-                                        <div class="card-body">
-                                            <ul class="lesson" >
-                                                <li>
-                                                    <div class="lecture"><i class="fas fa-forward mr-2"></i>Lecture: 01</div>
-                                                    <a href="#" class="title">Web Designing Beginer</a>
-                                                </li>
-                                                <li>
-                                                    <div class="lecture"><i class="fas fa-forward mr-2"></i>Lecture: 02</div>
-                                                    <a href="#" class="title">Startup Designing with HTML5 & CSS3</a>
-                                                </li>
-                                                <li>
-                                                    <div class="lecture"><i class="fas fa-forward mr-2"></i>Lecture: 03</div>
-                                                    <a href="#" class="title">How To Call Google Map iFrame</a>
-                                                </li>
-                                                <li class="none-border">
-                                                    <div class="lecture"><i class="fas fa-forward mr-2"></i>Lecture: 04</div>
-                                                    <a href="#" class="title">Create Drop Down Navigation Using CSS3</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h2 class="mb-0">
-                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#chapter-3" >
-                                                Part 03: Learn Web Designing in Advance Level
-                                            </button>
-                                        </h2>
-                                    </div>
-                                
-                                    <div id="chapter-3" class="collapse">
-                                        <div class="card-body">
-                                            <ul class="lesson" >
-                                                <li>
-                                                    <div class="lecture"><i class="fas fa-forward mr-2"></i>Lecture: 01</div>
-                                                    <a href="#" class="title">Web Designing Beginer</a>
-                                                </li>
-                                                <li>
-                                                    <div class="lecture"><i class="fas fa-forward mr-2"></i>Lecture: 02</div>
-                                                    <a href="#" class="title">Startup Designing with HTML5 & CSS3</a>
-                                                </li>
-                                                <li>
-                                                    <div class="lecture"><i class="fas fa-forward mr-2"></i>Lecture: 03</div>
-                                                    <a href="#" class="title">How To Call Google Map iFrame</a>
-                                                </li>
-                                                <li class="none-border">
-                                                    <div class="lecture"><i class="fas fa-forward mr-2"></i>Lecture: 04</div>
-                                                    <a href="#" class="title">Create Drop Down Navigation Using CSS3</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h2 class="mb-0">
-                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#chapter-4" >
-                                                Part 04: How To Become Succes in Designing & Development?
-                                            </button>
-                                        </h2>
-                                    </div>
-                                
-                                    <div id="chapter-4" class="collapse">
-                                        <div class="card-body">
-                                            <ul class="lesson" >
-                                                <li>
-                                                    <div class="lecture"><i class="fas fa-forward mr-2"></i>Lecture: 01</div>
-                                                    <a href="#" class="title">Web Designing Beginer</a>
-                                                </li>
-                                                <li>
-                                                    <div class="lecture"><i class="fas fa-forward mr-2"></i>Lecture: 02</div>
-                                                    <a href="#" class="title">Startup Designing with HTML5 & CSS3</a>
-                                                </li>
-                                                <li>
-                                                    <div class="lecture"><i class="fas fa-forward mr-2"></i>Lecture: 03</div>
-                                                    <a href="#" class="title">How To Call Google Map iFrame</a>
-                                                </li>
-                                                <li class="none-border">
-                                                    <div class="lecture"><i class="fas fa-forward mr-2"></i>Lecture: 04</div>
-                                                    <a href="#" class="title">Create Drop Down Navigation Using CSS3</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

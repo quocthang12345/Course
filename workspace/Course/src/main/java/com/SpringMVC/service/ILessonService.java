@@ -13,5 +13,7 @@ public interface ILessonService {
 	LessonDTO Update(LessonDTO lesson);
 	void Delete(Long[] ids);
 	List<LessonDTO> findByCourseID(Long courseID,String keyword);
-	List<LessonDTO> findByLessonName(String LessonName);
+	List<LessonDTO> findListByCourseID(Long courseID);
+	Long getLastIdLesson();
+	Long getNextIdLesson(Long previousID);
 }

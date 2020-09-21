@@ -1,5 +1,7 @@
 package com.SpringMVC.controller.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.SpringMVC.model.dto.LessonDTO;
 import com.SpringMVC.model.dto.UserDTO;
 import com.SpringMVC.service.ICourseService;
 import com.SpringMVC.service.ILessonService;
@@ -52,13 +55,16 @@ public class HomeController {
 	public ModelAndView lessonPage(@RequestParam(value="id",required = false)Long id) {
 		ModelAndView mav = new ModelAndView("web/lesson/lesson");
 		mav.addObject("course",courseService.findOne(id));
-		mav.addObject("listLesson",lessonService.findByCourseID(id, ""));
+		mav.addObject("listLesson",lessonService.findListByCourseID(id));
 		return mav;
 	}
 	
 	@RequestMapping(value = "/video-mon-hoc" , method = RequestMethod.GET)
-	public ModelAndView videoPage() {
-		ModelAndView mav = new ModelAndView("web/video-lesson/video-lesson");
+	public ModelAndView videoPage(@RequestParam(value="id",required = false)Long id) {
+		ModelAndView mav = new ModelAndView("web/video-lesson/video-lesson");	
+		mav.addObject("nextLessonID",lessonService.getNextIdLesson(id));
+		mav.addObject("lesson",lessonService.findOne(id));
+		mav.addObject("lastLessonID",lessonService.getLastIdLesson());
 		return mav;
 	}
 	
