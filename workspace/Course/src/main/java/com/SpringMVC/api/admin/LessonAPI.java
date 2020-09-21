@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.SpringMVC.model.dto.LessonDTO;
 import com.SpringMVC.service.ILessonService;
 
-@RestController(value = "RestApiOfLesson")
+@RestController(value = "LessonApiOfAdmin")
 public class LessonAPI {
 	
 	@Autowired

@@ -15,10 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.SpringMVC.model.dto.LessonDTO;
+import com.SpringMVC.model.dto.ReviewDTO;
 import com.SpringMVC.model.dto.UserDTO;
 import com.SpringMVC.service.ICourseService;
 import com.SpringMVC.service.ILessonService;
+import com.SpringMVC.service.IReviewService;
 import com.SpringMVC.service.IUserService;
 import com.SpringMVC.util.MessageUtils;
 import com.SpringMVC.util.SecurityUtils;
@@ -33,7 +34,8 @@ public class HomeController {
 	private ICourseService courseService;
 	@Autowired
 	private ILessonService lessonService;
-	
+	@Autowired
+	private IReviewService reviewService;
 
 	@RequestMapping(value = "/trang-chu" , method = RequestMethod.GET)
 	public ModelAndView homePage() {
@@ -54,7 +56,11 @@ public class HomeController {
 	@RequestMapping(value = "/mon-hoc" , method = RequestMethod.GET)
 	public ModelAndView lessonPage(@RequestParam(value="id",required = false)Long id) {
 		ModelAndView mav = new ModelAndView("web/lesson/lesson");
+		mav.addObject("review",new ReviewDTO());
+		List<ReviewDTO> result = reviewService.findAllByCourse(courseService.findOneById(id));
+		mav.addObject("listReview",reviewService.findAllByCourse(courseService.findOneById(id)));
 		mav.addObject("course",courseService.findOne(id));
+		mav.addObject("user",userService.findByUsername(SecurityUtils.getPrincipal().getUsername()));
 		mav.addObject("listLesson",lessonService.findListByCourseID(id));
 		return mav;
 	}

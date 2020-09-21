@@ -9,4 +9,5 @@ public interface IUserService {
 	UserDTO findByUsername(String username);
 	UserDTO findById(Long id);
 	UserEntity findOne(Long id);
+	String getNameOfUserById(Long id);
 }

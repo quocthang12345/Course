@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.SpringMVC.model.dto.CourseDTO;
 import com.SpringMVC.service.ICourseService;
 
-@RestController(value = "RestApiOfCourse")
+@RestController(value = "CourseApiOfAdmin")
 public class CourseAPI {
 	@Autowired
 	private ICourseService courseService;

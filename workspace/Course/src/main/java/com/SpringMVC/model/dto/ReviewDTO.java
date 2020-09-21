@@ -1,28 +1,33 @@
 package com.SpringMVC.model.dto;
 
-import java.util.List;
-
 public class ReviewDTO extends AbstractDTO<ReviewDTO> {
 	private String reviewContent;
-	private List<UserDTO> users;
-	private List<CourseDTO> courses;
+	private Long userID;
+	private String userName;
+	private Long courseID;
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	public String getReviewContent() {
 		return reviewContent;
 	}
 	public void setReviewContent(String reviewContent) {
 		this.reviewContent = reviewContent;
 	}
-	public List<UserDTO> getUsers() {
-		return users;
+	public Long getUserID() {
+		return userID;
 	}
-	public void setUsers(List<UserDTO> users) {
-		this.users = users;
+	public void setUserID(Long userID) {
+		this.userID = userID;
 	}
-	public List<CourseDTO> getCourses() {
-		return courses;
+	public Long getCourseID() {
+		return courseID;
 	}
-	public void setCourses(List<CourseDTO> courses) {
-		this.courses = courses;
+	public void setCourseID(Long courseID) {
+		this.courseID = courseID;
 	}
-	
+
 }

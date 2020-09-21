@@ -71,4 +71,10 @@ public class UserService implements IUserService {
 		return userRepo.findOne(id);
 	}
 
+	@Override
+	public String getNameOfUserById(Long id) {
+		UserDTO user = userConverter.toDTO(userRepo.findOne(id));
+		return user.getFullName();
+	}
+
 }

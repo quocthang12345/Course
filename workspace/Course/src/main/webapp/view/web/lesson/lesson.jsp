@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
+<c:url var="ReviewURL" value="/mon-hoc"/> 
+<c:url var="ReviewAPI" value="/api/review"/> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,104 +129,51 @@
 
                     <div class="submit-review">
                         <h4 class="title">Submit Reviews</h4>
-                            <form >
-                                <div class="row">
-                                    <div class="col-md-6 col-lg-6 col-12 col-sm-12">
-                                        <input type="text" class="submit-name p-3 mb-3" placeholder="Your Name" />
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 col-12 col-sm-12">
-                                        <input type="text" class="submit-email p-3" placeholder="Your Email" />
-                                    </div>
-                                </div>
+                            <form:form modelAttribute="review" id="formReview">
                                 <div class="row mt-2">
                                     <div class="col-12 col-md-12 col-lg-12 col-sm-12">
-                                        <textarea type="text" cols="10" rows="5" class="submit-content-review p-4" placeholder="Your Review"></textarea>
+                                        <form:textarea path="reviewContent" cols="10" rows="5" cssClass="submit-content-review p-4" placeholder="Your Review"></form:textarea>
                                     </div>
                                 </div>
+                                <form:hidden path="courseID" value="${course.id}"/>
+                                <form:hidden path="userID" value="${user.id}"/>
                                 <div class="row">
                                     <div class="col-12 col-md-12 col-lg-12 col-sm-12">
-                                        <a href="#" class="btn btn-success">Submit-review</a>
+                                        <a type="button" id="btn-review" class="btn btn-success">Submit-review</a>
                                     </div>
                                 </div>
-                            </form>
+                            </form:form>
                     </div>
                     <div class="person-review">
-                        <div class="other-review">
-                            <div class="card">
-                                <div class="row no-gutters">
-                                    <div class="col-md-3 col-lg-3 col-12 col-sm-12">
-                                        <img src="<c:url value='/template/web/image/author-course.jpg' />" alt="image" class="image-other-review m-5"/> 
-                                    </div>
-                                    <div class="col-md-9 col-lg-9 col-12 col-sm-12">
-                                        <div class="card-body">
-                                            <ul class="title-review d-flex flex-row justify-content-between align-items-center">
-                                                <li class="name-submit-review">Josaph Manrty</li>
-                                                <li><i class="fas fa-calendar-alt mr-2"></i>27 Oct 2019</li>
-                                            </ul>
-                                            <div class="star mb-2">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                            </div>
-                                            <div class="text-review">" Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris. "</div>
-                                        </div>   
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="other-review">
-                            <div class="card">
-                                <div class="row no-gutters">
-                                    <div class="col-md-3 col-lg-3 col-12 col-sm-12">
-                                        <img src="<c:url value='/template/web/image/author-course.jpg' />" alt="image" class="image-other-review m-5"/> 
-                                    </div>
-                                    <div class="col-md-9 col-lg-9 col-12 col-sm-12">
-                                        <div class="card-body">
-                                            <ul class="title-review d-flex flex-row justify-content-between align-items-center">
-                                                <li class="name-submit-review">Josaph Manrty</li>
-                                                <li><i class="fas fa-calendar-alt mr-2"></i>27 Oct 2019</li>
-                                            </ul>
-                                            <div class="star mb-2">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                            </div>
-                                            <div class="text-review">" Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris. "</div>
-                                        </div>   
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="none-border other-review">
-                            <div class="card">
-                                <div class="row no-gutters">
-                                    <div class="col-md-3 col-lg-3 col-12 col-sm-12">
-                                        <img src="<c:url value='/template/web/image/author-course.jpg' />" alt="image" class="image-other-review m-5"/> 
-                                    </div>
-                                    <div class="col-md-9 col-lg-9 col-12 col-sm-12">
-                                        <div class="card-body">
-                                            <ul class="title-review d-flex flex-row justify-content-between align-items-center">
-                                                <li class="name-submit-review">Josaph Manrty</li>
-                                                <li><i class="fas fa-calendar-alt mr-2"></i>27 Oct 2019</li>
-                                            </ul>
-                                            <div class="star mb-2">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                            </div>
-                                            <div class="text-review">" Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris. "</div>
-                                        </div>   
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    
+	                    <c:forEach var="i" items="${listReview}">
+	                        <div class="other-review">
+	                            <div class="card">
+	                                <div class="row no-gutters">
+	                                    <div class="col-md-3 col-lg-3 col-12 col-sm-12">
+	                                        <img src="<c:url value='https://via.placeholder.com/100' />" alt="image" class="image-other-review m-5"/> 
+	                                    </div>
+	                                    <div class="col-md-9 col-lg-9 col-12 col-sm-12">
+	                                        <div class="card-body">
+	                                            <ul class="title-review d-flex flex-row justify-content-between align-items-center">
+	                                                <li class="name-submit-review">${i.userName}</li>
+	                                                <li><i class="fas fa-calendar-alt mr-2"></i>${i.createDate}</li>
+	                                            </ul>
+	                                            <div class="star mb-2">
+	                                                <span class="fa fa-star checked"></span>
+	                                                <span class="fa fa-star checked"></span>
+	                                                <span class="fa fa-star checked"></span>
+	                                                <span class="fa fa-star"></span>
+	                                                <span class="fa fa-star"></span>
+	                                            </div>
+	                                            <div class="text-review">"${i.reviewContent}"</div>
+	                                        </div>   
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </c:forEach>
+                     
                     </div>
 
 
@@ -280,5 +229,44 @@
             </div>
         </div>
     </div>
+    
+ <script>
+ $('#reviewContent').bind("enterKey",function(e){
+		e.preventDefault();
+		InsertReview();
+ });
+ $('#reviewContent').keyup(function(e){
+	 if(e.keyCode == 13) {
+   	 	$(this).trigger("enterKey");
+ 	 }
+ });
+ $('#btn-review').on("click",function(e){
+		e.preventDefault();
+		InsertReview();
+});
+ function InsertReview(){
+	    var data = {};
+	    var formData = $('#formReview').serializeArray();
+	    $.each(formData,function(i,v){
+	        data[""+v.name+""] = v.value;
+	    });
+	    Insert(data);
+	    function Insert(data){
+	        $.ajax({
+	           url : "${ReviewAPI}",
+	           type : "POST",
+	           contentType: "application/json",
+	           data: JSON.stringify(data),
+	           dataType: "json",
+	           success: function (result){
+	        	   window.location.href = "${ReviewURL}?id=${course.id}";
+	           },
+	           error: function (error){
+	        	   window.location.href = "${ReviewURL}?id=${course.id}";
+	           },
+	        });
+	    }
+	}
+</script>
 </body>
 </html>
