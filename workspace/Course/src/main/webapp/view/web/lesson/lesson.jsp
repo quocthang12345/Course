@@ -132,7 +132,7 @@
                             <form:form modelAttribute="review" id="formReview">
                                 <div class="row mt-2">
                                     <div class="col-12 col-md-12 col-lg-12 col-sm-12">
-                                        <form:textarea path="reviewContent" cols="10" rows="5" cssClass="submit-content-review p-4" placeholder="Your Review"></form:textarea>
+                                        <form:textarea path="reviewContent" id="reviewContent" cols="10" rows="5" cssClass="submit-content-review p-4" placeholder="Your Review"></form:textarea>
                                     </div>
                                 </div>
                                 <form:hidden path="courseID" value="${course.id}"/>
@@ -231,18 +231,22 @@
     </div>
     
  <script>
- $('#reviewContent').bind("enterKey",function(e){
-		e.preventDefault();
-		InsertReview();
- });
+ 
  $('#reviewContent').keyup(function(e){
-	 if(e.keyCode == 13) {
-   	 	$(this).trigger("enterKey");
- 	 }
- });
+	 	if(e.keyCode == 13) {
+	 		var review = $('#reviewContent').val();
+	 		e.preventDefault();
+			if($.trim(review) != ''){
+				InsertReview();
+			}
+	 	}
+	});
  $('#btn-review').on("click",function(e){
 		e.preventDefault();
-		InsertReview();
+ 		var review = $('#reviewContent').val();
+		if($.trim(review) != ''){
+			InsertReview();
+		}
 });
  function InsertReview(){
 	    var data = {};
@@ -260,6 +264,7 @@
 	           dataType: "json",
 	           success: function (result){
 	        	   window.location.href = "${ReviewURL}?id=${course.id}";
+	        	   console.log(result);
 	           },
 	           error: function (error){
 	        	   window.location.href = "${ReviewURL}?id=${course.id}";
