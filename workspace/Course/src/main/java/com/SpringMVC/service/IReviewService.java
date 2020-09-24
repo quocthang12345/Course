@@ -8,4 +8,5 @@ import com.SpringMVC.model.entity.CourseEntity;
 public interface IReviewService {
 	 ReviewDTO InsertReview(ReviewDTO reviewDTO);
 	 List<ReviewDTO> findAllByCourse(CourseEntity Course);
+	 void DeleteReview(Long id);
 }

@@ -49,4 +49,9 @@ public class ReviewService implements IReviewService {
 		return result;
 	}
 
+	@Override
+	public void DeleteReview(Long id) {
+		reviewRepo.delete(id);
+	}
+
 }

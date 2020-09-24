@@ -33,7 +33,7 @@ public class ReviewAPI {
 	}
 	
 	@DeleteMapping(value = "/api/review")
-	public void DeleteReview(@RequestBody long[] ids){
-		
+	public void DeleteReview(@RequestBody long id){
+		reviewService.DeleteReview(id);
 	}
 }

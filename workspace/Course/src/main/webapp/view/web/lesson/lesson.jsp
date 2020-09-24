@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <c:url var="ReviewURL" value="/mon-hoc"/> 
-<c:url var="CommentURL" value="/mon-hoc/review"/> 
 <c:url var="ReviewAPI" value="/api/review"/> 
 <!DOCTYPE html>
 <html>
@@ -148,7 +147,7 @@
                     <div class="person-review" id="person-review">
                     
 	                    <c:forEach var="i" items="${listReview}">
-	                        <div class="other-review">
+	                        <div class="other-review" id="other-review">
 	                            <div class="card">
 	                                <div class="row no-gutters">
 	                                    <div class="col-md-3 col-lg-3 col-12 col-sm-12">
@@ -167,7 +166,14 @@
 	                                                <span class="fa fa-star"></span>
 	                                                <span class="fa fa-star"></span>
 	                                            </div>
-	                                            <div class="text-review">"${i.reviewContent}"</div>
+	                                            <ul class="title-review d-flex flex-row justify-content-between align-items-center">
+	                                            	<li><div class="text-review">"${i.reviewContent}"</div></li>
+	                                            	<c:if test="${user.id == i.userID}">
+		                                            	<li>
+		                                            		<a type="button" id="btnDelete" ><i class="fas fa-trash"><input type="hidden" value="${i.id}" id="deleteID" /></i></a>
+		                                            	</li>
+	                                            	</c:if>
+	                                            </ul>
 	                                        </div>   
 	                                    </div>
 	                                </div>
@@ -233,6 +239,35 @@
     
  <script>
  
+ $('[id="btnDelete"]').click(function(e){
+	 var ids = $('#deleteID').val();
+		ConfirmDelete(ids);
+	});
+
+	function ConfirmDelete(ids){
+		var x = confirm("Are you sure you want to delete?");
+		 if (x){
+		deleteItem(ids);
+		}
+	}
+
+	function deleteItem(data){
+		$.ajax({
+		   url : "${ReviewAPI}",
+		   type : "DELETE",
+		   contentType: "application/json",
+		   data: JSON.stringify(data),
+		   success: function (result){
+        	   $('#person-review').load("${ReviewURL}?id=${course.id} #other-review");
+        	   location.reload();
+		   },
+		   error: function (error){
+			window.location.href = "${ReviewURL}?id=${course.id}";
+		   },
+		});
+	}
+ 
+ 
  $('#reviewContent').keyup(function(e){
 	 	if(e.keyCode == 13) {
 	 		var review = $('#reviewContent').val();
@@ -267,7 +302,8 @@
 	           dataType: "json",
 	           success: function (result){
 	        	   $('#reviewContent').val("");
-	        	   $('#person-review').load("${ReviewURL}?id=${course.id} #person-review");
+	        	   $('#person-review').load("${ReviewURL}?id=${course.id} #other-review");
+	        	   location.reload();
 	           },
 	           error: function (error){
 	        	   window.location.href = "${ReviewURL}?id=${course.id}";
