@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <c:url var="ReviewURL" value="/mon-hoc"/> 
+<c:url var="CommentURL" value="/mon-hoc/review"/> 
 <c:url var="ReviewAPI" value="/api/review"/> 
 <!DOCTYPE html>
 <html>
@@ -132,19 +133,19 @@
                             <form:form modelAttribute="review" id="formReview">
                                 <div class="row mt-2">
                                     <div class="col-12 col-md-12 col-lg-12 col-sm-12">
-                                        <form:textarea path="reviewContent" id="reviewContent" cols="10" rows="5" cssClass="submit-content-review p-4" placeholder="Your Review"></form:textarea>
+                                        <form:textarea path="reviewContent" cols="10" rows="5" cssClass="submit-content-review p-4" placeholder="Your Review"></form:textarea>
                                     </div>
                                 </div>
-                                <form:hidden path="courseID" value="${course.id}"/>
+                                <form:hidden path="courseID" value="${course.id}"/> 
                                 <form:hidden path="userID" value="${user.id}"/>
                                 <div class="row">
                                     <div class="col-12 col-md-12 col-lg-12 col-sm-12">
-                                        <a type="button" id="btn-review" class="btn btn-success">Submit-review</a>
+                                        <a type="submit" id="btn-review" class="btn btn-success">Submit-review</a>
                                     </div>
                                 </div>
                             </form:form>
                     </div>
-                    <div class="person-review">
+                    <div class="person-review" id="person-review">
                     
 	                    <c:forEach var="i" items="${listReview}">
 	                        <div class="other-review">
@@ -237,6 +238,7 @@
 	 		var review = $('#reviewContent').val();
 	 		e.preventDefault();
 			if($.trim(review) != ''){
+				e.preventDefault();
 				InsertReview();
 			}
 	 	}
@@ -245,6 +247,7 @@
 		e.preventDefault();
  		var review = $('#reviewContent').val();
 		if($.trim(review) != ''){
+			e.preventDefault();
 			InsertReview();
 		}
 });
@@ -263,15 +266,15 @@
 	           data: JSON.stringify(data),
 	           dataType: "json",
 	           success: function (result){
-	        	   window.location.href = "${ReviewURL}?id=${course.id}";
-	        	   console.log(result);
+	        	   $('#reviewContent').val("");
+	        	   $('#person-review').load("${ReviewURL}?id=${course.id} #person-review");
 	           },
 	           error: function (error){
 	        	   window.location.href = "${ReviewURL}?id=${course.id}";
 	           },
 	        });
 	    }
-	}
+	} 
 </script>
 </body>
 </html>

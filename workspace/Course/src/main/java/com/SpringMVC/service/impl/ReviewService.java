@@ -45,6 +45,7 @@ public class ReviewService implements IReviewService {
 			 reviewDTO.setUserName(userService.getNameOfUserById(reviewDTO.getUserID()));
 			 result.add(reviewDTO); 
 		 }
+		 
 		return result;
 	}
 

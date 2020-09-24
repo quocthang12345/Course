@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,16 +55,16 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/mon-hoc" , method = RequestMethod.GET)
-	public ModelAndView lessonPage(@RequestParam(value="id",required = false)Long id) {
+	public ModelAndView lessonPage(@RequestParam(value="id",required = false) Long id) {
 		ModelAndView mav = new ModelAndView("web/lesson/lesson");
-		mav.addObject("review",new ReviewDTO());
-		List<ReviewDTO> result = reviewService.findAllByCourse(courseService.findOneById(id));
 		mav.addObject("listReview",reviewService.findAllByCourse(courseService.findOneById(id)));
 		mav.addObject("course",courseService.findOne(id));
 		mav.addObject("user",userService.findByUsername(SecurityUtils.getPrincipal().getUsername()));
-		mav.addObject("listLesson",lessonService.findListByCourseID(id));
+		mav.addObject("listLesson",lessonService.findListByCourseID(id));		 
+		mav.addObject("review",new ReviewDTO());
 		return mav;
 	}
+	
 	
 	@RequestMapping(value = "/video-mon-hoc" , method = RequestMethod.GET)
 	public ModelAndView videoPage(@RequestParam(value="id",required = false)Long id) {
