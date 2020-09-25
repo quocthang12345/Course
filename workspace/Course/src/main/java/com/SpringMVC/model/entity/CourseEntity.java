@@ -7,9 +7,11 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -35,6 +37,16 @@ public class CourseEntity extends BaseEntity {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
     private List<LessonEntity> lessons;
     
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "author_id" ,nullable = false, 
+	        foreignKey = @ForeignKey(name = "fk_course_author"))
+	private AuthorEntity author;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "major_id" ,nullable = false, 
+	        foreignKey = @ForeignKey(name = "fk_course_major"))
+	private MajorEntity major;
+    
     
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "course_user", 
@@ -44,6 +56,17 @@ public class CourseEntity extends BaseEntity {
 	
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "courseReview")
     private List<ReviewEntity> reviews;
+    
+
+    
+	
+	public AuthorEntity getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(AuthorEntity author) {
+		this.author = author;
+	}
 
 	public String getCourseName() {
 		return courseName;
@@ -64,6 +87,8 @@ public class CourseEntity extends BaseEntity {
 	public String getCourseDescription() {
 		return courseDescription;
 	}
+
+
 
 	public void setCourseDescription(String courseDescription) {
 		this.courseDescription = courseDescription;
@@ -108,6 +133,14 @@ public class CourseEntity extends BaseEntity {
 	public void setReviews(List<ReviewEntity> reviews) {
 		this.reviews = reviews;
 	}
-    
+
+	public MajorEntity getMajor() {
+		return major;
+	}
+
+	public void setMajor(MajorEntity major) {
+		this.major = major;
+	}
+	
 
 }
