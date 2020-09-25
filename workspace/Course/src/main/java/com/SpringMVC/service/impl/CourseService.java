@@ -13,6 +13,7 @@ import com.SpringMVC.model.dto.CourseDTO;
 import com.SpringMVC.model.entity.CourseEntity;
 import com.SpringMVC.repository.CourseRepository;
 import com.SpringMVC.service.ICourseService;
+import com.SpringMVC.service.IMajorService;
 
 @Service
 public class CourseService implements ICourseService {
@@ -21,6 +22,8 @@ public class CourseService implements ICourseService {
 	private CourseRepository courseRepo;
 	@Autowired
 	private courseConvert courseConvert;
+	@Autowired
+	private IMajorService majorService;
 	
 	@Override
 	public List<CourseDTO> findList(String key) {
@@ -47,9 +50,12 @@ public class CourseService implements ICourseService {
 	public CourseDTO Update(CourseDTO course) {
 		if(course.getId() != null) {
 			CourseEntity newCourse = courseConvert.toEntity(course);
+			newCourse.setMajor(majorService.findByCode(course.getMajorCode()));
 			return courseConvert.toDTO(courseRepo.save(newCourse));
 		}
-		return courseConvert.toDTO(courseRepo.save(courseConvert.toEntity(course)));
+		CourseEntity courseEntity = courseConvert.toEntity(course);
+		courseEntity.setMajor(majorService.findByCode(course.getMajorCode()));
+		return courseConvert.toDTO(courseRepo.save(courseEntity));
 	}
 
 	@Override

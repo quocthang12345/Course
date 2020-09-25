@@ -12,6 +12,14 @@ public class CourseDTO extends AbstractDTO<CourseDTO> {
 	private Date totalTime;
 	private List<UserDTO> users;
 	private List<ReviewDTO> reviews;
+	private Long majorId;
+	private String majorCode;
+	public Long getMajorId() {
+		return majorId;
+	}
+	public void setMajorId(Long majorId) {
+		this.majorId = majorId;
+	}
 	public String getCourseName() {
 		return courseName;
 	}
@@ -59,6 +67,18 @@ public class CourseDTO extends AbstractDTO<CourseDTO> {
 	}
 	public void setReviews(List<ReviewDTO> reviews) {
 		this.reviews = reviews;
+	}
+	/**
+	 * @return the majorCode
+	 */
+	public String getMajorCode() {
+		return majorCode;
+	}
+	/**
+	 * @param majorCode the majorCode to set
+	 */
+	public void setMajorCode(String majorCode) {
+		this.majorCode = majorCode;
 	}
 	
 	

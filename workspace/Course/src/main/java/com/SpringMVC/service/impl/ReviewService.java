@@ -3,6 +3,8 @@ package com.SpringMVC.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,7 @@ public class ReviewService implements IReviewService {
 	private ReviewRepository reviewRepo;
 
 	@Override
+	@Transactional
 	public ReviewDTO InsertReview(ReviewDTO reviewDTO) {
 		ReviewEntity reviewEntity = new ReviewEntity();
 		reviewEntity.setContentReview(reviewDTO.getReviewContent());
@@ -50,6 +53,7 @@ public class ReviewService implements IReviewService {
 	}
 
 	@Override
+	@Transactional
 	public void DeleteReview(Long id) {
 		reviewRepo.delete(id);
 	}

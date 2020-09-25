@@ -37,10 +37,6 @@ public class CourseEntity extends BaseEntity {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
     private List<LessonEntity> lessons;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "author_id" ,nullable = false, 
-	        foreignKey = @ForeignKey(name = "fk_course_author"))
-	private AuthorEntity author;
     
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "major_id" ,nullable = false, 
@@ -58,15 +54,7 @@ public class CourseEntity extends BaseEntity {
     private List<ReviewEntity> reviews;
     
 
-    
-	
-	public AuthorEntity getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(AuthorEntity author) {
-		this.author = author;
-	}
+ 
 
 	public String getCourseName() {
 		return courseName;

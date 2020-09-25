@@ -49,6 +49,7 @@ public class UserService implements IUserService {
 	}
 
 	@Override
+	@Transactional
 	public UserDTO updateUser(UserDTO userDTO) {
 		UserEntity user = userConverter.toEntity(userDTO);
 		return userConverter.toDTO(userRepo.save(user));

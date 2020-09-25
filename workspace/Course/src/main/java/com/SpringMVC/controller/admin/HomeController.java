@@ -15,6 +15,7 @@ import com.SpringMVC.model.dto.LessonDTO;
 import com.SpringMVC.model.dto.UserDTO;
 import com.SpringMVC.service.ICourseService;
 import com.SpringMVC.service.ILessonService;
+import com.SpringMVC.service.IMajorService;
 import com.SpringMVC.service.IUserService;
 import com.SpringMVC.util.MessageUtils;
 import com.SpringMVC.util.SecurityUtils;
@@ -28,6 +29,8 @@ public class HomeController {
 	private ILessonService lessonService;
 	@Autowired
 	private IUserService userService;
+	@Autowired
+	private IMajorService majorService;
 	
 	@RequestMapping(value = "/admin-home" , method = RequestMethod.GET)
 	public ModelAndView homePage(@Param("key") String key) {
@@ -47,6 +50,7 @@ public class HomeController {
 			course = courseService.findOne(id);
 		}
 		MessageUtils.ShowMessage(request);
+		mav.addObject("major",majorService.findAll());
 		mav.addObject("course", course);
 		return mav;
 	}

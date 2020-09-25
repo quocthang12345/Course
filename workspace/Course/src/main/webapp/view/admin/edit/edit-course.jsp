@@ -26,11 +26,17 @@
 										  </div>
 									 </c:if>
 								 </div>
-                                <form:form class="form-edit" id="formSubmit" modelAttribute="course">
+                                <form:form class="form-edit" id="formSubmit" modelAttribute="course">    
                                         <div class="form-group col-12 col-sm-12">
                                             <label>Name of the course</label>
                                             <form:input path="courseName" cssClass="form-control" value="${course.courseName}" placeholder="Enter name course....." />
                                         </div>
+                                        <div class="form-group col-12 col-sm-12">
+                                           <form:select cssClass="form-control" path="majorCode" >
+												<form:option value="" label="-- Choose Major --" />
+								  	 			<form:options items="${major}" />
+										   </form:select>
+                                        </div> 
                                         <div class="form-group  col-12 col-sm-12">
                                             <label>Thumbnail</label>
                                             <input type="file" class="form-control-file file" value="Choose Files"/>

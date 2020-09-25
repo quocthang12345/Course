@@ -1,7 +1,5 @@
 package com.SpringMVC.controller.web;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,7 +8,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +17,7 @@ import com.SpringMVC.model.dto.ReviewDTO;
 import com.SpringMVC.model.dto.UserDTO;
 import com.SpringMVC.service.ICourseService;
 import com.SpringMVC.service.ILessonService;
+import com.SpringMVC.service.IMajorService;
 import com.SpringMVC.service.IReviewService;
 import com.SpringMVC.service.IUserService;
 import com.SpringMVC.util.MessageUtils;
@@ -37,11 +35,13 @@ public class HomeController {
 	private ILessonService lessonService;
 	@Autowired
 	private IReviewService reviewService;
+	@Autowired
+	private IMajorService majorService;
 
 	@RequestMapping(value = "/trang-chu" , method = RequestMethod.GET)
 	public ModelAndView homePage() {
 		ModelAndView mav = new ModelAndView("web/home");
-		UserDTO user = userService.findByUsername(SecurityUtils.getPrincipal().getUsername());
+		UserDTO user = userService.findByUsername(((String) (SecurityUtils.getPrincipal().getUsername())));
 		mav.addObject("user",user);
 		return mav;
 	}
@@ -49,8 +49,7 @@ public class HomeController {
 	@RequestMapping(value = "/khoa-hoc" , method = RequestMethod.GET)
 	public ModelAndView coursePage() {
 		ModelAndView mav = new ModelAndView("web/list-course/list-course");
-		mav.addObject("listCourseJava",courseService.findList("Java "));
-		mav.addObject("listCourseJavaScript",courseService.findList("JavaScript"));
+		mav.addObject("listCourse",majorService.findList());
 		return mav;
 	}
 	
