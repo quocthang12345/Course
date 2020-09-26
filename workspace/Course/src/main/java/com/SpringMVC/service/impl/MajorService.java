@@ -45,4 +45,13 @@ public class MajorService implements IMajorService {
 		return result;
 	}
 
+	@Override
+	public List<MajorDTO> search(String keyword) {
+		List<MajorDTO> result = new ArrayList<MajorDTO>();
+		for(MajorEntity major : majorRepo.search(keyword)) {
+			result.add(majorConverter.toDTO(major));
+		}
+		return result;
+	}
+
 }

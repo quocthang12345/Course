@@ -1,9 +1,12 @@
 package com.SpringMVC.controller.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.SpringMVC.model.dto.MajorDTO;
 import com.SpringMVC.model.dto.ReviewDTO;
 import com.SpringMVC.model.dto.UserDTO;
 import com.SpringMVC.service.ICourseService;
@@ -41,16 +45,24 @@ public class HomeController {
 	@RequestMapping(value = "/trang-chu" , method = RequestMethod.GET)
 	public ModelAndView homePage() {
 		ModelAndView mav = new ModelAndView("web/home");
-		UserDTO user = userService.findByUsername(((String) (SecurityUtils.getPrincipal().getUsername())));
+		UserDTO user = userService.findByUsername((SecurityUtils.getPrincipal().getUsername()).toString());
 		mav.addObject("user",user);
 		return mav;
 	}
 	
 	@RequestMapping(value = "/khoa-hoc" , method = RequestMethod.GET)
-	public ModelAndView coursePage() {
+	public ModelAndView coursePage(@Param("keyword") String keyword, @RequestParam(value="keysearch" ,required = false)String search) {
 		ModelAndView mav = new ModelAndView("web/list-course/list-course");
+		List<MajorDTO> ListSearch = majorService.search(keyword);
+		mav.addObject("keyword",keyword);
+		mav.addObject("ListSearch",ListSearch);
 		mav.addObject("listCourse",majorService.findList());
 		return mav;
+	}
+	
+	@RequestMapping(value = "/redirect" , method = RequestMethod.GET)
+	public String Redirect(@Param("key") String KeySearch) {
+		return "redirect:khoa-hoc?keysearch=" + KeySearch + "";
 	}
 	
 	@RequestMapping(value = "/mon-hoc" , method = RequestMethod.GET)

@@ -10,4 +10,5 @@ public interface IMajorService {
 	Map<String,String> findAll();
 	MajorEntity findByCode(String code);
 	List<MajorDTO> findList();
+	List<MajorDTO> search(String keyword);
 }
