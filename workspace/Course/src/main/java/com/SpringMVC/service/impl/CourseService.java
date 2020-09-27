@@ -9,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.SpringMVC.model.convert.courseConvert;
+import com.SpringMVC.model.convert.userConvert;
 import com.SpringMVC.model.dto.CourseDTO;
+import com.SpringMVC.model.dto.UserDTO;
 import com.SpringMVC.model.entity.CourseEntity;
+import com.SpringMVC.model.entity.UserEntity;
 import com.SpringMVC.repository.CourseRepository;
 import com.SpringMVC.service.ICourseService;
 import com.SpringMVC.service.IMajorService;
@@ -24,6 +27,9 @@ public class CourseService implements ICourseService {
 	private courseConvert courseConvert;
 	@Autowired
 	private IMajorService majorService;
+	
+	@Autowired
+	private userConvert userConverter;
 	
 	@Override
 	public List<CourseDTO> findList(String key) {
@@ -69,6 +75,15 @@ public class CourseService implements ICourseService {
 		for(Long id : ids) {
 			courseRepo.delete(id);
 		}	
+	}
+
+	@Override
+	public CourseDTO addUserInCourse(UserDTO user,CourseDTO course) {
+		UserEntity userEntity = userConverter.toEntity(user);
+		CourseEntity courseEntity = courseConvert.toEntity(course);
+		courseEntity.getUsers().add(userEntity);
+		userEntity.getCourses().add(courseEntity);
+		return courseConvert.toDTO(courseRepo.save(courseEntity));
 	}
 
 }

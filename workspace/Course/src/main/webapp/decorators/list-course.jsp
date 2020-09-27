@@ -11,6 +11,8 @@
 <link href="<c:url value='/template/web/css/list-courses.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/template/web/css/footers.css'/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/template/web/css/emails.css'/>" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 	<%@include file="/common/web/header/header.jsp" %>

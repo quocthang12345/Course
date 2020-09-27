@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
+ <c:url var="courseAPI" value="/api/course/"/> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +53,8 @@
 	                                <img src="<c:url value='https://via.placeholder.com/290'/>" alt="Java" />
 	                            </div>
 	                            <div class="card-body short-description-lesson">
-	                                <h4><a href="<c:url value='/mon-hoc?id=${j.id}'/>">${j.courseName}</a></h4>
+	                                <h4><a id="btnAddUser"  href="<c:url value='/mon-hoc?id=${j.id}'/>" >${j.courseName}</a></h4>
+	                                	<input type="hidden" name="id" id="id" value="${j.id}"/>
 	                                <p>${j.courseDescription}</p>
 	                                <div class="rating d-flex flex-row align-items-center justify-content-between">
 	                                    <ul class="rate d-flex flex-row align-items-center">
@@ -91,7 +93,8 @@
 	                                <img src="<c:url value='https://via.placeholder.com/290'/>" alt="Java" />
 	                            </div>
 	                            <div class="card-body short-description-lesson">
-	                                <h4><a href="<c:url value='/mon-hoc?id=${j.id}'/>">${j.courseName}</a></h4>
+	                                <h4><a id="btnAdd" href="<c:url value='/mon-hoc?id=${j.id}'/>">${j.courseName}</a></h4>
+	                                <input type="hidden" id="addId" value="${j.id}" />
 	                                <p>${j.courseDescription}</p>
 	                                <div class="rating d-flex flex-row align-items-center justify-content-between">
 	                                    <ul class="rate d-flex flex-row align-items-center">
@@ -122,5 +125,28 @@
 
         </div>
     </div>
+
+
+<script>
+$('[id="btnAdd"]').click(function(){
+    var id = $('[id="addId"]').val();
+    updateItem(id);
+    function updateItem(data){
+        $.ajax({
+           url : "${courseAPI}" + id + "",
+           type : "PUT",
+           contentType: "application/json",
+           data: JSON.stringify(data),
+           dataType: "json",
+           success: function (result){
+        	   location.reload();
+           },
+           error: function (error){
+        	   location.reload();
+           },
+        });
+    }
+});
+</script>    
 </body>
 </html>

@@ -1,5 +1,7 @@
 package com.SpringMVC.model.dto;
 
+import java.util.List;
+
 public class UserDTO extends AbstractDTO<UserDTO> {
 	private String userName;
 	private String avatar;
@@ -7,6 +9,13 @@ public class UserDTO extends AbstractDTO<UserDTO> {
 	private String fullName;
 	private int status;
 	private Long roleId;
+	List<CourseDTO> courses ;
+	public List<CourseDTO> getCourses() {
+		return courses;
+	}
+	public void setCourses(List<CourseDTO> courses) {
+		this.courses = courses;
+	}
 	public int getStatus() {
 		return status;
 	}

@@ -19,11 +19,11 @@
                                 <br><p style="font-size:25px;font-weight:600;color:rgb(218,11,78);margin:0">Start Learning Daily
                                     New Thing</p></h1>
                             <p class="text-description">Study any topic, anytime. Choose from thousands of expert-led courses now.</p>
-                            <form action="<c:url value='/trang-chu' />">
+                            <form action="<c:url value='/redirect' />">
                             	<input class="input-search" type="search" name="key" id="key" onsearch="this.form.submit()" onchange="this.form.submit()" placeholder="What do you want to learn?" >
                             </form>
                             </div>            
-                        </div>s
+                        </div>
                     </div>
                 </div>
                 <div class="row">

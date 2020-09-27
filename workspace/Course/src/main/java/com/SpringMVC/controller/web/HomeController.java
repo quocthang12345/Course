@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.SpringMVC.model.dto.CourseDTO;
 import com.SpringMVC.model.dto.MajorDTO;
 import com.SpringMVC.model.dto.ReviewDTO;
 import com.SpringMVC.model.dto.UserDTO;
@@ -51,18 +52,18 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/khoa-hoc" , method = RequestMethod.GET)
-	public ModelAndView coursePage(@Param("keyword") String keyword, @RequestParam(value="keysearch" ,required = false)String search) {
+	public ModelAndView coursePage(@Param("keyword") String keyword) {
 		ModelAndView mav = new ModelAndView("web/list-course/list-course");
-		List<MajorDTO> ListSearch = majorService.search(keyword);
 		mav.addObject("keyword",keyword);
-		mav.addObject("ListSearch",ListSearch);
+		mav.addObject("ListSearch",majorService.search(keyword));
 		mav.addObject("listCourse",majorService.findList());
+		mav.addObject("course",new CourseDTO());
 		return mav;
 	}
 	
 	@RequestMapping(value = "/redirect" , method = RequestMethod.GET)
-	public String Redirect(@Param("key") String KeySearch) {
-		return "redirect:khoa-hoc?keysearch=" + KeySearch + "";
+	public ModelAndView Redirect(@RequestParam("key") String KeySearch) {
+		return new ModelAndView("redirect:khoa-hoc?keyword=" + KeySearch + "");
 	}
 	
 	@RequestMapping(value = "/mon-hoc" , method = RequestMethod.GET)
