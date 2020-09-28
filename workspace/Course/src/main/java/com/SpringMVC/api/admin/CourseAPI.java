@@ -10,12 +10,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.SpringMVC.model.dto.CourseDTO;
+import com.SpringMVC.model.dto.UserDTO;
 import com.SpringMVC.service.ICourseService;
+import com.SpringMVC.service.IUserService;
+import com.SpringMVC.util.SecurityUtils;
 
 @RestController(value = "CourseApiOfAdmin")
 public class CourseAPI {
 	@Autowired
 	private ICourseService courseService;
+	@Autowired
+	private IUserService userService;
+	
 	@GetMapping(value = "/api/course")
 	public CourseDTO ReadCourse(){
 		return null;
@@ -33,8 +39,11 @@ public class CourseAPI {
 	}
 	
 	@PutMapping(value = "/api/course/{id}")
-	public CourseDTO AddUserInCourse(@PathVariable Long id){
-		return null;	
+	public CourseDTO AddUserInCourse(@PathVariable("id") Long courseid){
+		/* có thể lỗi khi ta get username của principal liên tục , mai nếu thay đổi ko đc thì nên tạo 1 bảng join trung gian handle*/
+		UserDTO user = userService.findByUsername(SecurityUtils.getPrincipal().getUsername());
+		CourseDTO course = courseService.findOne(courseid);
+		return courseService.addUserInCourse(user, course);	
 	}
 	
 	@DeleteMapping(value = "/api/course")

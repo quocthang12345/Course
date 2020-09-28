@@ -43,7 +43,6 @@ public abstract class BaseEntity {
 		return id;
 	}
 
-
 	public Date getCreateDate() {
 		return createDate;
 	}

@@ -53,7 +53,7 @@
 	                                <img src="<c:url value='https://via.placeholder.com/290'/>" alt="Java" />
 	                            </div>
 	                            <div class="card-body short-description-lesson">
-	                                <h4><a id="btnAddUser"  href="<c:url value='/mon-hoc?id=${j.id}'/>" >${j.courseName}</a></h4>
+	                                <h4><a onclick="callAPIUser(${j.id})"  href="<c:url value='/mon-hoc?id=${j.id}'/>" >${j.courseName}</a></h4>
 	                                	<input type="hidden" name="id" id="id" value="${j.id}"/>
 	                                <p>${j.courseDescription}</p>
 	                                <div class="rating d-flex flex-row align-items-center justify-content-between">
@@ -81,20 +81,19 @@
                    
             
           <c:if test="${empty ListSearch}">
-           <c:forEach var="i" items="${listCourse}">
+           <c:forEach var="i" items="${listCourse}" varStatus="Index">
             <div class="block-course">
                 <div class="title-block">${i.majorName}</div>
                 <div class="list-course">
                     <div class="row">
-                    	<c:forEach var="j" items="${i.course}">
+                    	<c:forEach var="j" items="${i.course}" varStatus="myIndex">
                         <div class="col-12 col-sm-12 col-md-3 col-lg-3 mb-2">
 	                        <div class="card course">
 	                            <div class="card-header img-lesson p-0">
 	                                <img src="<c:url value='https://via.placeholder.com/290'/>" alt="Java" />
 	                            </div>
 	                            <div class="card-body short-description-lesson">
-	                                <h4><a id="btnAdd" href="<c:url value='/mon-hoc?id=${j.id}'/>">${j.courseName}</a></h4>
-	                                <input type="hidden" id="addId" value="${j.id}" />
+	                                <h4><a onclick="callAPIUser(${j.id})" href="<c:url value='/mon-hoc?id=${j.id}'/>">${j.courseName}</a></h4>
 	                                <p>${j.courseDescription}</p>
 	                                <div class="rating d-flex flex-row align-items-center justify-content-between">
 	                                    <ul class="rate d-flex flex-row align-items-center">
@@ -110,6 +109,7 @@
 	                                    </div>
 	                                </div>
 	                            </div>
+	          
 	                        </div>
                         </div>
                         </c:forEach>
@@ -128,25 +128,22 @@
 
 
 <script>
-$('[id="btnAdd"]').click(function(){
-    var id = $('[id="addId"]').val();
-    updateItem(id);
-    function updateItem(data){
+function callAPIUser(index){
+	addUser();
+    function addUser(){
         $.ajax({
-           url : "${courseAPI}" + id + "",
+           url : "${courseAPI}" + index + "",
            type : "PUT",
            contentType: "application/json",
-           data: JSON.stringify(data),
-           dataType: "json",
            success: function (result){
-        	   location.reload();
+        	   window.location.href = "/mon-hoc?id=" + index +"";
            },
            error: function (error){
-        	   location.reload();
+        	   window.location.href = "/mon-hoc?id=" + index +"";
            },
         });
     }
-});
-</script>    
+}
+</script> 
 </body>
 </html>

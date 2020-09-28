@@ -78,11 +78,17 @@ public class CourseService implements ICourseService {
 	}
 
 	@Override
+	@Transactional
 	public CourseDTO addUserInCourse(UserDTO user,CourseDTO course) {
 		UserEntity userEntity = userConverter.toEntity(user);
 		CourseEntity courseEntity = courseConvert.toEntity(course);
-		courseEntity.getUsers().add(userEntity);
-		userEntity.getCourses().add(courseEntity);
+		List<UserEntity> checkUserInCourse = courseRepo.getUserInCourse(course.getId());
+		if(checkUserInCourse.contains(userEntity)) {
+			return null;
+		}else {
+			userEntity.getCourses().add(courseEntity);
+			courseEntity.getUsers().add(userEntity);
+		}
 		return courseConvert.toDTO(courseRepo.save(courseEntity));
 	}
 

@@ -32,9 +32,6 @@ public class userConvert {
 	    	if(userDTO.getPassWord() != null) {
 	    		result.setPassword(encoder.encode(userDTO.getPassWord()));
 	    	}
-//	    	UserEntity oldUser = postService.getPostById(postDto.getId());
-//	        post.setRedditID(oldPost.getRedditID());
-//	        post.setSent(oldPost.isSent());
 	    	return result;
 	    }
 	    return user;

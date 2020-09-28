@@ -43,7 +43,7 @@ public class UserEntity extends BaseEntity {
 	}
 
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "users")
-    private List<CourseEntity> courses;
+    private List<CourseEntity> courses = new ArrayList<CourseEntity>();
     
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles", 

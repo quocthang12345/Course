@@ -1,12 +1,18 @@
 package com.SpringMVC.model.convert;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.SpringMVC.model.dto.CourseDTO;
 import com.SpringMVC.model.entity.CourseEntity;
+import com.SpringMVC.model.entity.MajorEntity;
+import com.SpringMVC.model.entity.UserEntity;
 import com.SpringMVC.service.ICourseService;
+import com.SpringMVC.service.IMajorService;
+import com.SpringMVC.service.IUserService;
 
 @Component
 public class courseConvert {
@@ -28,6 +34,8 @@ public class courseConvert {
 	    	result.setCourseDescription(courseDto.getCourseDescription());
 	    	result.setCourseName(courseDto.getCourseName());
 	    	result.setThumbnail(courseDto.getThumbnail());
+	    	result.setUsers(course.getUsers());
+	    	result.setMajor(course.getMajor());
 	    	return result;
 	    }
 	    return course;

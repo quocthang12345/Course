@@ -11,4 +11,5 @@ public interface UserRepository extends JpaRepository<UserEntity, Long>{
 	
 	@Query(value = "SELECT MAX(u.id) FROM UserEntity u",nativeQuery = true)
 	long getLastElement();
+
 }
