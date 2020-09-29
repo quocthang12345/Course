@@ -1,5 +1,8 @@
 package com.SpringMVC.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.SpringMVC.model.convert.userConvert;
 import com.SpringMVC.model.dto.UserDTO;
+import com.SpringMVC.model.entity.CourseEntity;
 import com.SpringMVC.model.entity.HistoryEntity;
 import com.SpringMVC.model.entity.RoleEntity;
 import com.SpringMVC.model.entity.UserEntity;
@@ -52,6 +56,9 @@ public class UserService implements IUserService {
 	@Transactional
 	public UserDTO updateUser(UserDTO userDTO) {
 		UserEntity user = userConverter.toEntity(userDTO);
+		if(userDTO.getPassWord() != null) {
+			user.setPassword(encoder.encode(userDTO.getPassWord()));
+    	}
 		return userConverter.toDTO(userRepo.save(user));
 	}
 
@@ -62,13 +69,11 @@ public class UserService implements IUserService {
 
 	@Override
 	public UserDTO findById(Long id) {
-		// TODO Auto-generated method stub
 		return userConverter.toDTO(userRepo.findOne(id));
 	}
 
 	@Override
 	public UserEntity findOne(Long id) {
-		// TODO Auto-generated method stub
 		return userRepo.findOne(id);
 	}
 
@@ -76,6 +81,18 @@ public class UserService implements IUserService {
 	public String getNameOfUserById(Long id) {
 		UserDTO user = userConverter.toDTO(userRepo.findOne(id));
 		return user.getFullName();
+	}
+
+	@Override
+	public List<CourseEntity> getCourseByUser(UserEntity user) {
+		if(user != null) {
+		List<CourseEntity> result = new ArrayList<CourseEntity>();
+		for(CourseEntity i : userRepo.getCourseInUser(user.getId())) {
+			result.add(i);
+		}
+		return result;
+		}
+		return null;
 	}
 
 }

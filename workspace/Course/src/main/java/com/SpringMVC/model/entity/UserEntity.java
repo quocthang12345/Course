@@ -42,8 +42,13 @@ public class UserEntity extends BaseEntity {
 		this.status = status;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "users")
-    private List<CourseEntity> courses = new ArrayList<CourseEntity>();
+	@ManyToMany(fetch = FetchType.LAZY,
+			cascade = {
+	                CascadeType.PERSIST,
+	                CascadeType.MERGE
+	            },
+			mappedBy = "users")
+    private List<CourseEntity> courses = new ArrayList<>();
     
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles", 

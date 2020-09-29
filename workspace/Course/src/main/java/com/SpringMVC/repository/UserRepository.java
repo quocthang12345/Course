@@ -1,8 +1,11 @@
 package com.SpringMVC.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import com.SpringMVC.model.entity.CourseEntity;
 import com.SpringMVC.model.entity.UserEntity;
 
 public interface UserRepository extends JpaRepository<UserEntity, Long>{
@@ -11,5 +14,8 @@ public interface UserRepository extends JpaRepository<UserEntity, Long>{
 	
 	@Query(value = "SELECT MAX(u.id) FROM UserEntity u",nativeQuery = true)
 	long getLastElement();
+	
+	@Query(value = "SELECT u.courses FROM UserEntity u WHERE u.id = ?1")
+	List<CourseEntity> getCourseInUser(Long userID);
 
 }

@@ -1,7 +1,6 @@
 package com.SpringMVC.model.entity;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -48,8 +47,8 @@ public class CourseEntity extends BaseEntity {
     
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "course_user", 
-        joinColumns = { @JoinColumn(name = "course_id", nullable = false, updatable = false) }, 
-        inverseJoinColumns = { @JoinColumn(name = "user_id", nullable = false, updatable = false) })
+        joinColumns = { @JoinColumn(name = "course_id") }, 
+        inverseJoinColumns = { @JoinColumn(name = "user_id") })
     private List<UserEntity> users = new ArrayList<UserEntity>();
 	
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "courseReview")
@@ -99,7 +98,7 @@ public class CourseEntity extends BaseEntity {
 		this.totalTime = totalTime;
 	}
 
-	public Collection<LessonEntity> getLessons() {
+	public List<LessonEntity> getLessons() {
 		return lessons;
 	}
 

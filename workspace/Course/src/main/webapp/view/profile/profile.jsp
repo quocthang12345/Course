@@ -180,30 +180,6 @@ function UpdateUser(){
 }
 
 
-/* $('#btn-Update').click(function(e){
-    e.preventDefault();
-    var data = {};
-    var formData = $('#formSubmit').serializeArray();
-    $.each(formData,function(i,v){
-        data[""+v.name+""] = v.value;
-    });
-       updateUser(data);
-    function updateUser(data){
-        $.ajax({
-           url : "${ProfileAPI}",
-           type : "PUT",
-           contentType: "application/json",
-           data: JSON.stringify(data),
-           dataType: "json",
-           success: function (result){
-        	   window.location.href = "${ProfileURL}?id=${profile.id}&message=update_success&alert=success";
-           },
-           error: function (error){
-        	   window.location.href = "${courseURL}?id=${profile.id}&message=update_error&alert=danger";
-           },
-        });
-    }
-}); */
 </script>
 </body>
 </html>

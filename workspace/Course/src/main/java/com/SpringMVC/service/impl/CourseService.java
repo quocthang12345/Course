@@ -13,6 +13,7 @@ import com.SpringMVC.model.convert.userConvert;
 import com.SpringMVC.model.dto.CourseDTO;
 import com.SpringMVC.model.dto.UserDTO;
 import com.SpringMVC.model.entity.CourseEntity;
+import com.SpringMVC.model.entity.MajorEntity;
 import com.SpringMVC.model.entity.UserEntity;
 import com.SpringMVC.repository.CourseRepository;
 import com.SpringMVC.service.ICourseService;
@@ -86,10 +87,31 @@ public class CourseService implements ICourseService {
 		if(checkUserInCourse.contains(userEntity)) {
 			return null;
 		}else {
-			userEntity.getCourses().add(courseEntity);
 			courseEntity.getUsers().add(userEntity);
+			userEntity.getCourses().add(courseEntity);
 		}
 		return courseConvert.toDTO(courseRepo.save(courseEntity));
+	}
+
+	@Override
+	public List<CourseEntity> findListEntity(MajorEntity major) {
+		List<CourseEntity> result = new ArrayList<CourseEntity>();
+		for(CourseEntity i : courseRepo.findListByMajor(major)) {
+			result.add(i);
+		}
+		return result;
+	}
+
+	@Override
+	public List<UserEntity> getListByCourse(CourseEntity course) {
+		if(course != null) {
+		List<UserEntity> result = new ArrayList<UserEntity>();
+		for(UserEntity i : courseRepo.getUserInCourse(course.getId())) {
+			result.add(i);
+		}
+		return result;
+		}
+		return null;
 	}
 
 }

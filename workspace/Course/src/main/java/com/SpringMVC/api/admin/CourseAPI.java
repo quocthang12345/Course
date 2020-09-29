@@ -40,7 +40,7 @@ public class CourseAPI {
 	
 	@PutMapping(value = "/api/course/{id}")
 	public CourseDTO AddUserInCourse(@PathVariable("id") Long courseid){
-		/* có thể lỗi khi ta get username của principal liên tục , mai nếu thay đổi ko đc thì nên tạo 1 bảng join trung gian handle*/
+		/*thay đổi method get user bằng get id trên presentation xuongs và call service thực hiện, và nên truyền 2 entity xuống*/
 		UserDTO user = userService.findByUsername(SecurityUtils.getPrincipal().getUsername());
 		CourseDTO course = courseService.findOne(courseid);
 		return courseService.addUserInCourse(user, course);	

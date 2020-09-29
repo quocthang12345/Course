@@ -1,7 +1,5 @@
 package com.SpringMVC.model.convert;
 
-import java.util.List;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -9,10 +7,8 @@ import org.springframework.stereotype.Component;
 import com.SpringMVC.model.dto.CourseDTO;
 import com.SpringMVC.model.entity.CourseEntity;
 import com.SpringMVC.model.entity.MajorEntity;
-import com.SpringMVC.model.entity.UserEntity;
 import com.SpringMVC.service.ICourseService;
 import com.SpringMVC.service.IMajorService;
-import com.SpringMVC.service.IUserService;
 
 @Component
 public class courseConvert {
@@ -20,6 +16,8 @@ public class courseConvert {
 	private ModelMapper modelMapper;
 	@Autowired
 	private ICourseService courseService;
+	@Autowired
+	private IMajorService majorService;
 	
 	public CourseDTO toDTO(CourseEntity courseEntity) {
 		CourseDTO course = modelMapper.map(courseEntity,CourseDTO.class);
@@ -30,12 +28,13 @@ public class courseConvert {
 		CourseEntity course = modelMapper.map(courseDto, CourseEntity.class);
 	    if (courseDto.getId() != null) {
 	    	CourseEntity result = courseService.findOneById(courseDto.getId());
+	    	MajorEntity major = majorService.findByCode(courseDto.getMajorCode());
 	    	result.setCourseContent(courseDto.getCourseContent());
 	    	result.setCourseDescription(courseDto.getCourseDescription());
 	    	result.setCourseName(courseDto.getCourseName());
 	    	result.setThumbnail(courseDto.getThumbnail());
-	    	result.setUsers(course.getUsers());
-	    	result.setMajor(course.getMajor());
+	    	result.setMajor(major);
+//	    	result.setUsers(courseService.getListByCourse(course));
 	    	return result;
 	    }
 	    return course;

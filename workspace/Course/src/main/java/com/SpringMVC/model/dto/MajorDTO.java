@@ -1,12 +1,13 @@
 package com.SpringMVC.model.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MajorDTO extends AbstractDTO<MajorDTO> {
 
 	private String majorName;
 	private String majorCode;
-	private List<CourseDTO> course ;
+	private List<CourseDTO> course = new ArrayList<CourseDTO>();
 	
 	public String getMajorName() {
 		return majorName;

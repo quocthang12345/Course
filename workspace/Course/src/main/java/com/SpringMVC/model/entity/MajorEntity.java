@@ -1,5 +1,6 @@
 package com.SpringMVC.model.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -19,7 +20,7 @@ public class MajorEntity extends BaseEntity {
 	private String majorCode;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "major")
-    private List<CourseEntity> courseMajor;
+    private List<CourseEntity> courseMajor = new ArrayList<CourseEntity>();
 	
 	public String getMajorName() {
 		return majorName;
