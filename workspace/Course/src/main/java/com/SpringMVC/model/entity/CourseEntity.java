@@ -1,6 +1,5 @@
 package com.SpringMVC.model.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -44,17 +41,22 @@ public class CourseEntity extends BaseEntity {
 	        foreignKey = @ForeignKey(name = "fk_course_major"))
 	private MajorEntity major;
     
-    
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "course_user", 
-        joinColumns = { @JoinColumn(name = "course_id") }, 
-        inverseJoinColumns = { @JoinColumn(name = "user_id") })
-    private List<UserEntity> users = new ArrayList<UserEntity>();
 	
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "courseReview")
     private List<ReviewEntity> reviews;
     
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "courseUser")
+    private List<JoinEntity> joinsUser;
+    
 
+
+	public List<JoinEntity> getJoinsUser() {
+		return joinsUser;
+	}
+
+	public void setJoinsUser(List<JoinEntity> joinsUser) {
+		this.joinsUser = joinsUser;
+	}
 
 	public String getCourseName() {
 		return courseName;
@@ -106,13 +108,6 @@ public class CourseEntity extends BaseEntity {
 		this.lessons = lessons;
 	}
 
-	public List<UserEntity> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<UserEntity> users) {
-		this.users = users;
-	}
 
 	public List<ReviewEntity> getReviews() {
 		return reviews;

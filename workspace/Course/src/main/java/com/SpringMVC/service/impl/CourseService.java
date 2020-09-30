@@ -78,20 +78,6 @@ public class CourseService implements ICourseService {
 		}	
 	}
 
-	@Override
-	@Transactional
-	public CourseDTO addUserInCourse(UserDTO user,CourseDTO course) {
-		UserEntity userEntity = userConverter.toEntity(user);
-		CourseEntity courseEntity = courseConvert.toEntity(course);
-		List<UserEntity> checkUserInCourse = courseRepo.getUserInCourse(course.getId());
-		if(checkUserInCourse.contains(userEntity)) {
-			return null;
-		}else {
-			courseEntity.getUsers().add(userEntity);
-			userEntity.getCourses().add(courseEntity);
-		}
-		return courseConvert.toDTO(courseRepo.save(courseEntity));
-	}
 
 	@Override
 	public List<CourseEntity> findListEntity(MajorEntity major) {
@@ -102,16 +88,5 @@ public class CourseService implements ICourseService {
 		return result;
 	}
 
-	@Override
-	public List<UserEntity> getListByCourse(CourseEntity course) {
-		if(course != null) {
-		List<UserEntity> result = new ArrayList<UserEntity>();
-		for(UserEntity i : courseRepo.getUserInCourse(course.getId())) {
-			result.add(i);
-		}
-		return result;
-		}
-		return null;
-	}
 
 }

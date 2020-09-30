@@ -83,16 +83,5 @@ public class UserService implements IUserService {
 		return user.getFullName();
 	}
 
-	@Override
-	public List<CourseEntity> getCourseByUser(UserEntity user) {
-		if(user != null) {
-		List<CourseEntity> result = new ArrayList<CourseEntity>();
-		for(CourseEntity i : userRepo.getCourseInUser(user.getId())) {
-			result.add(i);
-		}
-		return result;
-		}
-		return null;
-	}
 
 }

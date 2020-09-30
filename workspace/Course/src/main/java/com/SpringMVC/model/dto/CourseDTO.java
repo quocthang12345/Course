@@ -10,10 +10,18 @@ public class CourseDTO extends AbstractDTO<CourseDTO> {
 	private String courseContent;
 	private List<LessonDTO> lessons;
 	private Date totalTime;
-	private List<UserDTO> users;
-	private List<ReviewDTO> reviews;
+	private List<JoinDTO> joinCourse;
+	private List<ReviewDTO> reviewCourse;
 	private Long majorId;
 	private String majorCode;
+	
+	
+	public List<ReviewDTO> getReviewCourse() {
+		return reviewCourse;
+	}
+	public void setReviewCourse(List<ReviewDTO> reviewCourse) {
+		this.reviewCourse = reviewCourse;
+	}
 	public Long getMajorId() {
 		return majorId;
 	}
@@ -50,23 +58,17 @@ public class CourseDTO extends AbstractDTO<CourseDTO> {
 	public void setLessons(List<LessonDTO> lessons) {
 		this.lessons = lessons;
 	}
+	public List<JoinDTO> getJoinCourse() {
+		return joinCourse;
+	}
+	public void setJoinCourse(List<JoinDTO> joinCourse) {
+		this.joinCourse = joinCourse;
+	}
 	public Date getTotalTime() {
 		return totalTime;
 	}
 	public void setTotalTime(Date totalTime) {
 		this.totalTime = totalTime;
-	}
-	public List<UserDTO> getUsers() {
-		return users;
-	}
-	public void setUsers(List<UserDTO> users) {
-		this.users = users;
-	}
-	public List<ReviewDTO> getReviews() {
-		return reviews;
-	}
-	public void setReviews(List<ReviewDTO> reviews) {
-		this.reviews = reviews;
 	}
 	/**
 	 * @return the majorCode

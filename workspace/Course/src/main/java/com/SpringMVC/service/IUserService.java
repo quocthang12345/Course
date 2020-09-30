@@ -1,9 +1,6 @@
 package com.SpringMVC.service;
 
-import java.util.List;
-
 import com.SpringMVC.model.dto.UserDTO;
-import com.SpringMVC.model.entity.CourseEntity;
 import com.SpringMVC.model.entity.UserEntity;
 
 public interface IUserService {
@@ -13,5 +10,4 @@ public interface IUserService {
 	UserDTO findById(Long id);
 	UserEntity findOne(Long id);
 	String getNameOfUserById(Long id);
-	List<CourseEntity> getCourseByUser(UserEntity user);
 }

@@ -15,7 +15,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Long>{
 	@Query(value = "SELECT MAX(u.id) FROM UserEntity u",nativeQuery = true)
 	long getLastElement();
 	
-	@Query(value = "SELECT u.courses FROM UserEntity u WHERE u.id = ?1")
-	List<CourseEntity> getCourseInUser(Long userID);
+//	@Query(value = "SELECT u.courses FROM UserEntity u WHERE u.id = ?1")
+//	List<CourseEntity> getCourseInUser(Long userID);
 
 }

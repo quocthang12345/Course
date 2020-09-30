@@ -19,8 +19,6 @@ import com.SpringMVC.util.SecurityUtils;
 public class CourseAPI {
 	@Autowired
 	private ICourseService courseService;
-	@Autowired
-	private IUserService userService;
 	
 	@GetMapping(value = "/api/course")
 	public CourseDTO ReadCourse(){
@@ -38,13 +36,6 @@ public class CourseAPI {
 		return courseService.Update(courseDto);	
 	}
 	
-	@PutMapping(value = "/api/course/{id}")
-	public CourseDTO AddUserInCourse(@PathVariable("id") Long courseid){
-		/*thay đổi method get user bằng get id trên presentation xuongs và call service thực hiện, và nên truyền 2 entity xuống*/
-		UserDTO user = userService.findByUsername(SecurityUtils.getPrincipal().getUsername());
-		CourseDTO course = courseService.findOne(courseid);
-		return courseService.addUserInCourse(user, course);	
-	}
 	
 	@DeleteMapping(value = "/api/course")
 	public void DeleteCourse(@RequestBody Long[] ids){

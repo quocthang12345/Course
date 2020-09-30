@@ -14,8 +14,8 @@ public interface CourseRepository extends JpaRepository<CourseEntity, Long> {
 	@Query(value = "SELECT c FROM CourseEntity c WHERE c.courseName LIKE %?1%")
 	List<CourseEntity> search(String keyword);
 	
-	@Query(value = "SELECT c.users FROM CourseEntity c WHERE c.id = ?1")
-	List<UserEntity> getUserInCourse(Long courseID);
+//	@Query(value = "SELECT c.users FROM CourseEntity c WHERE c.id = ?1")
+//	List<UserEntity> getUserInCourse(Long courseID);
 	
 	List<CourseEntity> findListByMajor(MajorEntity major);
 	

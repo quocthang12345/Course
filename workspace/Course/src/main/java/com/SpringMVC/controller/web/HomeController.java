@@ -1,5 +1,7 @@
 package com.SpringMVC.controller.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.SpringMVC.model.dto.CourseDTO;
+import com.SpringMVC.model.dto.JoinDTO;
+import com.SpringMVC.model.dto.LessonDTO;
 import com.SpringMVC.model.dto.ReviewDTO;
 import com.SpringMVC.model.dto.UserDTO;
 import com.SpringMVC.service.ICourseService;
@@ -52,10 +56,13 @@ public class HomeController {
 	@RequestMapping(value = "/khoa-hoc" , method = RequestMethod.GET)
 	public ModelAndView coursePage(@Param("keyword") String keyword) {
 		ModelAndView mav = new ModelAndView("web/list-course/list-course");
+		UserDTO user = userService.findByUsername((SecurityUtils.getPrincipal().getUsername()).toString());
+		mav.addObject("user",user);
 		mav.addObject("keyword",keyword);
 		mav.addObject("ListSearch",majorService.search(keyword));
 		mav.addObject("listCourse",majorService.findList());
 		mav.addObject("course",new CourseDTO());
+		mav.addObject("join", new JoinDTO());
 		return mav;
 	}
 	
@@ -70,7 +77,7 @@ public class HomeController {
 		mav.addObject("listReview",reviewService.findAllByCourse(courseService.findOneById(id)));
 		mav.addObject("course",courseService.findOne(id));
 		mav.addObject("user",userService.findByUsername(SecurityUtils.getPrincipal().getUsername()));
-		mav.addObject("listLesson",lessonService.findListByCourseID(id));		 
+		mav.addObject("listLesson",lessonService.findListByCourseID(id));		
 		mav.addObject("review",new ReviewDTO());
 		return mav;
 	}

@@ -8,6 +8,7 @@
      	<class>com.SpringMVC.model.entity.ReviewEntity</class>
      	<class>com.SpringMVC.model.entity.RoleEntity</class>
      	<class>com.SpringMVC.model.entity.UserEntity</class>
+     	<class>com.SpringMVC.model.entity.JoinEntity</class>
      	<class>com.SpringMVC.model.entity.BaseEntity</class>
     </persistence-unit>
 </persistence>

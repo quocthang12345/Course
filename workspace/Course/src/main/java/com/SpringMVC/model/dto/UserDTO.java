@@ -9,12 +9,21 @@ public class UserDTO extends AbstractDTO<UserDTO> {
 	private String fullName;
 	private int status;
 	private Long roleId;
-	List<CourseDTO> courses ;
-	public List<CourseDTO> getCourses() {
-		return courses;
+	private List<JoinDTO> joinCourse ;
+	private List<ReviewDTO> userReview;
+	
+
+	public List<ReviewDTO> getUserReview() {
+		return userReview;
 	}
-	public void setCourses(List<CourseDTO> courses) {
-		this.courses = courses;
+	public void setUserReview(List<ReviewDTO> userReview) {
+		this.userReview = userReview;
+	}
+	public List<JoinDTO> getJoinCourse() {
+		return joinCourse;
+	}
+	public void setJoinCourse(List<JoinDTO> joinCourse) {
+		this.joinCourse = joinCourse;
 	}
 	public int getStatus() {
 		return status;

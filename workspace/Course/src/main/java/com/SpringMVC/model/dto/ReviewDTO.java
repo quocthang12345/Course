@@ -3,14 +3,17 @@ package com.SpringMVC.model.dto;
 public class ReviewDTO extends AbstractDTO<ReviewDTO> {
 	private String reviewContent;
 	private Long userID;
-	private String userName;
+	private String fullName;
 	private Long courseID;
-	public String getUserName() {
-		return userName;
+	
+	
+	public String getFullName() {
+		return fullName;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
+
 	public String getReviewContent() {
 		return reviewContent;
 	}

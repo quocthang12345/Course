@@ -34,22 +34,6 @@ public class UserEntity extends BaseEntity {
 	private int status;
 	
 
-    public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
-	}
-
-	@ManyToMany(fetch = FetchType.LAZY,
-			cascade = {
-	                CascadeType.PERSIST,
-	                CascadeType.MERGE
-	            },
-			mappedBy = "users")
-    private List<CourseEntity> courses = new ArrayList<>();
-    
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles", 
         joinColumns = { @JoinColumn(name = "user_id")}, 
@@ -62,6 +46,45 @@ public class UserEntity extends BaseEntity {
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "userReview")
     private List<ReviewEntity> reviews;
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userCourse")
+    private List<JoinEntity> joinCourses;
+    
+    
+    
+    
+    public List<JoinEntity> getJoinCourses() {
+		return joinCourses;
+	}
+
+	public void setJoinCourses(List<JoinEntity> joinCourses) {
+		this.joinCourses = joinCourses;
+	}
+
+	public String getPassWord() {
+		return passWord;
+	}
+
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
 	public String getUserName() {
 		return userName;
@@ -95,13 +118,6 @@ public class UserEntity extends BaseEntity {
 		this.fullName = fullname;
 	}
 
-	public List<CourseEntity> getCourses() {
-		return courses;
-	}
-
-	public void setCourses(List<CourseEntity> courses) {
-		this.courses = courses;
-	}
 
 	public List<RoleEntity> getRoles() {
 		return roles;

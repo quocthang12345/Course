@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import com.SpringMVC.model.dto.MajorDTO;
 import com.SpringMVC.model.entity.MajorEntity;
-import com.SpringMVC.service.ICourseService;
 import com.SpringMVC.service.IMajorService;
 
 @Component
@@ -15,8 +14,6 @@ public class majorConvert {
 	private ModelMapper modelMapper;
 	@Autowired
 	private IMajorService majorService;
-	@Autowired
-	private ICourseService courseService;
 	
 	public MajorDTO toDTO(MajorEntity majorEntity) {
 		MajorDTO major = modelMapper.map(majorEntity,MajorDTO.class);
@@ -29,7 +26,6 @@ public class majorConvert {
 	    	MajorEntity newMajor = majorService.findByCode(major.getMajorCode());
 	    	newMajor.setMajorCode(majorDto.getMajorCode());
 	    	newMajor.setMajorName(majorDto.getMajorName());
-	    	newMajor.setCourseMajor(courseService.findListEntity(major));
 	    }
 	    return major;
 	}

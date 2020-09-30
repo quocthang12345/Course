@@ -42,13 +42,11 @@ public class ReviewService implements IReviewService {
 	@Override
 	public List<ReviewDTO> findAllByCourse(CourseEntity Course) {
 		List<ReviewDTO> result = new ArrayList<ReviewDTO>();
-		
 		 for(ReviewEntity review : reviewRepo.findByCourseReview(Course)) {
 			 ReviewDTO reviewDTO = reviewConverter.toDTO(review);
-			 reviewDTO.setUserName(userService.getNameOfUserById(reviewDTO.getUserID()));
+			 reviewDTO.setFullName(userService.getNameOfUserById(reviewDTO.getUserID()));
 			 result.add(reviewDTO); 
-		 }
-		 
+		 }		 
 		return result;
 	}
 

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
- <c:url var="courseAPI" value="/api/course/"/> 
+ <c:url var="joinAPI" value="/api/join/"/> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -132,15 +132,15 @@ function callAPIUser(index){
 	addUser();
     function addUser(){
         $.ajax({
-           url : "${courseAPI}" + index + "",
-           type : "PUT",
+           url : "${joinAPI}" + index + "",
+           type : "POST",
            contentType: "application/json",
            success: function (result){
-        	   window.location.href = "/mon-hoc?id=" + index +"";
-           },
-           error: function (error){
-        	   window.location.href = "/mon-hoc?id=" + index +"";
-           },
+        	   
+           }, 
+            error: function (error){
+            	
+           }, 
         });
     }
 }

@@ -156,7 +156,7 @@
 	                                    <div class="col-md-9 col-lg-9 col-12 col-sm-12">
 	                                        <div class="card-body">
 	                                            <ul class="title-review d-flex flex-row justify-content-between align-items-center">
-	                                                <li class="name-submit-review">${i.userName}</li>
+	                                                <li class="name-submit-review">${i.fullName}</li>
 	                                                <li><i class="fas fa-calendar-alt mr-2"></i>${i.createDate}</li>
 	                                            </ul>
 	                                            <div class="star mb-2">
