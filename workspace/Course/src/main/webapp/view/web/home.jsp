@@ -88,16 +88,17 @@
                     </div>
                     <div class="content-feature">
                         <div class="row">
+                        <c:forEach var="i" items="${topCourse}">
                         <div class="item-feature-1 col-12 col-md-4 col-lg-4 col-sm-12">
                             <div class="card content-feature-1">
                                 <div class="card-header item-feature-img-1 p-0">
-                                    <img src="<c:url value='/template/web/image/img-feature1.jpg'/>" alt="item-feature-1" />
+                                    <img src="<c:url value='https://via.placeholder.com/150x285'/>" alt="item-feature-1" />
                                 </div>
                                 <div class="card-body description-feature">
                                     <div class="wrap-feature">
-                                        <div class="title"><h4>
-                                            The Complete Financial Analyst Course 2020
-                                        </h4></div>
+                                        <div class="title"><h4><a href="<c:url value="mon-hoc?id=${i.id}"/>">
+                                            ${i.courseName}
+                                        </a></h4></div>
                                         <div class="content">
                                                 <ul class="temp">
                                                     <li class="label1" style="color:rgb(33,177,124)">Expert</li>
@@ -109,7 +110,7 @@
                                                     <li class="view">5,69684 Views</li>
                                                     <li class="time">5h 32min</li>
                                                 </ul>
-                                                <p class="price">$79.99</p>
+                                                <p class="price">Free</p>
                                             </div>
                                         </div>
                                     </div>
@@ -123,12 +124,15 @@
                                     </div>
                                     <p class="Datetime">
                                         <i class="fas fa-calendar-alt"></i>
-                                        1 days ago
+                                        ${i.createDate}
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="item-feature-2 col-12 col-md-4 col-lg-4 col-sm-12">
+                        </c:forEach>
+                        
+                        
+                      <%--   <div class="item-feature-2 col-12 col-md-4 col-lg-4 col-sm-12">
                             <div class="card content-feature-2">
                                 <div class="card-header item-feature-img-2 p-0">
                                     <img src="<c:url value='/template/web/image/img-feature2.jpg'/>" alt="item-feature-img-2" />
@@ -168,6 +172,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="item-feature-3 col-12 col-md-4 col-lg-4 col-sm-12">
                             <div class="card content-feature-3">
                                 <div class="card-header item-feature-img-3 p-0">
@@ -207,7 +212,9 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </div> --%>
+                        
+                        
                         </div>
                     </div>
                 </div>

@@ -1,3 +1,4 @@
 eclipse.preferences.version=1
 encoding//database/database.sql=UTF-8
 encoding//src/main/java/com/SpringMVC/api/admin/CourseAPI.java=UTF-8
+encoding//src/main/java/com/SpringMVC/service/impl/JoinService.java=UTF-8

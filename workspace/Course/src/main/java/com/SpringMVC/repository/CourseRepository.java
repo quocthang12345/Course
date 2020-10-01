@@ -1,5 +1,6 @@
 package com.SpringMVC.repository;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,6 +19,7 @@ public interface CourseRepository extends JpaRepository<CourseEntity, Long> {
 //	List<UserEntity> getUserInCourse(Long courseID);
 	
 	List<CourseEntity> findListByMajor(MajorEntity major);
+	
 	
 
 }

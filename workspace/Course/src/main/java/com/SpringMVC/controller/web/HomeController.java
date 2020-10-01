@@ -23,6 +23,7 @@ import com.SpringMVC.model.dto.LessonDTO;
 import com.SpringMVC.model.dto.ReviewDTO;
 import com.SpringMVC.model.dto.UserDTO;
 import com.SpringMVC.service.ICourseService;
+import com.SpringMVC.service.IJoinService;
 import com.SpringMVC.service.ILessonService;
 import com.SpringMVC.service.IMajorService;
 import com.SpringMVC.service.IReviewService;
@@ -44,11 +45,14 @@ public class HomeController {
 	private IReviewService reviewService;
 	@Autowired
 	private IMajorService majorService;
+	@Autowired
+	private IJoinService joinService;
 
 	@RequestMapping(value = "/trang-chu" , method = RequestMethod.GET)
 	public ModelAndView homePage() {
 		ModelAndView mav = new ModelAndView("web/home");
 		UserDTO user = userService.findByUsername((SecurityUtils.getPrincipal().getUsername()).toString());
+		mav.addObject("topCourse",joinService.getTopCourse(3));
 		mav.addObject("user",user);
 		return mav;
 	}
