@@ -3,9 +3,11 @@ package com.SpringMVC.model.dto;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class CourseDTO extends AbstractDTO<CourseDTO> {
 	private String courseName;
-	private String thumbnail;
+	private MultipartFile thumbnail;
 	private String courseDescription;
 	private String courseContent;
 	private List<LessonDTO> lessons;
@@ -14,7 +16,6 @@ public class CourseDTO extends AbstractDTO<CourseDTO> {
 	private List<ReviewDTO> reviewCourse;
 	private Long majorId;
 	private String majorCode;
-	
 	
 	public List<ReviewDTO> getReviewCourse() {
 		return reviewCourse;
@@ -34,10 +35,12 @@ public class CourseDTO extends AbstractDTO<CourseDTO> {
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
 	}
-	public String getThumbnail() {
+	
+
+	public MultipartFile getThumbnail() {
 		return thumbnail;
 	}
-	public void setThumbnail(String thumbnail) {
+	public void setThumbnail(MultipartFile thumbnail) {
 		this.thumbnail = thumbnail;
 	}
 	public String getCourseDescription() {

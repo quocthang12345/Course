@@ -53,6 +53,7 @@ public class HomeController {
 		ModelAndView mav = new ModelAndView("web/home");
 		UserDTO user = userService.findByUsername((SecurityUtils.getPrincipal().getUsername()).toString());
 		mav.addObject("topCourse",joinService.getTopCourse(3));
+		mav.addObject("TopCourseInJava",joinService.getTopCourseInJava(3));
 		mav.addObject("user",user);
 		return mav;
 	}

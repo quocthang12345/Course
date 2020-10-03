@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="col-12 col-sm-12 col-md-9">
-						<form:form modelAttribute="profile" id="formSubmit">
+						<form:form modelAttribute="profile" id="formSubmit" enctype="multipart/form-data">
                         <div class="tab-content">
                             <div class="content-profile p-4 tab-pane fade show active" id="profile">
                                 <div class="title-profile">Infomation</div>
@@ -46,6 +46,7 @@
                                             <div class="col-12 col-sm-12 col-md-3 mb-4">
                                                 <div class="img-profile">
                                                     <img src="https://via.placeholder.com/150" alt="img-user" />
+                                                    <form:input type="file" path="avatar" cssClass="col-8 col-sm-8 col-md-8 form-control" />
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-9 p-0">

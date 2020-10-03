@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.web.multipart.MultipartFile;
+
 @Entity
 @Table(name = "lesson")
 public class LessonEntity extends BaseEntity {
@@ -18,7 +20,7 @@ public class LessonEntity extends BaseEntity {
 	private String descriptionLesson;
 	
 	@Column(name = "video")
-	private String Video;
+	private byte[] Video;
 	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -52,12 +54,12 @@ public class LessonEntity extends BaseEntity {
 	}
 
 
-	public String getVideo() {
+	public byte[] getVideo() {
 		return Video;
 	}
 
 
-	public void setVideo(String video) {
+	public void setVideo(byte[] video) {
 		Video = video;
 	}
 

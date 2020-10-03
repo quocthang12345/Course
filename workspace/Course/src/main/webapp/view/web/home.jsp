@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Home</title>
+<style>
+</style>
 </head>        
 <body>
 			<!-- This is a start of the Banner Page -->
@@ -92,18 +94,18 @@
                         <div class="item-feature-1 col-12 col-md-4 col-lg-4 col-sm-12">
                             <div class="card content-feature-1">
                                 <div class="card-header item-feature-img-1 p-0">
-                                    <img src="<c:url value='https://via.placeholder.com/150x285'/>" alt="item-feature-1" />
+                                    <img src="<c:url value='https://via.placeholder.com/285x200'/>" alt="item-feature-1" />
                                 </div>
                                 <div class="card-body description-feature">
                                     <div class="wrap-feature">
-                                        <div class="title"><h4><a href="<c:url value="mon-hoc?id=${i.id}"/>">
+                                        <div class="title"><h4><a href="<c:url value="mon-hoc?id=${i.id}"/>" style="text-decoration:none;">
                                             ${i.courseName}
                                         </a></h4></div>
                                         <div class="content">
                                                 <ul class="temp">
                                                     <li class="label1" style="color:rgb(33,177,124)">Expert</li>
                                                     <li class="label2" style="color:rgb(255,118,0)">Professional</li>
-                                                    <li class="label3" style="color:rgb(138,101,251)">Design</li> 
+                                                    <li class="label3" style="color:rgb(138,101,251)">${i.majorCode}</li> 
                                                 </ul>
                                             <div class="detail-feature">
                                                 <ul>
@@ -115,14 +117,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer author">
-                                    <div class="name-author">
+                                <div class="card-footer author p-2">
+                                    <div class="name-author m-0">
                                         <div class="img-author">
                                             <img src="<c:url value='/template/web/image/img-author.jpg'/>" alt="author"/>
                                         </div>
                                         <p>Shaurya Preet</p>
                                     </div>
-                                    <p class="Datetime">
+                                    <p class="Datetime m-0">
                                         <i class="fas fa-calendar-alt"></i>
                                         ${i.createDate}
                                     </p>
@@ -131,88 +133,6 @@
                         </div>
                         </c:forEach>
                         
-                        
-                      <%--   <div class="item-feature-2 col-12 col-md-4 col-lg-4 col-sm-12">
-                            <div class="card content-feature-2">
-                                <div class="card-header item-feature-img-2 p-0">
-                                    <img src="<c:url value='/template/web/image/img-feature2.jpg'/>" alt="item-feature-img-2" />
-                                </div>
-                                <div class="card-body description-feature-2">
-                                    <div class="wrap-feature">
-                                        <div class="title"><h4>
-                                            The Complete Business Plan Course (Includes 50 Templates)
-                                        </h4></div>
-                                        <div class="content">
-                                                <ul class="temp">
-                                                    <li class="label1" style="color:rgb(33,177,124)">Expert</li>
-                                                    <li class="label2" style="color:rgb(255,118,0)">Professional</li>
-                                                    <li class="label3" style="color:rgb(138,101,251)">Design</li> 
-                                                </ul>
-                                            <div class="detail-feature">
-                                                <ul>
-                                                    <li class="view">75,1864 Views</li>
-                                                    <li class="time">12h 40min</li>
-                                                </ul>
-                                                <p class="price">$139.99</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer author">
-                                    <div class="name-author">
-                                        <div class="img-author">
-                                             <img src="<c:url value='/template/web/image/img-author1.jpg'/>" alt="author"/>
-                                        </div>
-                                        <p>Savitha Tripathi</p>
-                                    </div>
-                                    <p class="Datetime">
-                                        <i class="fas fa-calendar-alt"></i>
-                                        5 days ago
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="item-feature-3 col-12 col-md-4 col-lg-4 col-sm-12">
-                            <div class="card content-feature-3">
-                                <div class="card-header item-feature-img-3 p-0">
-                                     <img src="<c:url value='/template/web/image/img-feature.jpg'/>" alt="item-feature-img-3" />
-                                </div>
-                                <div class="card-body description-feature-3">
-                                    <div class="wrap-feature">
-                                        <div class="title"><h4>
-                                            An Entire MBA In 1 Course:Award Winning Business School Prof
-                                        </h4></div>
-                                        <div class="content">
-                                                <ul class="temp">
-                                                    <li class="label1" style="color:rgb(33,177,124)">Expert</li>
-                                                    <li class="label2" style="color:rgb(255,118,0)">Professional</li>
-                                                    <li class="label3" style="color:rgb(138,101,251)">Design</li> 
-                                                </ul>
-                                            <div class="detail-feature">
-                                                <ul>
-                                                    <li class="view">502,334 Views</li>
-                                                    <li class="time">20h 16min</li>
-                                                </ul>
-                                                <p class="price">$179.99</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer author">
-                                    <div class="name-author">
-                                        <div class="img-author">
-                                            <img src="<c:url value='/template/web/image/img-author2.jpg'/>" alt="author"/>
-                                        </div>
-                                        <p>Litha Maildick</p>
-                                    </div>
-                                    <p class="Datetime">
-                                        <i class="fas fa-calendar-alt"></i>
-                                        1 month ago
-                                    </p>
-                                </div>
-                            </div>
-                        </div> --%>
                         
                         
                         </div>
@@ -380,99 +300,40 @@
                     </div>
                     <div class="content-feature mt-2">
                         <div class="row">
+                        <c:forEach var="j" items="${TopCourseInJava}">
                         <div class="item-feature-1 col-12 col-md-4 col-lg-4 col-sm-12">
                             <div class="card content-feature-1">
                                 <div class="card-header item-course item-course-img-1 p-0">
-                                    <img src="<c:url value='/template/web/image/img-course-1.jpg'/>" alt="course" />
-                                    <span class="cost">$199</span></div>
+                                    <img src="<c:url value='https://via.placeholder.com/285x200'/>" alt="course" />
+                                    <span class="cost">Free</span></div>
                                 <div class="card-body description-feature">
                                     <div class="wrap-feature">
-                                        <div class="title"><h4>
-                                            An Entire MBA in 1 Course:Award Winning Business School Prof
-                                        </h4></div>
+                                        <div class="title"><h4><a href="<c:url value="mon-hoc?id=${j.id}"/>" style="text-decoration:none;">
+                                            ${j.courseName}
+                                        </a></h4></div>
                                         <div class="content">
                                             <div class="note">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. 
+                                                ${j.courseDescription}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer author">
-                                    <div class="name-author">
+                                <div class="card-footer author p-2">
+                                    <div class="name-author m-0">
                                         <div class="img-author">
                                             <img src="<c:url value='/template/web/image/img-author.jpg'/>" alt="author"/>
                                         </div>
                                         <p>Shaurya Preet</p>
                                     </div>
-                                    <p class="Datetime">
+                                    <p class="Datetime m-0">
                                         <i class="fas fa-calendar-alt"></i>
-                                        1 week ago
+                                        ${j.createDate}
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="item-feature-2 col-12 col-md-4 col-lg-4 col-sm-12">
-                            <div class="card content-feature-2">
-                                <div class="card-header item-course item-course-img-2 p-0">
-                                    <img src="<c:url value='/template/web/image/img-course-2.jpg'/>" alt="course" />
-                                    <span class="cost">$99</span></div>
-                                <div class="card-body description-feature-2">
-                                    <div class="wrap-feature">
-                                        <div class="title"><h4>
-                                            PMP Exam Prep Seminar - PMBOK Guide 6
-                                        </h4></div>
-                                        <div class="content">
-                                            <div class="note">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer author">
-                                    <div class="name-author">
-                                        <div class="img-author">
-                                            <img src="<c:url value='/template/web/image/img-author1.jpg'/>" alt="author"/>
-                                        </div>
-                                        <p>Savitha Tripathi</p>
-                                    </div>
-                                    <p class="Datetime">
-                                        <i class="fas fa-calendar-alt"></i>
-                                        2 days ago
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item-feature-3 col-12 col-md-4 col-lg-4 col-sm-12">
-                            <div class="card content-feature-3">
-                                <div class="card-header item-course item-course-img-3 p-0">
-                                    <img src="<c:url value='/template/web/image/img-course-3.jpg'/>" alt="course" />
-                                    <span class="cost">$79</span></div>
-                                <div class="card-body description-feature-3">
-                                    <div class="wrap-feature">
-                                        <div class="title"><h4>
-                                            The Complete Business Plan Course (Includes 50 Templates)
-                                        </h4></div>
-                                        <div class="content">
-                                            <div class="note">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer author">
-                                    <div class="name-author">
-                                        <div class="img-author">
-                                            <img src="<c:url value='/template/web/image/img-author2.jpg'/>" alt="author"/>
-                                        </div>
-                                        <p>Litha Maildick</p>
-                                    </div>
-                                    <p class="Datetime">
-                                        <i class="fas fa-calendar-alt"></i>
-                                        1 week ago
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        </c:forEach>
+                        
                         </div>
                     </div>
                 </div>

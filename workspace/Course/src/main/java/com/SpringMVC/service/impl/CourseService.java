@@ -1,5 +1,6 @@
 package com.SpringMVC.service.impl;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ import com.SpringMVC.model.entity.UserEntity;
 import com.SpringMVC.repository.CourseRepository;
 import com.SpringMVC.service.ICourseService;
 import com.SpringMVC.service.IMajorService;
+import com.SpringMVC.util.UploadFileUtils;
 
 @Service
 public class CourseService implements ICourseService {
@@ -32,6 +34,8 @@ public class CourseService implements ICourseService {
 	
 	@Autowired
 	private userConvert userConverter;
+	@Autowired
+	private UploadFileUtils fileUtils; 
 	
 	@Override
 	public List<CourseDTO> findList(String key) {
@@ -59,9 +63,19 @@ public class CourseService implements ICourseService {
 		if(course.getId() != null) {
 			CourseEntity newCourse = courseConvert.toEntity(course);
 			newCourse.setMajor(majorService.findByCode(course.getMajorCode()));
+			try {
+				newCourse.setThumbnail(fileUtils.saveFile(course.getThumbnail()).getBytes());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			return courseConvert.toDTO(courseRepo.save(newCourse));
 		}
 		CourseEntity courseEntity = courseConvert.toEntity(course);
+		try {
+			courseEntity.setThumbnail(fileUtils.saveFile(course.getThumbnail()).getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		courseEntity.setMajor(majorService.findByCode(course.getMajorCode()));
 		return courseConvert.toDTO(courseRepo.save(courseEntity));
 	}

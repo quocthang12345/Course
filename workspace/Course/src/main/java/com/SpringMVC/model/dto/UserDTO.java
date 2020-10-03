@@ -2,9 +2,11 @@ package com.SpringMVC.model.dto;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class UserDTO extends AbstractDTO<UserDTO> {
 	private String userName;
-	private String avatar;
+	private MultipartFile avatar;
 	private String passWord;
 	private String fullName;
 	private int status;
@@ -44,10 +46,11 @@ public class UserDTO extends AbstractDTO<UserDTO> {
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
 	}
-	public String getAvatar() {
+	
+	public MultipartFile getAvatar() {
 		return avatar;
 	}
-	public void setAvatar(String avatar) {
+	public void setAvatar(MultipartFile avatar) {
 		this.avatar = avatar;
 	}
 	public String getFullName() {

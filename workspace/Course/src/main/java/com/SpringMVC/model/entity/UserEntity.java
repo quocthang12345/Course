@@ -22,7 +22,7 @@ public class UserEntity extends BaseEntity {
 	private String userName;
 	
 	@Column(name = "avatar")
-	private String avatar;
+	private byte[] avatar;
 	
 	@Column(name = "password")
 	private String passWord;
@@ -90,17 +90,20 @@ public class UserEntity extends BaseEntity {
 		return userName;
 	}
 
+	
+
+	public byte[] getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(byte[] avatar) {
+		this.avatar = avatar;
+	}
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 
-	public String getAvatar() {
-		return avatar;
-	}
-
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
-	}
 
 	public String getPassword() {
 		return passWord;

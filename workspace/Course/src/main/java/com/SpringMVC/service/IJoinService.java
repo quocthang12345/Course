@@ -11,4 +11,5 @@ public interface IJoinService {
 	JoinDTO UserJoinCourse(JoinEntity join);
 	JoinEntity findOneById(Long id);
 	List<CourseDTO> getTopCourse(int count);
+	List<CourseDTO> getTopCourseInJava(int count);
 }

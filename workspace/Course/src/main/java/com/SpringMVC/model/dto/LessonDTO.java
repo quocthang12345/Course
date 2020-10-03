@@ -1,11 +1,13 @@
 package com.SpringMVC.model.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class LessonDTO extends AbstractDTO<LessonDTO> {
 
 	private String lessonName;
 	private String lessonDescription;
 	private Long courseId;
-	private String Video;
+	private MultipartFile Video;
 	public String getLessonName() {
 		return lessonName;
 	}
@@ -24,12 +26,13 @@ public class LessonDTO extends AbstractDTO<LessonDTO> {
 	public void setCourseId(Long courseId) {
 		this.courseId = courseId;
 	}
-	public String getVideo() {
+	public MultipartFile getVideo() {
 		return Video;
 	}
-	public void setVideo(String video) {
-		this.Video = video;
+	public void setVideo(MultipartFile video) {
+		Video = video;
 	}
+	
 	
 	
 }

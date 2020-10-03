@@ -26,14 +26,14 @@
 										  </div>
 									 </c:if>
 								 </div>
-                                <form:form id="formSubmit" modelAttribute="lesson" cssClass="form-edit">
+                                <form:form id="formSubmit" modelAttribute="lesson" cssClass="form-edit" enctype="multipart/form-data">
                                         <div class="form-group col-12 col-sm-12">
                                             <label>Name of the lesson</label>
                                             <form:input path="lessonName" value="${lesson.lessonName}" cssClass="form-control" placeholder="Enter name course....." />
                                         </div>
                                         <div class="form-group  col-12 col-sm-12 col-md-12 ">
                                             <label>Video of the lesson</label>
-                                            <input type="file" id="Video" name="Video" class="form-control-file file" value="Choose Files"/>
+                                            <form:input type="file" path="Video" cssClass="form-control-file file" value="Choose Files"/>
                                         </div>
                                         <div class="form-group col-12 col-sm-12 col-md-12 ">
                                             <label>Description of the lesson</label>

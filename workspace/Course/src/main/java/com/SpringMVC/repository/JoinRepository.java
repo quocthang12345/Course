@@ -17,4 +17,7 @@ public interface JoinRepository extends JpaRepository<JoinEntity, Long> {
 	
 	@Query(value = "SELECT course_id FROM user_join_course GROUP BY course_id ORDER BY COUNT(user_id) DESC LIMIT ?1",nativeQuery = true)
 	List<BigInteger> getTopCourse(int count);
+	
+	@Query(value = "SELECT course_id FROM user_join_course GROUP BY course_id ORDER BY COUNT(user_id) DESC", nativeQuery = true)
+	List<BigInteger> getTopCourseInJava();
 }

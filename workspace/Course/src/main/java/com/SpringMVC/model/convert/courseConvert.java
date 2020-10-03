@@ -29,7 +29,7 @@ public class courseConvert {
 	    	result.setCourseContent(courseDto.getCourseContent());
 	    	result.setCourseDescription(courseDto.getCourseDescription());
 	    	result.setCourseName(courseDto.getCourseName());
-	    	result.setThumbnail(courseDto.getThumbnail());
+//	    	result.setThumbnail(courseDto.getThumbnail());
 	    	return result;
 	    }
 	    return course;
