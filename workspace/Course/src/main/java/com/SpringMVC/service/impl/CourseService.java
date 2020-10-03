@@ -1,5 +1,7 @@
 package com.SpringMVC.service.impl;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -7,8 +9,12 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.apache.commons.fileupload.disk.DiskFileItem;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.SpringMVC.model.convert.courseConvert;
 import com.SpringMVC.model.convert.userConvert;
@@ -60,22 +66,22 @@ public class CourseService implements ICourseService {
 	@Override
 	@Transactional
 	public CourseDTO Update(CourseDTO course) {
+		File file = new File("'"+course.getThumbnail()+"'");
+		DiskFileItem fileItem = new DiskFileItem("file", "text/plain", false, file.getName(), (int) file.length() , file.getParentFile());
+		try {
+			fileItem.getOutputStream();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		CommonsMultipartFile multipartFile = new CommonsMultipartFile(fileItem);
 		if(course.getId() != null) {
 			CourseEntity newCourse = courseConvert.toEntity(course);
 			newCourse.setMajor(majorService.findByCode(course.getMajorCode()));
-			try {
-				newCourse.setThumbnail(fileUtils.saveFile(course.getThumbnail()).getBytes());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			newCourse.setThumbnail(fileUtils.saveFile(multipartFile));
 			return courseConvert.toDTO(courseRepo.save(newCourse));
 		}
 		CourseEntity courseEntity = courseConvert.toEntity(course);
-		try {
-			courseEntity.setThumbnail(fileUtils.saveFile(course.getThumbnail()).getBytes());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		courseEntity.setThumbnail(fileUtils.saveFile(multipartFile));
 		courseEntity.setMajor(majorService.findByCode(course.getMajorCode()));
 		return courseConvert.toDTO(courseRepo.save(courseEntity));
 	}

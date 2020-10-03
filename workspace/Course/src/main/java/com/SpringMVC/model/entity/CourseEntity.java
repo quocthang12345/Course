@@ -23,7 +23,7 @@ public class CourseEntity extends BaseEntity {
 	private String courseName;
 	
 	@Column(name = "thumbnail")
-	private byte[] thumbnail;
+	private String thumbnail;
 	
 	@Column(name = "description")
 	private String courseDescription;
@@ -70,12 +70,12 @@ public class CourseEntity extends BaseEntity {
 
 	
 
-	public byte[] getThumbnail() {
+	public String getThumbnail() {
 		return thumbnail;
 	}
 
-	public void setThumbnail(byte[] thumbnail) {
-		this.thumbnail = thumbnail;
+	public void setThumbnail(String string) {
+		this.thumbnail = string;
 	}
 
 	public String getCourseDescription() {

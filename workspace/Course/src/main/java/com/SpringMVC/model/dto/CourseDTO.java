@@ -3,11 +3,9 @@ package com.SpringMVC.model.dto;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class CourseDTO extends AbstractDTO<CourseDTO> {
 	private String courseName;
-	private MultipartFile thumbnail;
+	private String thumbnail;
 	private String courseDescription;
 	private String courseContent;
 	private List<LessonDTO> lessons;
@@ -37,10 +35,10 @@ public class CourseDTO extends AbstractDTO<CourseDTO> {
 	}
 	
 
-	public MultipartFile getThumbnail() {
+	public String getThumbnail() {
 		return thumbnail;
 	}
-	public void setThumbnail(MultipartFile thumbnail) {
+	public void setThumbnail(String thumbnail) {
 		this.thumbnail = thumbnail;
 	}
 	public String getCourseDescription() {
