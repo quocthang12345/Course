@@ -13,8 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.web.multipart.MultipartFile;
-
 @Entity
 @Table(name = "course")
 public class CourseEntity extends BaseEntity {
@@ -74,8 +72,8 @@ public class CourseEntity extends BaseEntity {
 		return thumbnail;
 	}
 
-	public void setThumbnail(String string) {
-		this.thumbnail = string;
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
 	}
 
 	public String getCourseDescription() {

@@ -1,5 +1,7 @@
 package com.SpringMVC.model.convert;
 
+import java.io.IOException;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,7 +29,6 @@ public class courseConvert {
 	    	result.setCourseContent(courseDto.getCourseContent());
 	    	result.setCourseDescription(courseDto.getCourseDescription());
 	    	result.setCourseName(courseDto.getCourseName());
-	    	result.setThumbnail(courseDto.getThumbnail());
 	    	return result;
 	    }
 	    return course;

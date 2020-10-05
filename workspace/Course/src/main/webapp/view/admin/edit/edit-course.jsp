@@ -39,7 +39,7 @@
                                         </div> 
                                         <div class="form-group  col-12 col-sm-12">
                                             <label>Thumbnail</label>
-                                            <input type="file" id="thumbnail" name="thumbnail" class="form-control-file file" value="Choose Files"/>
+                                            <input type="file" id="fileUpload" name="file" class="form-control-file file" value="Choose Files"/>
                                         </div>
                                         <div class="form-group col-12 col-sm-12">
                                             <label>Description of the course</label>
@@ -76,6 +76,18 @@
 </div>
 
 <script>
+var dataArray = {};
+$('#fileUpload').change(function () {
+    var file =  $('#fileUpload')[0].files[0];
+    if (file != undefined) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+        	dataArray["codebase64"] = e.target.result;
+        	dataArray["image"] = file.name;
+        };
+        reader.readAsDataURL(file);
+	}
+});
 $('#btnEdit').click(function(e){
     e.preventDefault();
     var data = {};
@@ -83,9 +95,8 @@ $('#btnEdit').click(function(e){
     $.each(formData,function(i,v){
         data[""+v.name+""] = v.value;
     });
-    data["thumbnail"] = $('#thumbnail').val();
-
-    var id = $('#id').val();
+    data["thumbnail"] = dataArray.image;
+    data["base64"] = dataArray.codebase64;    var id = $('#id').val();
     if(id == ""){
         addItem(data);
     }else{

@@ -6,6 +6,7 @@ import java.util.List;
 public class CourseDTO extends AbstractDTO<CourseDTO> {
 	private String courseName;
 	private String thumbnail;
+	private String base64;
 	private String courseDescription;
 	private String courseContent;
 	private List<LessonDTO> lessons;
@@ -34,12 +35,20 @@ public class CourseDTO extends AbstractDTO<CourseDTO> {
 		this.courseName = courseName;
 	}
 	
+	
 
+	
 	public String getThumbnail() {
 		return thumbnail;
 	}
 	public void setThumbnail(String thumbnail) {
 		this.thumbnail = thumbnail;
+	}
+	public String getBase64() {
+		return base64.split(",")[1];
+	}
+	public void setBase64(String base64) {
+		this.base64 = base64;
 	}
 	public String getCourseDescription() {
 		return courseDescription;

@@ -1,28 +1,19 @@
 package com.SpringMVC.service.impl;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.apache.commons.fileupload.disk.DiskFileItem;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.SpringMVC.model.convert.courseConvert;
-import com.SpringMVC.model.convert.userConvert;
 import com.SpringMVC.model.dto.CourseDTO;
-import com.SpringMVC.model.dto.UserDTO;
 import com.SpringMVC.model.entity.CourseEntity;
 import com.SpringMVC.model.entity.MajorEntity;
-import com.SpringMVC.model.entity.UserEntity;
 import com.SpringMVC.repository.CourseRepository;
 import com.SpringMVC.service.ICourseService;
 import com.SpringMVC.service.IMajorService;
@@ -38,8 +29,6 @@ public class CourseService implements ICourseService {
 	@Autowired
 	private IMajorService majorService;
 	
-	@Autowired
-	private userConvert userConverter;
 	@Autowired
 	private UploadFileUtils fileUtils; 
 	
@@ -66,22 +55,15 @@ public class CourseService implements ICourseService {
 	@Override
 	@Transactional
 	public CourseDTO Update(CourseDTO course) {
-		File file = new File("'"+course.getThumbnail()+"'");
-		DiskFileItem fileItem = new DiskFileItem("file", "text/plain", false, file.getName(), (int) file.length() , file.getParentFile());
-		try {
-			fileItem.getOutputStream();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		CommonsMultipartFile multipartFile = new CommonsMultipartFile(fileItem);
+		byte[] decodeBase64 = Base64.getDecoder().decode(course.getBase64().getBytes());
 		if(course.getId() != null) {
 			CourseEntity newCourse = courseConvert.toEntity(course);
 			newCourse.setMajor(majorService.findByCode(course.getMajorCode()));
-			newCourse.setThumbnail(fileUtils.saveFile(multipartFile));
+			newCourse.setThumbnail(fileUtils.writeOrUpdate(decodeBase64, course.getThumbnail()));
 			return courseConvert.toDTO(courseRepo.save(newCourse));
 		}
 		CourseEntity courseEntity = courseConvert.toEntity(course);
-		courseEntity.setThumbnail(fileUtils.saveFile(multipartFile));
+		courseEntity.setThumbnail(fileUtils.writeOrUpdate(decodeBase64, course.getThumbnail()));
 		courseEntity.setMajor(majorService.findByCode(course.getMajorCode()));
 		return courseConvert.toDTO(courseRepo.save(courseEntity));
 	}
