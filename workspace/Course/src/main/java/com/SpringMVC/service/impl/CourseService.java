@@ -55,12 +55,14 @@ public class CourseService implements ICourseService {
 	@Override
 	@Transactional
 	public CourseDTO Update(CourseDTO course) {
-		byte[] decodeBase64 = Base64.getDecoder().decode(course.getBase64().getBytes());
+		byte[] decodeBase64 = Base64.getDecoder().decode((course.getBase64().split(",")[1]).getBytes());
 		if(course.getId() != null) {
 			CourseEntity newCourse = courseConvert.toEntity(course);
 			newCourse.setMajor(majorService.findByCode(course.getMajorCode()));
 			newCourse.setThumbnail(fileUtils.writeOrUpdate(decodeBase64, course.getThumbnail()));
-			return courseConvert.toDTO(courseRepo.save(newCourse));
+			CourseDTO courseNew = courseConvert.toDTO(courseRepo.save(newCourse));
+			courseNew.setBase64(course.getBase64());
+			return courseNew;
 		}
 		CourseEntity courseEntity = courseConvert.toEntity(course);
 		courseEntity.setThumbnail(fileUtils.writeOrUpdate(decodeBase64, course.getThumbnail()));

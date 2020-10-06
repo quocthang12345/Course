@@ -3,10 +3,14 @@ package com.SpringMVC.model.dto;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 public class CourseDTO extends AbstractDTO<CourseDTO> {
 	private String courseName;
 	private String thumbnail;
+	
 	private String base64;
+	
 	private String courseDescription;
 	private String courseContent;
 	private List<LessonDTO> lessons;
@@ -45,7 +49,7 @@ public class CourseDTO extends AbstractDTO<CourseDTO> {
 		this.thumbnail = thumbnail;
 	}
 	public String getBase64() {
-		return base64.split(",")[1];
+		return base64;
 	}
 	public void setBase64(String base64) {
 		this.base64 = base64;
