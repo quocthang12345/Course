@@ -1,6 +1,7 @@
 package com.SpringMVC.service.impl;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -19,6 +20,7 @@ import com.SpringMVC.repository.HistoryRepository;
 import com.SpringMVC.repository.RoleRepository;
 import com.SpringMVC.repository.UserRepository;
 import com.SpringMVC.service.IUserService;
+import com.SpringMVC.util.UploadFileUtils;
 
 @Service
 public class UserService implements IUserService {
@@ -33,6 +35,8 @@ public class UserService implements IUserService {
 	private RoleRepository roleRepo;
 	@Autowired
 	private PasswordEncoder encoder;
+	@Autowired
+	private UploadFileUtils fileUtils;
 
 	@Override
 	@Transactional
@@ -56,10 +60,14 @@ public class UserService implements IUserService {
 	@Transactional
 	public UserDTO updateUser(UserDTO userDTO) {
 		UserEntity user = userConverter.toEntity(userDTO);
-		if(userDTO.getPassWord() != null) {
+		byte[] decodeBase64 = Base64.getDecoder().decode((userDTO.getBase64().split(",")[1]).getBytes());
+		if(userDTO.getPassWord() != null && !userDTO.getPassWord().equals("")) {
 			user.setPassword(encoder.encode(userDTO.getPassWord()));
     	}
-		return userConverter.toDTO(userRepo.save(user));
+		user.setAvatar(fileUtils.writeOrUpdate(decodeBase64, userDTO.getUserAvatar()));
+		UserDTO newUser = userConverter.toDTO(userRepo.save(user));
+		newUser.setBase64(userDTO.getBase64());
+		return newUser;
 	}
 
 	@Override

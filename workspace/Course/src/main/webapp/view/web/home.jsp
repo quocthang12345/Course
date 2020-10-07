@@ -91,10 +91,10 @@
                     <div class="content-feature">
                         <div class="row">
                         <c:forEach var="i" items="${topCourse}">
-                        <div class="item-feature-1 col-12 col-md-4 col-lg-4 col-sm-12">
+                        <div class="item-feature-1 col-12 col-md-4 col-lg-4 col-sm-12" style="padding:0;">
                             <div class="card content-feature-1">
                                 <div class="card-header item-feature-img-1 p-0">
-                                    <img src="<c:url value='https://via.placeholder.com/285x200'/>" alt="item-feature-1" />
+                                    <img src="<c:url value='${i.thumbnail}'/>" alt="item-feature-1" style="height:220px;"  />
                                 </div>
                                 <div class="card-body description-feature">
                                     <div class="wrap-feature">
@@ -301,37 +301,38 @@
                     <div class="content-feature mt-2">
                         <div class="row">
                         <c:forEach var="j" items="${TopCourseInJava}">
-                        <div class="item-feature-1 col-12 col-md-4 col-lg-4 col-sm-12">
-                            <div class="card content-feature-1">
-                                <div class="card-header item-course item-course-img-1 p-0">
-                                    <img src="<c:url value='https://via.placeholder.com/285x200'/>" alt="course" />
-                                    <span class="cost">Free</span></div>
-                                <div class="card-body description-feature">
-                                    <div class="wrap-feature">
-                                        <div class="title"><h4><a href="<c:url value="mon-hoc?id=${j.id}"/>" style="text-decoration:none;">
-                                            ${j.courseName}
-                                        </a></h4></div>
-                                        <div class="content">
-                                            <div class="note">
-                                                ${j.courseDescription}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer author p-2">
-                                    <div class="name-author m-0">
-                                        <div class="img-author">
-                                            <img src="<c:url value='/template/web/image/img-author.jpg'/>" alt="author"/>
-                                        </div>
-                                        <p>Shaurya Preet</p>
-                                    </div>
-                                    <p class="Datetime m-0">
-                                        <i class="fas fa-calendar-alt"></i>
-                                        ${j.createDate}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+	                        <div class="item-feature-1 col-12 col-md-4 col-lg-4 col-sm-12" style="padding:0;">
+	                            <div class="card content-feature-1">
+	                                <div class="card-header item-course item-course-img-1 p-0">
+	                                    <img src="<c:url value='${j.thumbnail}'/>" alt="course" style="height:220px;" />
+	                                    <span class="cost">Free</span>
+	                                </div>
+	                                <div class="card-body description-feature">
+	                                    <div class="wrap-feature">
+	                                        <div class="title"><h4><a href="<c:url value="mon-hoc?id=${j.id}"/>" style="text-decoration:none;">
+	                                            ${j.courseName}
+	                                        </a></h4></div>
+	                                        <div class="content">
+	                                            <div class="note">
+	                                                ${j.courseDescription}
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                <div class="card-footer author p-2">
+	                                    <div class="name-author m-0">
+	                                        <div class="img-author">
+	                                            <img src="<c:url value='/template/web/image/img-author.jpg'/>" alt="author"/>
+	                                        </div>
+	                                        <p>Shaurya Preet</p>
+	                                    </div>
+	                                    <p class="Datetime m-0">
+	                                        <i class="fas fa-calendar-alt"></i>
+	                                        ${j.createDate}
+	                                    </p>
+	                                </div>
+	                            </div>
+	                        </div>
                         </c:forEach>
                         
                         </div>

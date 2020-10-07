@@ -16,6 +16,7 @@ public class SecurityUtils {
         return myUser;
     }
 	
+	
 	@SuppressWarnings("unchecked")
 	public static List<String> getAuthorities() {
 		List<String> results = new ArrayList<>();

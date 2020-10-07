@@ -31,9 +31,9 @@
                                             <label>Name of the lesson</label>
                                             <form:input path="lessonName" value="${lesson.lessonName}" cssClass="form-control" placeholder="Enter name course....." />
                                         </div>
-                                        <div class="form-group  col-12 col-sm-12 col-md-12 ">
+                                        <div class="form-group col-12 col-sm-12 col-md-12 ">
                                             <label>Video of the lesson</label>
-                                            <form:input type="file" path="Video" cssClass="form-control-file file" value="Choose Files"/>
+                                            <form:input path="lessonVideo" value="${lesson.lessonVideo}" cssClass="form-control" placeholder="Link Here"/>
                                         </div>
                                         <div class="form-group col-12 col-sm-12 col-md-12 ">
                                             <label>Description of the lesson</label>

@@ -25,7 +25,6 @@ public class userConvert {
 	    if (userDTO.getId() != null) {
 	    	UserEntity result = userService.findOne(userDTO.getId());
 	    	result.setFullname(userDTO.getFullName());
-//	    	result.setAvatar(userDTO.getAvatar());
 	    	return result;
 	    }
 	    return user;

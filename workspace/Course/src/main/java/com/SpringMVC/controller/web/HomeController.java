@@ -51,10 +51,12 @@ public class HomeController {
 	@RequestMapping(value = "/trang-chu" , method = RequestMethod.GET)
 	public ModelAndView homePage() {
 		ModelAndView mav = new ModelAndView("web/home");
-		UserDTO user = userService.findByUsername((SecurityUtils.getPrincipal().getUsername()).toString());
+		if(((SecurityContextHolder.getContext()).getAuthentication().isAuthenticated())) {
+			UserDTO user = userService.findByUsername((SecurityUtils.getPrincipal().getUsername()));
+			mav.addObject("user",user);
+		}
 		mav.addObject("topCourse",joinService.getTopCourse(3));
 		mav.addObject("TopCourseInJava",joinService.getTopCourseInJava(3));
-		mav.addObject("user",user);
 		return mav;
 	}
 	

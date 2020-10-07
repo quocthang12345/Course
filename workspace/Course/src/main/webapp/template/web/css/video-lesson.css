@@ -29,13 +29,13 @@
 
 .content-lesson .video-lesson{
     width: 100%;
-    height: 100%;
+    height: 420px !important;
     border: 1px solid #FFF;
     display: inline-block;
 }
 .video-lesson iframe{
-    width: 100%;
-    height: 360px;
+    width: 100% !important;
+    height: 420px !important;
 }
 .lesson-wrapper .btn-next{
     width:100%

@@ -70,7 +70,7 @@
 							            <div class="topbar-divider d-none d-sm-block"></div>
 			               				<li class="form-group nav-item dropdown no-arrow mx-1">
 	                                          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%=SecurityUtils.getPrincipal().getFullName()%></span>
+								                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%-- <%=SecurityUtils.getPrincipal().getFullName()%> --%>${user.fullName}</span>
 								                <img class="img-profile rounded-circle" src="https://via.placeholder.com/30.jpg" />
 								              </a>
 							              <!--User Information -->

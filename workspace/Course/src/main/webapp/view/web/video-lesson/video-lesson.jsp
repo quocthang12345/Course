@@ -19,8 +19,8 @@
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-7 col-lg-7">
-                            <div class="video-lesson">
-                                <iframe src="<c:url value='https://www.youtube.com/embed/Hl-zzrqQoSE'/>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <div class="video-lesson" style="height:420px;">
+                                ${lesson.lessonVideo}
                             </div>
                         </div>
                     </div>

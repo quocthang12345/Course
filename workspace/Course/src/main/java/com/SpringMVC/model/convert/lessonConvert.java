@@ -32,7 +32,7 @@ public class lessonConvert {
 			 result.setCourse(course);
 			 result.setDescriptionLesson(lessonDto.getLessonDescription());
 			 result.setLessonName(lessonDto.getLessonName());
-//			 result.setVideo(lessonDto.getVideo());
+			 result.setVideo(lessonDto.getLessonVideo());
 			 return result;
 	    }
 	    return lesson;

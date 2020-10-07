@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-md-5 col-lg-4 wrap-detail">  
                     <div class="img-detail">
-                        <img src="<c:url value='https://via.placeholder.com/290' />" alt="lesson" />
+                        <img src="<c:url value='${course.thumbnail}' />" alt="lesson" />
                     </div>
                 </div>
                 <div class="description-detail col-md-7 col-lg-8">

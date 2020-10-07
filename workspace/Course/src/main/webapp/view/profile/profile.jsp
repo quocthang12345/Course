@@ -14,9 +14,9 @@
         <div class="badge-profile">
             <nav>
                 <ol class="d-flex flex-row align-items-center" style="list-style:none;">
-                    <li class="breadcrumb-1 mr-2"><a href="#">Admin-Home</a></li>
+                    <li class="breadcrumb-1 mr-2"><a href="<c:url value="/admin-home" />">Admin-Home</a></li>
                     <li><i class="fas fa-chevron-right breadcrumb-2 mr-2"></i></li>
-                    <li class="breadcrumb-3"><a href="#">Course</a></li>
+                    <li class="breadcrumb-3"><a href="<c:url value="/profile" />">Profile</a></li>
                 </ol>
             </nav>
         </div>
@@ -46,7 +46,7 @@
                                             <div class="col-12 col-sm-12 col-md-3 mb-4">
                                                 <div class="img-profile">
                                                     <img src="https://via.placeholder.com/150" alt="img-user" />
-                                                    <form:input type="file" path="avatar" cssClass="col-8 col-sm-8 col-md-8 form-control" />
+                                                    <input type="file" id="fileUpload" class="col-8 col-sm-8 col-md-8 form-control ml-4" style="border:none;color: transparent;" value="Choose Avatar" />
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-9 p-0">
@@ -103,7 +103,7 @@
                                                     <div class="row">
                                                         <div class="col-12 col-sm-12 col-md-12 form-group d-flex flex-row align-items-center">
                                                             <label class="col-3 col-sm-3 col-md-3 m-0">New Password</label>
-                                                            <form:password path="passWord" cssClass="col-9 col-sm-9 col-md-9 form-control" placeholder="Enter Password" />
+                                                            <form:password path="passWord" cssClass="col-9 col-sm-9 col-md-9 form-control" value="" placeholder="Enter Password" />
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -134,6 +134,18 @@
 var password = document.getElementById("passWord");
 var rePassword = document.getElementById("correctPassword");
 
+var dataArray = {};
+$('#fileUpload').change(function () {
+    var file =  $('#fileUpload')[0].files[0];
+    if (file != undefined) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+        	dataArray["codebase64"] = e.target.result;
+        	dataArray["image"] = file.name;
+        };
+        reader.readAsDataURL(file);
+	}
+});
 $('#correctPassword').keyup(function(){
 	if(password.value !== rePassword.value){
 		rePassword.style.border  = "2px solid red";
@@ -158,6 +170,8 @@ function UpdateUser(){
     $.each(formData,function(i,v){
         data[""+v.name+""] = v.value;
     });
+    data["userAvatar"] = dataArray.image;
+    data["base64"] = dataArray.codebase64;
     if(password.value !== rePassword.value ){
     	alert("Password invalid!");
     }else{
