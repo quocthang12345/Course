@@ -6,8 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Home</title>
-<style>
-</style>
 </head>        
 <body>
 			<!-- This is a start of the Banner Page -->
@@ -153,82 +151,82 @@
                     </div>
                     <div class="content-item">
                         <div class="row d-flex flex-row justify-content-center align-items-center">
-                        <div class="item i-1 col-12 col-sm-12 col-lg-3 col-md-3">
-                            <ul>
-                                <li class="img-item item-img-1"><img src="<c:url value='/template/web/icon/monitor.png'/>" /></li>
-                                <li class="content">
-                                    <p class="header-title title-item-1">Development</p>
-                                    <p class="class"><i class="fas fa-school"></i> 23 Classes</p></li>
-                            </ul>
-                        </div>
+	                        <div class="item i-1 col-12 col-sm-12 col-lg-3 col-md-3">
+		                            <ul>
+		                                <li class="img-item item-img-1"><img src="<c:url value='/template/web/icon/java.png'/>" /></li>
+		                                <li class="content">
+		                                    <p class="header-title title-item-1"><a href="<c:url value='/khoa-hoc?keyword=Java Programming' />" style="text-decoration:none;">Java</a></p>
+		                                    <p class="class"><i class="fas fa-school"></i> 23 Classes</p></li>
+		                            </ul>
+	                        </div>
                         <div class="item i-2 col-12 col-sm-12 col-lg-3 col-md-3">
                             <ul>
-                                <li class="img-item item-img-2"><img src="<c:url value='/template/web/icon/briefcase.png'/>" /></li>
+                                <li class="img-item item-img-2"><img src="<c:url value='/template/web/icon/c.png'/>" /></li>
                                 <li class="content">
-                                    <p class="header-title title-item-2">Business</p>
+                                    <p class="header-title title-item-2"><a href="<c:url value='/khoa-hoc?keyword=C/' />" style="text-decoration:none;">C/C++</a></p>
                                     <p class="class"><i class="fas fa-school"></i> 58 Classes</p>
                                 </li>
                             </ul>
                         </div>
                         <div class="item i-3 col-12 col-sm-12 col-lg-3 col-md-3">
                             <ul>
-                                <li class="img-item item-img-3"><img src="<c:url value='/template/web/icon/growth.png'/>" /></li>
+                                <li class="img-item item-img-3"><img src="<c:url value='/template/web/icon/javascript.png'/>" /></li>
                                 <li class="content">
-                                    <p class="header-title title-item-3">Accounting</p>
+                                    <p class="header-title title-item-3"><a href="<c:url value='/khoa-hoc?keyword=Javascript' />" style="text-decoration:none;">Javascript</a></p>
                                     <p class="class"><i class="fas fa-school"></i> 74 Classes</p>
                                 </li>
                             </ul>
                         </div>
                         <div class="item i-4 col-12 col-sm-12 col-lg-3 col-md-3">
                             <ul>
-                                <li class="img-item item-img-4"><img src="<c:url value='/template/web/icon/python.png'/>" /></li>
+                                <li class="img-item item-img-4"><img src="<c:url value='/template/web/icon/ruby.png'/>" /></li>
                                 <li class="content">
-                                    <p class="header-title title-item-4"> IT & Software</p>
+                                    <p class="header-title title-item-4"><a href="<c:url value='/khoa-hoc?keyword=Ruby' />" style="text-decoration:none;">Ruby On Rails</a></p>
                                     <p class="class"><i class="fas fa-school"></i> 65 Classes</p>
                                 </li>
                             </ul>
                         </div>
                         <div class="item i-5 col-12 col-sm-12 col-lg-3 col-md-3">
                             <ul>
-                                <li class="img-item item-img-5"><img src="<c:url value='/template/web/icon/design.png'/>" /></li>
+                                <li class="img-item item-img-5"><img src="<c:url value='/template/web/icon/python.png'/>" /></li>
                                 <li class="content">
-                                    <p class="header-title title-item-5"> Art & Design</p>
+                                    <p class="header-title title-item-5"><a href="#" style="text-decoration:none;">Python</a></p>
                                     <p class="class"><i class="fas fa-school"></i> 43 Classes</p>
                                 </li>
                             </ul>
                         </div>
                         <div class="item i-6 col-12 col-sm-12 col-lg-3 col-md-3">
                             <ul>
-                                <li class="img-item item-img-6"><img src="<c:url value='/template/web/icon/speaker.png'/>" /></li>
+                                <li class="img-item item-img-6"><img src="<c:url value='/template/web/icon/html-5.png'/>" /></li>
                                 <li class="content">
-                                    <p class="header-title title-item-6">Marketing</p>
+                                    <p class="header-title title-item-6"><a href="#" style="text-decoration:none;">HTML5</a></p>
                                     <p class="class"><i class="fas fa-school"></i> 82 Classes</p>  
                                 </li>
                             </ul>
                         </div>
                         <div class="item i-7 col-12 col-sm-12 col-lg-3 col-md-3">
                             <ul>
-                                <li class="img-item item-img-7"><img src="<c:url value='/template/web/icon/sketch.png'/>" /></li>
+                                <li class="img-item item-img-7"><img src="<c:url value='/template/web/icon/css-3.png'/>" /></li>
                                 <li class="content">
-                                    <p class="header-title title-item-7">Photography</p>
+                                    <p class="header-title title-item-7"><a href="#" style="text-decoration:none;">CSS3</a></p>
                                     <p class="class"><i class="fas fa-school"></i> 25 Classes</p>  
                                 </li>
                             </ul>
                         </div>
                         <div class="item i-8 col-12 col-sm-12 col-lg-3 col-md-3">
                             <ul>
-                                <li class="img-item item-img-8"><img src="<c:url value='/template/web/icon/meditation.png'/>" /></li>
+                                <li class="img-item item-img-8"><img src="<c:url value='/template/web/icon/hashtag.png'/>" /></li>
                                 <li class="content">
-                                    <p class="header-title title-item-8">Health & Fitness</p>
+                                    <p class="header-title title-item-8"><a href="#" style="text-decoration:none;">C#</a></p>
                                     <p class="class"><i class="fas fa-school"></i> 43 Classes</p>    
                                 </li>
                             </ul>
                         </div>
                         <div class="item i-9 col-12 col-sm-12 col-lg-3 col-md-3">
                             <ul>
-                                <li class="img-item item-img-9"><img src="<c:url value='/template/web/icon/health.png'/>" /></li>
+                                <li class="img-item item-img-9"><img src="<c:url value='/template/web/icon/php.png'/>" /></li>
                                 <li class="content">
-                                    <p class="header-title title-item-9">Lifestyle</p>
+                                    <p class="header-title title-item-9"><a href="#" style="text-decoration:none;">PHP</a></p>
                                     <p class="class"><i class="fas fa-school"></i> 38 Classes</p>  
                                 </li>
                             </ul>

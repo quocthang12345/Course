@@ -60,13 +60,14 @@ public class UserService implements IUserService {
 	@Transactional
 	public UserDTO updateUser(UserDTO userDTO) {
 		UserEntity user = userConverter.toEntity(userDTO);
-		byte[] decodeBase64 = Base64.getDecoder().decode((userDTO.getBase64().split(",")[1]).getBytes());
 		if(userDTO.getPassWord() != null && !userDTO.getPassWord().equals("")) {
 			user.setPassword(encoder.encode(userDTO.getPassWord()));
     	}
-		user.setAvatar(fileUtils.writeOrUpdate(decodeBase64, userDTO.getUserAvatar()));
+		if(userDTO.getBase64() != null) {
+			byte[] decodeBase64 = Base64.getDecoder().decode((userDTO.getBase64().split(",")[1]).getBytes());
+			user.setAvatar(fileUtils.writeOrUpdate(decodeBase64, userDTO.getUserAvatar()));
+		}
 		UserDTO newUser = userConverter.toDTO(userRepo.save(user));
-		newUser.setBase64(userDTO.getBase64());
 		return newUser;
 	}
 

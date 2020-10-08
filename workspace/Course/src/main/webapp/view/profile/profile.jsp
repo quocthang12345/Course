@@ -13,11 +13,20 @@
 <div class="wrap-profile">
         <div class="badge-profile">
             <nav>
+            <security:authorize access="hasRole('ADMIN')">
                 <ol class="d-flex flex-row align-items-center" style="list-style:none;">
                     <li class="breadcrumb-1 mr-2"><a href="<c:url value="/admin-home" />">Admin-Home</a></li>
                     <li><i class="fas fa-chevron-right breadcrumb-2 mr-2"></i></li>
-                    <li class="breadcrumb-3"><a href="<c:url value="/profile" />">Profile</a></li>
+                    <li class="breadcrumb-3"><a href="<c:url value="/profile?id=${profile.id}" />">Profile</a></li>
                 </ol>
+            </security:authorize>
+            <security:authorize access="hasRole('USER')">
+                <ol class="d-flex flex-row align-items-center" style="list-style:none;">
+                    <li class="breadcrumb-1 mr-2"><a href="<c:url value="/trang-chu" />">Home</a></li>
+                    <li><i class="fas fa-chevron-right breadcrumb-2 mr-2"></i></li>
+                    <li class="breadcrumb-3"><a href="<c:url value="/profile?id=${profile.id}" />">Profile</a></li>
+                </ol>
+            </security:authorize>
             </nav>
         </div>
             <div class="container">
@@ -45,7 +54,7 @@
                                         <div class="row">
                                             <div class="col-12 col-sm-12 col-md-3 mb-4">
                                                 <div class="img-profile">
-                                                    <img src="https://via.placeholder.com/150" alt="img-user" />
+                                                    <img src="<c:url value='${profile.userAvatar }'/>" style="width:150px; height:150px;" alt="img-user" />
                                                     <input type="file" id="fileUpload" class="col-8 col-sm-8 col-md-8 form-control ml-4" style="border:none;color: transparent;" value="Choose Avatar" />
                                                 </div>
                                             </div>

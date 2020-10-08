@@ -51,7 +51,8 @@ public class HomeController {
 	@RequestMapping(value = "/trang-chu" , method = RequestMethod.GET)
 	public ModelAndView homePage() {
 		ModelAndView mav = new ModelAndView("web/home");
-		if(((SecurityContextHolder.getContext()).getAuthentication().isAuthenticated())) {
+		Authentication isAuthen = SecurityContextHolder.getContext().getAuthentication();
+		if(!isAuthen.getPrincipal().toString().equals("anonymousUser")) {
 			UserDTO user = userService.findByUsername((SecurityUtils.getPrincipal().getUsername()));
 			mav.addObject("user",user);
 		}
